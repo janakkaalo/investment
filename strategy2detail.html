@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 20% Income Blueprint: A Step-by-Step Guide</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ev-green': '#10B981',    // Emerald for EV (Green energy)
+                        'fund-blue': '#3B82F6',   // Blue for Mutual Funds (Growth)
+                        'debt-amber': '#F59E0B',  // Amber for Invoice Discounting (Stability)
+                        'dark-bg': '#1F2937',     // Dark Grey Background
+                        'light-card': '#FFFFFF',  // White Cards
+                        'soft-gray': '#F3F4F6'
+                    },
+                    fontFamily: {
+                        sans: ['Open Sans', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 350px;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .step-connector {
+            position: absolute;
+            left: 24px;
+            top: 50px;
+            bottom: -50px;
+            width: 4px;
+            background-color: #E5E7EB;
+            z-index: 0;
+        }
+
+        .step-item:last-child .step-connector {
+            display: none;
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .hover-lift {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-soft-gray text-gray-800">
+
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-r from-gray-900 to-gray-800 text-white pt-16 pb-24 px-4">
+        <div class="container mx-auto max-w-5xl text-center">
+            <span
+                class="bg-ev-green text-white px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-6 inline-block">Fiscal
+                Year 2025-26 Strategy</span>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                How to Turn <span class="text-ev-green">₹4.5 Lakhs</span> into a <br>
+                <span class="text-debt-amber">Passive Income Engine</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light">
+                A "Layman's Guide" to achieving a <strong>21% Blended Return</strong> without quitting your job.
+                Move beyond Fixed Deposits into the world of Asset Ownership.
+            </p>
+        </div>
+    </header>
+
+    <!-- The Strategy Overview (Cards overlap Header) -->
+    <section class="relative -mt-16 px-4 mb-20">
+        <div class="container mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-white p-8 rounded-xl shadow-xl border-t-8 border-ev-green text-center hover-lift">
+                <div class="text-ev-green text-5xl mb-4 font-bold">67%</div>
+                <h3 class="text-xl font-bold mb-2">EV Fleet Leasing</h3>
+                <p class="text-gray-500 text-sm">Monthly Rental Income</p>
+                <p class="mt-4 font-bold text-lg">₹3,00,000</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="bg-white p-8 rounded-xl shadow-xl border-t-8 border-fund-blue text-center hover-lift">
+                <div class="text-fund-blue text-5xl mb-4 font-bold">22%</div>
+                <h3 class="text-xl font-bold mb-2">Small Cap Funds</h3>
+                <p class="text-gray-500 text-sm">Long-term Wealth Growth</p>
+                <p class="mt-4 font-bold text-lg">₹1,00,000</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="bg-white p-8 rounded-xl shadow-xl border-t-8 border-debt-amber text-center hover-lift">
+                <div class="text-debt-amber text-5xl mb-4 font-bold">11%</div>
+                <h3 class="text-xl font-bold mb-2">Invoice Discounting</h3>
+                <p class="text-gray-500 text-sm">Safe, Short-term Cash</p>
+                <p class="mt-4 font-bold text-lg">₹50,000</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Breakdown: The Why & How -->
+    <section class="container mx-auto max-w-5xl px-4 mb-24">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold mb-4">The "Secret Sauce": Diversified Aggression</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                Most people put all their money in one basket (like FD or Gold). We are building a "Hybrid Engine" that
+                has three parts: one for <strong>monthly cash</strong>, one for <strong>future wealth</strong>, and one
+                for <strong>safety</strong>.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Chart Side -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+                <h3 class="text-center font-bold text-gray-700 mb-6">Your ₹4.5L Allocation Pie</h3>
+                <div class="chart-container">
+                    <canvas id="allocationChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Explanation Side -->
+            <div class="space-y-8">
+                <!-- EV Explanation -->
+                <div class="flex gap-4">
+                    <div
+                        class="flex-shrink-0 w-12 h-12 bg-ev-green rounded-full flex items-center justify-center text-white font-bold text-xl">
+                        1</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900">The Workhorse: EV Fleet (FOCO)</h3>
+                        <p class="text-gray-600 mt-2 text-sm leading-relaxed">
+                            <strong>What is it?</strong> You buy ~7 electric scooters. You don't ride them. You lease
+                            them to a company (like Zypp). They rent them to delivery drivers.
+                            <br><br>
+                            <strong>Why?</strong> It pays you monthly rent (like a house, but cheaper to buy).
+                            <br>
+                            <span class="text-ev-green font-bold">Return: 22-25% per year.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Mutual Fund Explanation -->
+                <div class="flex gap-4">
+                    <div
+                        class="flex-shrink-0 w-12 h-12 bg-fund-blue rounded-full flex items-center justify-center text-white font-bold text-xl">
+                        2</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900">The Multiplier: Small Cap Fund</h3>
+                        <p class="text-gray-600 mt-2 text-sm leading-relaxed">
+                            <strong>What is it?</strong> You buy shares of small, fast-growing Indian companies via a
+                            Mutual Fund.
+                            <br><br>
+                            <strong>Why?</strong> While scooters lose value (depreciation), these shares gain value over
+                            5-10 years.
+                            <br>
+                            <span class="text-fund-blue font-bold">Return: ~25-30% CAGR (Historic).</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Invoice Discounting Explanation -->
+                <div class="flex gap-4">
+                    <div
+                        class="flex-shrink-0 w-12 h-12 bg-debt-amber rounded-full flex items-center justify-center text-white font-bold text-xl">
+                        3</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900">The Anchor: Invoice Discounting</h3>
+                        <p class="text-gray-600 mt-2 text-sm leading-relaxed">
+                            <strong>What is it?</strong> You lend money to vendors who are waiting for payments from
+                            giants like Amazon/Flipkart.
+                            <br><br>
+                            <strong>Why?</strong> It's safer than stocks and pays better than FDs. Plus, you get your
+                            money back quickly (30-60 days).
+                            <br>
+                            <span class="text-debt-amber font-bold">Return: 12-13% Pre-tax.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deep Dive: EV Mechanics -->
+    <section class="bg-white py-20 border-y border-gray-200">
+        <div class="container mx-auto max-w-4xl px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Deep Dive: How the EV "FOCO" Model Works</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <div class="text-4xl mb-3">💰</div>
+                    <h4 class="font-bold text-sm">You Invest</h4>
+                    <p class="text-xs text-gray-500 mt-1">You buy the scooter (It's in YOUR name on the RC).</p>
+                </div>
+                <div class="hidden md:flex items-center justify-center text-gray-300 text-2xl">➔</div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <div class="text-4xl mb-3">🤝</div>
+                    <h4 class="font-bold text-sm">Partner Manages</h4>
+                    <p class="text-xs text-gray-500 mt-1">Zypp/Yulu handles parking, charging, and repairs.</p>
+                </div>
+                <div class="hidden md:flex items-center justify-center text-gray-300 text-2xl">➔</div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <div class="text-4xl mb-3">🛵</div>
+                    <h4 class="font-bold text-sm">Rider Rents</h4>
+                    <p class="text-xs text-gray-500 mt-1">Zomato/Swiggy drivers rent it daily to deliver.</p>
+                </div>
+                <div class="hidden md:flex items-center justify-center text-gray-300 text-2xl">➔</div>
+                <div class="p-4 bg-green-50 rounded-lg border border-green-200">
+                    <div class="text-4xl mb-3">💵</div>
+                    <h4 class="font-bold text-sm text-green-700">You Get Paid</h4>
+                    <p class="text-xs text-green-600 mt-1">Fixed monthly rental income into your bank.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 p-6 bg-yellow-50 border border-yellow-200 rounded-lg flex items-start">
+                <div class="text-2xl mr-4">⚠️</div>
+                <div>
+                    <h4 class="font-bold text-yellow-800 text-sm">Crucial Layman Warning</h4>
+                    <p class="text-sm text-yellow-800 mt-1">
+                        Always check that the scooter is registered in <strong>your name</strong> (check the RC). Do not
+                        invest in schemes where the company owns the asset but takes your money. Legit partners (Zypp,
+                        Electrie) allow asset ownership.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Roadmap: Actionable Steps -->
+    <section class="container mx-auto max-w-4xl px-4 py-24">
+        <h2 class="text-3xl font-bold mb-12 text-center">Your 7-Day Execution Roadmap</h2>
+
+        <div class="relative pl-8">
+
+            <!-- Step 1 -->
+            <div class="step-item relative mb-16">
+                <div
+                    class="absolute -left-12 top-0 w-12 h-12 bg-gray-900 text-white rounded-full flex items-center justify-center font-bold border-4 border-gray-100 z-10">
+                    1</div>
+                <div class="step-connector"></div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-gray-900">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="font-bold text-xl">Days 1-3: The Setup</h3>
+                        <span class="text-xs font-bold bg-gray-200 px-2 py-1 rounded">Admin Phase</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Download the <strong>Zypp Electric Partner App</strong> (or contact Electrie in Kolkata).
+                        Complete your KYC (PAN/Aadhaar). Also, open a Demat account (Zerodha/Groww) and register on an
+                        Invoice Discounting platform (Jiraaf).
+                    </p>
+                    <div class="text-sm font-semibold text-gray-500">Effort Level: Low (Online Only)</div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-item relative mb-16">
+                <div
+                    class="absolute -left-12 top-0 w-12 h-12 bg-ev-green text-white rounded-full flex items-center justify-center font-bold border-4 border-gray-100 z-10">
+                    2</div>
+                <div class="step-connector"></div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-ev-green">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="font-bold text-xl">Day 4-5: Deploying the Big Capital</h3>
+                        <span class="text-xs font-bold bg-green-100 text-green-800 px-2 py-1 rounded">₹3 Lakhs</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Transfer funds to the EV Partner for ~7 scooters. Review the lease agreement. Ensure it mentions
+                        "Guaranteed Monthly Rental" or fixed payout terms.
+                    </p>
+                    <div class="text-sm font-semibold text-gray-500">Effort Level: Medium (Reviewing Contracts)</div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-item relative mb-16">
+                <div
+                    class="absolute -left-12 top-0 w-12 h-12 bg-fund-blue text-white rounded-full flex items-center justify-center font-bold border-4 border-gray-100 z-10">
+                    3</div>
+                <div class="step-connector"></div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-fund-blue">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="font-bold text-xl">Day 6: Planting the Wealth Seed</h3>
+                        <span class="text-xs font-bold bg-blue-100 text-blue-800 px-2 py-1 rounded">₹1 Lakh</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Log into your Demat account. Buy ₹1 Lakh worth of a <strong>Small Cap Mutual Fund</strong>
+                        (e.g., Nippon or Quant). Do this as a "Lump Sum" investment.
+                    </p>
+                    <div class="text-sm font-semibold text-gray-500">Effort Level: Very Low (5 Mins)</div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-item relative">
+                <div
+                    class="absolute -left-12 top-0 w-12 h-12 bg-debt-amber text-white rounded-full flex items-center justify-center font-bold border-4 border-gray-100 z-10">
+                    4</div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-debt-amber">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="font-bold text-xl">Day 7: The Safety Net</h3>
+                        <span class="text-xs font-bold bg-yellow-100 text-yellow-800 px-2 py-1 rounded">₹50,000</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Log into Jiraaf/Tap Invest. Find a "deal" (invoice) with a short tenure (30-60 days). Invest
+                        your remaining ₹50k. This keeps some money liquid in case of emergencies.
+                    </p>
+                    <div class="text-sm font-semibold text-gray-500">Effort Level: Low (10 Mins)</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Financial Projection -->
+    <section class="bg-gray-900 text-white py-20">
+        <div class="container mx-auto max-w-5xl px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center">Projected Growth (5 Years)</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+                Comparing your new "Hybrid Strategy" (Target ~21%) against a traditional Fixed Deposit (7%). The
+                difference is the price of your effort.
+            </p>
+
+            <div class="bg-gray-800 p-6 rounded-xl shadow-2xl">
+                <div class="chart-container" style="height: 400px; max-width: 800px;">
+                    <canvas id="projectionChart"></canvas>
+                </div>
+            </div>
+
+            <div class="mt-12 grid grid-cols-2 gap-8 text-center">
+                <div>
+                    <p class="text-gray-400 text-sm uppercase tracking-wide">FD Outcome (5 Years)</p>
+                    <p class="text-3xl font-bold text-gray-500">₹6.3 Lakhs</p>
+                </div>
+                <div>
+                    <p class="text-gray-400 text-sm uppercase tracking-wide">Hybrid Strategy (5 Years)</p>
+                    <p class="text-3xl font-bold text-ev-green">₹11.7 Lakhs</p>
+                    <p class="text-xs text-green-400 mt-1">+85% Gain</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 pt-12 pb-8 text-center">
+        <div class="container mx-auto px-4">
+            <p class="text-gray-500 text-sm mb-4">
+                <strong>Disclaimer:</strong> This infographic is for educational purposes only. Small Cap funds and EV
+                investments carry market risks.
+                21% is a projected target based on current market rates (2025) and is not guaranteed.
+            </p>
+            <p class="text-gray-600 text-xs">
+                Generated based on Research: "Investment and Business Options for 4.5 Lakhs" • Fiscal Year 2025-2026
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts for Charts -->
+    <script>
+        // --- Shared Chart Config ---
+        Chart.defaults.color = '#9CA3AF';
+        Chart.defaults.font.family = "'Open Sans', sans-serif";
+
+        // --- 1. Allocation Doughnut Chart ---
+        const ctxAlloc = document.getElementById('allocationChart').getContext('2d');
+        new Chart(ctxAlloc, {
+            type: 'doughnut',
+            data: {
+                labels: ['EV Fleet (Income)', 'Small Cap (Growth)', 'Inv. Discounting (Safe)'],
+                datasets: [{
+                    data: [300000, 100000, 50000], // 3L, 1L, 50k
+                    backgroundColor: ['#10B981', '#3B82F6', '#F59E0B'],
+                    borderWidth: 0,
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { padding: 20, color: '#374151', font: { size: 12 } }
+                    },
+                    tooltip: {
+                        backgroundColor: '#1F2937',
+                        callbacks: {
+                            label: function (context) {
+                                return ' ₹' + context.raw.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // --- 2. Projection Bar Chart ---
+        const ctxProj = document.getElementById('projectionChart').getContext('2d');
+
+        // Data Math
+        const initial = 450000;
+        const years = [0, 1, 2, 3, 4, 5];
+        const fdRate = 1.07;
+        const hybridRate = 1.21; // Blended 21%
+
+        const fdData = years.map(y => Math.round(initial * Math.pow(fdRate, y)));
+        const hybridData = years.map(y => Math.round(initial * Math.pow(hybridRate, y)));
+
+        new Chart(ctxProj, {
+            type: 'bar',
+            data: {
+                labels: ['Start', 'Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                datasets: [
+                    {
+                        label: 'Standard FD (7%)',
+                        data: fdData,
+                        backgroundColor: '#4B5563', // Gray
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'Hybrid Strategy (21%)',
+                        data: hybridData,
+                        backgroundColor: '#10B981', // Green
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top', labels: { color: '#D1D5DB' } },
+                    tooltip: {
+                        backgroundColor: '#111827',
+                        callbacks: {
+                            title: (items) => items[0].label,
+                            label: (item) => ' ' + item.dataset.label + ': ₹' + item.raw.toLocaleString()
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        grid: { color: '#374151' },
+                        ticks: { color: '#9CA3AF', callback: (val) => '₹' + (val / 100000).toFixed(1) + 'L' }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#9CA3AF' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

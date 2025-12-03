@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Capital Allocation: 4.5 Lakhs Hybrid Model</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-primary': '#4F46E5',   // Indigo
+                        'brand-secondary': '#10B981', // Emerald
+                        'brand-accent': '#F59E0B',    // Amber
+                        'brand-dark': '#111827',      // Gray 900
+                        'brand-light': '#F3F4F6'      // Gray 100
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Chart Container Styling - MANDATORY for Responsiveness */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            height: 300px;
+            /* Base height */
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Timeline Connector Line */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background-color: #E5E7EB;
+            z-index: 0;
+        }
+
+        /* Card Hover Effect */
+        .hover-card {
+            transition: all 0.3s ease;
+        }
+
+        .hover-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-brand-light text-brand-dark antialiased">
+
+    <!-- Header / Executive Summary -->
+    <header class="bg-brand-primary text-white py-12 shadow-lg">
+        <div class="container mx-auto px-4 text-center">
+            <span
+                class="inline-block bg-brand-accent text-brand-dark px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4">Fiscal
+                Year 2025-2026 Strategy</span>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-4">The "Balanced Aggressive" Portfolio</h1>
+            <p class="text-xl opacity-90 max-w-2xl mx-auto">
+                Deploying <strong>₹4.5 Lakhs</strong> for a target <strong>21% Blended ROI</strong> with minimal
+                operational effort.
+            </p>
+        </div>
+    </header>
+
+    <!-- Capital Allocation Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-brand-dark mb-4">Capital Allocation Breakdown</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    To balance high yield with stability, we utilize a hybrid split: <strong>EV Fleet</strong> for
+                    income, <strong>Small Cap</strong> for growth, and <strong>Invoice Discounting</strong> for
+                    liquidity.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Doughnut Chart -->
+                <div class="order-2 md:order-1">
+                    <div class="chart-container">
+                        <canvas id="allocationChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Allocation Details -->
+                <div class="order-1 md:order-2 space-y-6">
+                    <!-- EV Fleet Card -->
+                    <div class="bg-white border-l-4 border-brand-primary p-6 shadow-md hover-card rounded-r-lg">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-bold text-xl text-brand-primary">EV Fleet Leasing</h3>
+                            <span class="font-bold text-2xl">₹3,00,000</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Allocation: <strong>67%</strong></p>
+                        <ul class="text-sm text-gray-600 list-disc list-inside">
+                            <li><strong>Model:</strong> FOCO (Franchise Owned Company Operated)</li>
+                            <li><strong>Partner:</strong> Zypp Electric / Yulu (via Electrie)</li>
+                            <li><strong>Asset:</strong> ~6-7 Electric Scooters</li>
+                            <li><strong>Target ROI:</strong> 22% - 25% (Monthly Payouts)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Small Cap Card -->
+                    <div class="bg-white border-l-4 border-brand-secondary p-6 shadow-md hover-card rounded-r-lg">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-bold text-xl text-brand-secondary">Small Cap Mutual Funds</h3>
+                            <span class="font-bold text-2xl">₹1,00,000</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Allocation: <strong>22%</strong></p>
+                        <ul class="text-sm text-gray-600 list-disc list-inside">
+                            <li><strong>Role:</strong> Wealth Multiplier (Growth)</li>
+                            <li><strong>Funds:</strong> Quant / Nippon Small Cap</li>
+                            <li><strong>Target ROI:</strong> 25% - 30% CAGR</li>
+                        </ul>
+                    </div>
+
+                    <!-- Invoice Discounting Card -->
+                    <div class="bg-white border-l-4 border-brand-accent p-6 shadow-md hover-card rounded-r-lg">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-bold text-xl text-brand-accent">Invoice Discounting</h3>
+                            <span class="font-bold text-2xl">₹50,000</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">Allocation: <strong>11%</strong></p>
+                        <ul class="text-sm text-gray-600 list-disc list-inside">
+                            <li><strong>Role:</strong> Stability & Liquidity</li>
+                            <li><strong>Platform:</strong> Jiraaf / Tap Invest / TradeCred</li>
+                            <li><strong>Target ROI:</strong> 12% - 13% (Short Tenure)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Execution Roadmap (Step-by-Step) -->
+    <section class="py-16 bg-brand-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-brand-dark mb-16">Operational Roadmap: From Zero to Invested
+            </h2>
+
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Center Line -->
+                <div class="hidden md:block timeline-line"></div>
+
+                <!-- Step 1 -->
+                <div class="flex flex-col md:flex-row items-center justify-between mb-12 relative z-10">
+                    <div class="w-full md:w-5/12 text-center md:text-right p-4">
+                        <h3 class="font-bold text-2xl text-brand-primary">Days 1-7: Immediate Deployment</h3>
+                        <p class="text-gray-600 mt-2">Download Zypp/Yulu Partner App. Complete KYC. Transfer ₹3L for ~7
+                            scooters. Verify RC ownership.</p>
+                    </div>
+                    <div
+                        class="w-12 h-12 bg-brand-primary text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg border-4 border-white my-4 md:my-0">
+                        1</div>
+                    <div class="w-full md:w-5/12 p-4 bg-white rounded-lg shadow-sm">
+                        <h4 class="font-bold text-gray-500 text-sm uppercase">Goal</h4>
+                        <p class="text-lg font-bold">Secure Core Income</p>
+                        <p class="text-sm text-gray-500">Activates monthly rental cashflow.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex flex-col md:flex-row-reverse items-center justify-between mb-12 relative z-10">
+                    <div class="w-full md:w-5/12 text-center md:text-left p-4">
+                        <h3 class="font-bold text-2xl text-brand-secondary">Day 8: Equity Allocation</h3>
+                        <p class="text-gray-600 mt-2">Open Demat (Zerodha/Groww). Invest ₹1L Lump Sum into a top-rated
+                            Small Cap Fund.</p>
+                    </div>
+                    <div
+                        class="w-12 h-12 bg-brand-secondary text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg border-4 border-white my-4 md:my-0">
+                        2</div>
+                    <div class="w-full md:w-5/12 p-4 bg-white rounded-lg shadow-sm text-right">
+                        <h4 class="font-bold text-gray-500 text-sm uppercase">Goal</h4>
+                        <p class="text-lg font-bold">High-Growth Engine</p>
+                        <p class="text-sm text-gray-500">Capture market upside.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex flex-col md:flex-row items-center justify-between relative z-10">
+                    <div class="w-full md:w-5/12 text-center md:text-right p-4">
+                        <h3 class="font-bold text-2xl text-brand-accent">Month 1: The Safety Net</h3>
+                        <p class="text-gray-600 mt-2">Deploy final ₹50k into Invoice Discounting (Jiraaf) for 30-60 day
+                            tenure.</p>
+                    </div>
+                    <div
+                        class="w-12 h-12 bg-brand-accent text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg border-4 border-white my-4 md:my-0">
+                        3</div>
+                    <div class="w-full md:w-5/12 p-4 bg-white rounded-lg shadow-sm">
+                        <h4 class="font-bold text-gray-500 text-sm uppercase">Goal</h4>
+                        <p class="text-lg font-bold">Liquidity & Stability</p>
+                        <p class="text-sm text-gray-500">Short-term access to cash.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Financial Projection Graph -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-brand-dark mb-8">Projected Growth: Hybrid Portfolio vs. FD
+            </h2>
+            <div class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                <div class="chart-container">
+                    <canvas id="projectionChart"></canvas>
+                </div>
+                <div class="mt-6 text-center">
+                    <p class="text-sm text-gray-500">
+                        *Projection assumes aggressive compounding of the 21% blended return vs a standard 7% Fixed
+                        Deposit.
+                        Actual returns may vary based on market conditions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="font-bold text-lg mb-2">Research: Investment & Business Options for 4.5 Lakhs</p>
+            <p class="text-sm opacity-60 max-w-2xl mx-auto">
+                Disclaimer: This infographic is for educational purposes only. EV leasing and Small Cap funds carry
+                market risks.
+                Always verify asset registration (RC) and platform credibility before investing.
+            </p>
+            <div class="mt-6 pt-6 border-t border-gray-700 text-xs opacity-40">
+                Generated for Strategic Planning • Kolkata/Maheshtala Focus
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chart Scripts -->
+    <script>
+        // --- Shared Configuration ---
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        Chart.defaults.color = '#374151';
+
+        // Helper: Label Wrapping
+        function formatLabel(str, maxLen = 16) {
+            if (str.length <= maxLen) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+            for (let i = 1; i < words.length; i++) {
+                if ((currentLine + " " + words[i]).length <= maxLen) {
+                    currentLine += " " + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const tooltipConfig = {
+            callbacks: {
+                title: function (tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    return Array.isArray(label) ? label.join(' ') : label;
+                }
+            }
+        };
+
+        // --- Chart 1: Allocation Doughnut ---
+        const ctxAllocation = document.getElementById('allocationChart').getContext('2d');
+        new Chart(ctxAllocation, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    formatLabel('EV Fleet Leasing (Zypp/Yulu)'),
+                    formatLabel('Small Cap Mutual Funds'),
+                    formatLabel('Invoice Discounting')
+                ],
+                datasets: [{
+                    data: [300000, 100000, 50000],
+                    backgroundColor: ['#4F46E5', '#10B981', '#F59E0B'],
+                    borderWidth: 0,
+                    hoverOffset: 15
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '65%',
+                plugins: {
+                    legend: { position: 'bottom', labels: { padding: 20, usePointStyle: true } },
+                    tooltip: tooltipConfig,
+                    title: { display: true, text: 'Total Corpus: ₹4.5 Lakhs', padding: 20, font: { size: 16 } }
+                }
+            }
+        });
+
+        // --- Chart 2: Projection Line Chart ---
+        const ctxProjection = document.getElementById('projectionChart').getContext('2d');
+
+        // Data Calculation
+        const initial = 450000;
+        const years = [0, 1, 2, 3, 4, 5];
+        // 21% CAGR for Strategy
+        const strategyData = years.map(y => Math.round(initial * Math.pow(1.21, y)));
+        // 7% CAGR for FD
+        const fdData = years.map(y => Math.round(initial * Math.pow(1.07, y)));
+
+        new Chart(ctxProjection, {
+            type: 'bar', // Using Bar for clear comparison
+            data: {
+                labels: years.map(y => `Year ${y}`),
+                datasets: [
+                    {
+                        label: 'Hybrid Strategy (21% ROI)',
+                        data: strategyData,
+                        backgroundColor: '#4F46E5',
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'Standard FD (7% ROI)',
+                        data: fdData,
+                        backgroundColor: '#E5E7EB',
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: tooltipConfig,
+                    legend: { position: 'top' }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false, // Focus on the growth difference
+                        grid: { borderDash: [5, 5] },
+                        ticks: {
+                            callback: function (value) { return '₹' + (value / 100000).toFixed(1) + 'L'; }
+                        }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
