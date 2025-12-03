@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Yield Shield: Maheshtala Strategic Blueprint</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F1F5F9;
+            /* Slate-100 */
+            color: #0F172A;
+            /* Slate-900 */
+        }
+
+        /* Palette: 
+           Primary: #2563EB (Blue-600)
+           Secondary: #059669 (Emerald-600)
+           Accent: #D97706 (Amber-600)
+           Danger: #DC2626 (Red-600)
+        */
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            padding-bottom: 2.5rem;
+            border-left: 2px solid #E2E8F0;
+        }
+
+        .timeline-item:last-child {
+            border-left: 2px solid transparent;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -0.6rem;
+            top: 0;
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 50%;
+            background-color: #2563EB;
+            border: 2px solid white;
+        }
+
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: #94A3B8;
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(to right, #2563EB, #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+    <!-- 
+        NO SVG USED.
+        NO MERMAID JS USED.
+        Palette: Professional & Vibrant (Blue/Emerald/Amber).
+    -->
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <span class="text-3xl">🛡️</span>
+                <span class="text-xl font-bold tracking-tight text-slate-800">Yield<span
+                        class="text-blue-600">Shield</span></span>
+            </div>
+            <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-600">
+                <a href="#mandate" class="hover:text-blue-600">The Mandate</a>
+                <a href="#allocation" class="hover:text-blue-600">Allocation</a>
+                <a href="#engines" class="hover:text-blue-600">The Engines</a>
+                <a href="#risk" class="hover:text-blue-600">Risk & Security</a>
+                <a href="#roadmap" class="hover:text-blue-600">Roadmap</a>
+            </div>
+            <div class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-bold border border-blue-100">
+                FY 2025-26
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-slate-900 text-white py-16 px-4 relative overflow-hidden">
+        <!-- Abstract Background Shapes -->
+        <div
+            class="absolute top-0 right-0 w-64 h-64 bg-blue-600 rounded-full opacity-10 blur-3xl transform translate-x-1/2 -translate-y-1/2">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-96 h-96 bg-emerald-600 rounded-full opacity-10 blur-3xl transform -translate-x-1/2 translate-y-1/2">
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
+                From Saver to <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Capital
+                    Allocator</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-12">
+                A hyper-local blueprint for Maheshtala, Kolkata. Transforming a <strong>₹15 Lakh</strong> corpus into a
+                <strong>₹34,500/month</strong> passive income engine using the "Yield Shield" methodology.
+            </p>
+
+            <!-- Key Stats Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                <div class="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-xl">
+                    <div class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Corpus Deployed</div>
+                    <div class="text-3xl font-bold">₹15.0 <span class="text-lg font-normal">Lakhs</span></div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-xl">
+                    <div class="text-emerald-400 text-xs font-bold uppercase tracking-wider mb-1">Projected Monthly Net
+                    </div>
+                    <div class="text-3xl font-bold text-emerald-400">₹34,500+</div>
+                    <div class="text-xs text-slate-400 mt-1">vs ₹20k Target</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-xl">
+                    <div class="text-amber-400 text-xs font-bold uppercase tracking-wider mb-1">Risk Profile</div>
+                    <div class="text-3xl font-bold text-amber-400">Mild/Ops</div>
+                    <div class="text-xs text-slate-400 mt-1">Managed Assets</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24">
+
+        <!-- 1. The Strategic Pivot (Chart) -->
+        <section id="mandate" class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1">
+                <div class="card p-6">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 text-center">ROI Comparison: Traditional vs. Yield
+                        Shield</h3>
+                    <div class="chart-container">
+                        <canvas id="roiChart"></canvas>
+                    </div>
+                    <p class="text-xs text-center text-slate-500 mt-4 italic">
+                        *Data based on current Maheshtala market rates. FD @ 7%, EV @ ~20% IRR, ATM @ ~24-55%.
+                    </p>
+                </div>
+            </div>
+            <div class="order-1 lg:order-2">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">The "Passive" Paradox</h2>
+                <p class="text-lg text-slate-600 mb-4 leading-relaxed">
+                    You have a full-time job. You cannot run a shop. Yet, to beat inflation in Kolkata, you need
+                    business-like returns (20%+).
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <span class="text-2xl mr-4">📉</span>
+                        <div>
+                            <h4 class="font-bold text-slate-800">The Problem</h4>
+                            <p class="text-sm text-slate-600">Fixed Deposits yield ~7%. After inflation (6%) and tax,
+                                your <strong>real return is near zero</strong>.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="text-2xl mr-4">🛡️</span>
+                        <div>
+                            <h4 class="font-bold text-slate-800">The Solution</h4>
+                            <p class="text-sm text-slate-600"><strong>Outsourced Operations.</strong> You own the asset
+                                (Scooter, ATM), but a professional agency runs it. You bridge the gap between "Passive
+                                Investor" and "Business Owner."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. The Allocation Matrix (Donut) -->
+        <section id="allocation" class="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-slate-100">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">The ₹15 Lakh Allocation Mix</h2>
+                <p class="text-slate-600">
+                    To achieve stability and high yield, we deploy a "Barbell Strategy": High-yield operational assets
+                    on one side, stable debt instruments on the other.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="chart-container">
+                    <canvas id="allocationChart"></canvas>
+                </div>
+                <div class="space-y-6">
+                    <!-- Legend Item 1 -->
+                    <div class="flex items-center p-4 bg-blue-50 rounded-lg border-l-4 border-blue-600">
+                        <div class="text-3xl mr-4">⚡</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">EV Logistics Fleet (50%)</h4>
+                            <p class="text-sm text-slate-600">₹7.5 Lakhs | 15 Scooters | <strong>~₹21,500/mo</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Legend Item 2 -->
+                    <div class="flex items-center p-4 bg-emerald-50 rounded-lg border-l-4 border-emerald-600">
+                        <div class="text-3xl mr-4">🏧</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">ATM Franchise (33%)</h4>
+                            <p class="text-sm text-slate-600">₹5.0 Lakhs | Maheshtala Cash Hub |
+                                <strong>~₹22,900/mo</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Legend Item 3 -->
+                    <div class="flex items-center p-4 bg-amber-50 rounded-lg border-l-4 border-amber-600">
+                        <div class="text-3xl mr-4">🧾</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Corporate Debt & Vending (17%)</h4>
+                            <p class="text-sm text-slate-600">₹2.5 Lakhs | Invoice Discounting | <strong>Liquidity
+                                    Buffer</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. The Engines (Deep Dive) -->
+        <section id="engines" class="space-y-16">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-slate-900">The Revenue Engines</h2>
+                <p class="text-slate-500 mt-2">How the money is actually made.</p>
+            </div>
+
+            <!-- Engine 1: EV -->
+            <div class="card p-8 border-t-4 border-blue-600">
+                <div class="flex flex-col md:flex-row justify-between items-start mb-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+                            <span>⚡</span> The Logistics Engine
+                        </h3>
+                        <p class="text-sm text-slate-600 mt-1">Model: <strong>FOCO (Franchise Owned, Company
+                                Operated)</strong></p>
+                    </div>
+                    <div class="mt-4 md:mt-0 bg-blue-100 text-blue-800 px-4 py-2 rounded-lg text-sm font-bold">
+                        Target Partner: Zypp Electric / Yulu
+                    </div>
+                </div>
+
+                <!-- CSS Process Flow -->
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 text-center items-center py-6 bg-slate-50 rounded-xl">
+                    <div class="p-4 bg-white shadow-sm rounded-lg mx-auto w-32">
+                        <div class="text-3xl mb-2">🧑‍💼</div>
+                        <div class="text-xs font-bold uppercase text-slate-500">You Invest</div>
+                        <div class="text-sm font-bold text-blue-600">₹7.5 Lakhs</div>
+                    </div>
+                    <div class="hidden md:block text-2xl text-slate-300">➔</div>
+                    <div class="p-4 bg-white shadow-sm rounded-lg mx-auto w-32">
+                        <div class="text-3xl mb-2">🏭</div>
+                        <div class="text-xs font-bold uppercase text-slate-500">Operator</div>
+                        <div class="text-sm font-bold text-slate-800">Manages Fleet</div>
+                    </div>
+                    <div class="hidden md:block text-2xl text-slate-300">➔</div>
+                    <div class="p-4 bg-white shadow-sm rounded-lg mx-auto w-32">
+                        <div class="text-3xl mb-2">🛵</div>
+                        <div class="text-xs font-bold uppercase text-slate-500">Rider</div>
+                        <div class="text-sm font-bold text-slate-800">Delivers Orders</div>
+                    </div>
+                    <div class="hidden md:block text-2xl text-slate-300">➔</div>
+                    <div class="p-4 bg-white shadow-sm rounded-lg mx-auto w-32 border-2 border-green-400">
+                        <div class="text-3xl mb-2">💰</div>
+                        <div class="text-xs font-bold uppercase text-slate-500">You Earn</div>
+                        <div class="text-sm font-bold text-green-600">Rent/Month</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Engine 2: ATM -->
+            <div class="card p-8 border-t-4 border-emerald-600">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+                            <span>🏧</span> The Infrastructure Engine
+                        </h3>
+                        <p class="text-sm text-slate-600 mt-2">
+                            <strong>Location Strategy:</strong> Maheshtala (Nangi/Bata Nagar).
+                            <br><strong>Why?</strong> Factory workers prefer Cash over UPI.
+                            <br><strong>Effort?</strong> Outsourced to Cash Replenishment Agency (CMS).
+                        </p>
+                        <div class="mt-6 p-4 bg-emerald-50 rounded-lg text-sm text-emerald-800">
+                            <strong>Revenue Logic:</strong>
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li>User withdraws cash = You earn ~₹15.</li>
+                                <li>User checks balance = You earn ~₹5.</li>
+                                <li>Target: 80 Transactions/Day.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <h4 class="text-sm font-bold text-slate-500 uppercase mb-2 text-center">Profitability Heatmap
+                            (Monthly)</h4>
+                        <div id="atmHeatmap" style="width:100%; height:300px;"></div>
+                        <div class="absolute bottom-0 right-0 text-[10px] text-slate-400 bg-white px-2">Interactive:
+                            Hover to see details</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Risk Radar -->
+        <section id="risk" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">Risk vs. Reward Profile</h2>
+                <div class="space-y-6">
+                    <p class="text-slate-600">
+                        This portfolio is aggressive. It trades "Safety of Capital" (which FDs offer) for "Velocity of
+                        Capital" (Cash Flow).
+                    </p>
+                    <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                        <h4 class="font-bold text-amber-600 flex items-center gap-2">⚠️ Primary Risks</h4>
+                        <ul class="mt-2 text-sm text-slate-600 space-y-2">
+                            <li><strong>Depreciation:</strong> Scooters become worthless in 3 years. The high income
+                                includes your capital coming back.</li>
+                            <li><strong>Theft:</strong> ATMs require physical security and insurance.</li>
+                            <li><strong>Default:</strong> Corporate debt carries credit risk (though lower than P2P).
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="radarChart"></canvas>
+            </div>
+        </section>
+
+        <!-- 5. Cybersecurity Alert (Critical) -->
+        <section class="bg-red-50 border-l-8 border-red-500 p-8 rounded-r-xl">
+            <div class="flex flex-col md:flex-row items-start gap-6">
+                <div class="text-4xl">🚨</div>
+                <div>
+                    <h3 class="text-2xl font-bold text-red-700">CRITICAL: Cyber Hygiene Required</h3>
+                    <p class="text-red-800 mt-2 font-medium">
+                        Research detected sensitive credentials (email/passwords) in plain text.
+                    </p>
+                    <p class="text-slate-700 mt-2 text-sm">
+                        You cannot manage a ₹15 Lakh digital portfolio with compromised security. Before investing a
+                        single rupee:
+                    </p>
+                    <div class="flex flex-wrap gap-4 mt-4">
+                        <span
+                            class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-bold border border-red-200">1.
+                            Change Passwords</span>
+                        <span
+                            class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-bold border border-red-200">2.
+                            Enable Hardware 2FA</span>
+                        <span
+                            class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-bold border border-red-200">3.
+                            Audit Email Rules</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Roadmap -->
+        <section id="roadmap">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">90-Day Execution Roadmap</h2>
+            </div>
+            <div class="max-w-2xl mx-auto border-l-4 border-blue-200 pl-8 space-y-12">
+
+                <div class="relative">
+                    <div class="absolute -left-[41px] bg-blue-600 h-6 w-6 rounded-full border-4 border-white"></div>
+                    <h4 class="text-xl font-bold text-blue-900">Days 1-7: Foundation</h4>
+                    <ul class="mt-2 text-slate-600 text-sm list-disc pl-5">
+                        <li>Cyber lockdown (Passwords/2FA).</li>
+                        <li>Consult CA for entity structuring (Sole Proprietorship) to claim GST Input Credit on
+                            Scooters/ATM.</li>
+                        <li>Park ₹15L in Liquid Funds.</li>
+                    </ul>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute -left-[41px] bg-emerald-600 h-6 w-6 rounded-full border-4 border-white"></div>
+                    <h4 class="text-xl font-bold text-emerald-900">Days 8-30: Logistics Deployment</h4>
+                    <ul class="mt-2 text-slate-600 text-sm list-disc pl-5">
+                        <li>Register with Zypp Electric.</li>
+                        <li>Purchase Batch 1 (5 Scooters).</li>
+                        <li>Verify RC ownership transfer.</li>
+                    </ul>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute -left-[41px] bg-amber-600 h-6 w-6 rounded-full border-4 border-white"></div>
+                    <h4 class="text-xl font-bold text-amber-900">Days 30-60: Infra Setup</h4>
+                    <ul class="mt-2 text-slate-600 text-sm list-disc pl-5">
+                        <li>Scout Maheshtala locations (Bata Nagar/Nangi).</li>
+                        <li>Sign Hitachi ATM Franchise agreement.</li>
+                        <li>Contract CMS for cash loading.</li>
+                    </ul>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute -left-[41px] bg-slate-800 h-6 w-6 rounded-full border-4 border-white"></div>
+                    <h4 class="text-xl font-bold text-slate-900">Day 90: Stabilization</h4>
+                    <ul class="mt-2 text-slate-600 text-sm list-disc pl-5">
+                        <li>Full fleet deployed.</li>
+                        <li>ATM Live.</li>
+                        <li><strong>Bonus:</strong> Use AWS skills to offer cloud audits to local businesses (Zero
+                            Capital Income).</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="mb-4 text-2xl">🛡️</p>
+            <p class="text-sm">
+                Generated for Maheshtala Investment Scenario.
+            </p>
+            <p class="text-xs mt-4 max-w-xl mx-auto text-slate-600">
+                Disclaimer: This visual guide is based on financial projections. Past performance of EV leasing or
+                Invoice Discounting does not guarantee future results. Investments are subject to market risks. Please
+                consult a certified financial advisor before deploying capital.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts for Charts -->
+    <script>
+        // --- Utility: Wrap Labels ---
+        function wrapLabel(str, maxChars) {
+            if (str.length <= maxChars) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + 1 + words[i].length <= maxChars) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const commonOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                tooltip: {
+                    backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                    padding: 12,
+                    callbacks: {
+                        title: (tooltipItems) => {
+                            const item = tooltipItems[0];
+                            const label = item.chart.data.labels[item.dataIndex];
+                            return Array.isArray(label) ? label.join(' ') : label;
+                        }
+                    }
+                },
+                legend: {
+                    position: 'bottom',
+                    labels: { font: { family: 'Inter', size: 12 }, usePointStyle: true }
+                }
+            }
+        };
+
+        // 1. Comparison Bar Chart
+        const ctxRoi = document.getElementById('roiChart').getContext('2d');
+        new Chart(ctxRoi, {
+            type: 'bar',
+            data: {
+                labels: ['Bank FD', 'Govt Bonds', 'Corp Debt', 'Yield Shield'],
+                datasets: [{
+                    label: 'Annual Return %',
+                    data: [7.0, 7.2, 12.5, 24.0],
+                    backgroundColor: ['#94A3B8', '#94A3B8', '#F59E0B', '#10B981'],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    y: { beginAtZero: true, grid: { display: true, color: '#F1F5F9' } },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        // 2. Allocation Donut Chart
+        const ctxAlloc = document.getElementById('allocationChart').getContext('2d');
+        const allocLabels = ['EV Fleet (Logistics)', 'ATM Franchise (Infra)', 'Debt & Vending (Stability)'];
+        new Chart(ctxAlloc, {
+            type: 'doughnut',
+            data: {
+                labels: allocLabels.map(l => wrapLabel(l, 20)),
+                datasets: [{
+                    data: [7.5, 5.0, 2.5],
+                    backgroundColor: ['#2563EB', '#10B981', '#F59E0B'],
+                    borderWidth: 0,
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                ...commonOptions,
+                cutout: '65%'
+            }
+        });
+
+        // 3. Risk Radar Chart
+        const ctxRadar = document.getElementById('radarChart').getContext('2d');
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: ['Monthly Yield', 'Passive Nature', 'Liquidity', 'Capital Safety', 'Inflation Beating'],
+                datasets: [{
+                    label: 'Yield Shield',
+                    data: [9, 7, 5, 6, 9],
+                    fill: true,
+                    backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                    borderColor: '#10B981',
+                    pointBackgroundColor: '#10B981'
+                }, {
+                    label: 'Traditional FD',
+                    data: [3, 10, 8, 10, 2],
+                    fill: true,
+                    backgroundColor: 'rgba(148, 163, 184, 0.2)',
+                    borderColor: '#94A3B8',
+                    pointBackgroundColor: '#94A3B8'
+                }]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    r: {
+                        angleLines: { color: '#E2E8F0' },
+                        grid: { color: '#E2E8F0' },
+                        suggestedMin: 0,
+                        suggestedMax: 10
+                    }
+                }
+            }
+        });
+
+        // 4. Plotly ATM Heatmap
+        const xValues = ['50 Txns/Day', '80 Txns/Day', '100 Txns/Day'];
+        const yValues = ['High Rent', 'Med Rent', 'Low Rent'];
+        const zValues = [
+            [2000, 14000, 22000],  // High Rent scenario profits
+            [5000, 17000, 25000],  // Med Rent scenario profits
+            [10000, 22900, 31000]  // Low Rent scenario profits
+        ];
+
+        const heatmapData = [{
+            x: xValues,
+            y: yValues,
+            z: zValues,
+            type: 'heatmap',
+            colorscale: [
+                [0, '#EF4444'],   // Red (Low Profit)
+                [0.5, '#FCD34D'], // Yellow
+                [1, '#10B981']    // Green (High Profit)
+            ],
+            showscale: true
+        }];
+
+        const heatmapLayout = {
+            margin: { t: 20, r: 20, l: 80, b: 40 },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            xaxis: { title: 'Volume', tickfont: { family: 'Inter', size: 10 } },
+            yaxis: { title: 'OpEx Cost', tickfont: { family: 'Inter', size: 10 } }
+        };
+
+        Plotly.newPlot('atmHeatmap', heatmapData, heatmapLayout, { displayModeBar: false, responsive: true });
+
+    </script>
+</body>
+
+</html>
