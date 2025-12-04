@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Viewer - WealthBuilder Kolkata</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- PDF.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-purple': '#6200EA',
+                        'brand-indigo': '#4F46E5',
+                        'brand-teal': '#00BFA5',
+                        'brand-emerald': '#10B981',
+                        'brand-gold': '#FFD600',
+                        'brand-amber': '#F59E0B',
+                        'brand-dark': '#111827',
+                        'brand-light': '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #6200EA 0%, #00BFA5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* PDF Container */
+        #pdf-container {
+            background: #525659;
+            min-height: calc(100vh - 140px);
+        }
+
+        .pdf-page {
+            background: white;
+            margin: 20px auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Loading Spinner */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #6200EA;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Scrollbar Styling */
+        #pdf-container::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        #pdf-container::-webkit-scrollbar-track {
+            background: #374151;
+        }
+
+        #pdf-container::-webkit-scrollbar-thumb {
+            background: #6B7280;
+            border-radius: 5px;
+        }
+
+        #pdf-container::-webkit-scrollbar-thumb:hover {
+            background: #9CA3AF;
+        }
+    </style>
+</head>
+
+<body class="bg-brand-dark text-white font-sans antialiased">
+
+    <!-- Header / Toolbar -->
+    <header class="bg-brand-dark border-b border-gray-700 sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Left: Back & Title -->
+                <div class="flex items-center space-x-4">
+                    <a href="index.html"
+                        class="flex items-center text-gray-400 hover:text-white transition-colors">
+                        <i class="fa-solid fa-arrow-left mr-2"></i>
+                        <span class="hidden sm:inline">Back to Home</span>
+                    </a>
+                    <div class="h-6 w-px bg-gray-700"></div>
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-file-pdf text-red-500 mr-2"></i>
+                        <span id="doc-title" class="font-semibold text-white truncate max-w-[200px] sm:max-w-none">Loading...</span>
+                    </div>
+                </div>
+
+                <!-- Center: Page Controls -->
+                <div class="hidden md:flex items-center space-x-3 bg-gray-800 rounded-lg px-4 py-2">
+                    <button id="prev-page" class="text-gray-400 hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <span class="text-sm">
+                        <span id="current-page">1</span> / <span id="total-pages">1</span>
+                    </span>
+                    <button id="next-page" class="text-gray-400 hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Right: Actions -->
+                <div class="flex items-center space-x-2">
+                    <!-- Zoom Controls -->
+                    <div class="hidden sm:flex items-center space-x-1 bg-gray-800 rounded-lg px-3 py-2">
+                        <button id="zoom-out" class="text-gray-400 hover:text-white transition-colors px-2">
+                            <i class="fa-solid fa-minus"></i>
+                        </button>
+                        <span id="zoom-level" class="text-sm min-w-[50px] text-center">100%</span>
+                        <button id="zoom-in" class="text-gray-400 hover:text-white transition-colors px-2">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+
+                    <!-- Download Button -->
+                    <a id="download-btn" href="#" download
+                        class="flex items-center bg-brand-purple hover:bg-brand-indigo text-white px-4 py-2 rounded-lg transition-colors">
+                        <i class="fa-solid fa-download mr-2"></i>
+                        <span class="hidden sm:inline">Download</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Page Controls -->
+    <div class="md:hidden bg-gray-800 border-b border-gray-700 px-4 py-2">
+        <div class="flex items-center justify-center space-x-4">
+            <button id="prev-page-mobile" class="text-gray-400 hover:text-white transition-colors px-3 py-1">
+                <i class="fa-solid fa-chevron-left mr-1"></i> Prev
+            </button>
+            <span class="text-sm bg-gray-700 px-3 py-1 rounded">
+                <span id="current-page-mobile">1</span> / <span id="total-pages-mobile">1</span>
+            </span>
+            <button id="next-page-mobile" class="text-gray-400 hover:text-white transition-colors px-3 py-1">
+                Next <i class="fa-solid fa-chevron-right ml-1"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- PDF Viewer Container -->
+    <div id="pdf-container" class="overflow-auto">
+        <!-- Loading State -->
+        <div id="loading-state" class="flex flex-col items-center justify-center py-20">
+            <div class="loader mb-4"></div>
+            <p class="text-gray-400">Loading document...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="error-state" class="hidden flex-col items-center justify-center py-20 text-center px-4">
+            <i class="fa-solid fa-triangle-exclamation text-6xl text-red-500 mb-4"></i>
+            <h2 class="text-2xl font-bold text-white mb-2">Unable to Load Document</h2>
+            <p id="error-message" class="text-gray-400 mb-6">The requested PDF could not be loaded.</p>
+            <a href="index.html"
+                class="bg-brand-purple hover:bg-brand-indigo text-white px-6 py-3 rounded-lg transition-colors">
+                <i class="fa-solid fa-home mr-2"></i>Return to Home
+            </a>
+        </div>
+
+        <!-- PDF Pages Container -->
+        <div id="pdf-pages" class="pb-8"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark border-t border-gray-700 py-4">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-500 text-sm">
+                <i class="fa-regular fa-copyright mr-1"></i> 2025 WealthBuilder Kolkata
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // PDF.js worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        // Strategy titles mapping
+        const strategyTitles = {
+            'Strategy1.pdf': 'Strategy 1 - 4.5L to 20% ROI',
+            'Strategy2.pdf': 'Strategy 2 - Hybrid Model 21% ROI',
+            'Strategy3.pdf': 'Strategy 3 - Yield Shield ₹15L',
+            'Strategy4.pdf': 'Strategy 4 - Digital Capitalist ₹15L'
+        };
+
+        // Get PDF file from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const pdfFile = urlParams.get('file');
+
+        // DOM Elements
+        const loadingState = document.getElementById('loading-state');
+        const errorState = document.getElementById('error-state');
+        const errorMessage = document.getElementById('error-message');
+        const pdfPagesContainer = document.getElementById('pdf-pages');
+        const docTitle = document.getElementById('doc-title');
+        const downloadBtn = document.getElementById('download-btn');
+        const currentPageEl = document.getElementById('current-page');
+        const totalPagesEl = document.getElementById('total-pages');
+        const currentPageMobileEl = document.getElementById('current-page-mobile');
+        const totalPagesMobileEl = document.getElementById('total-pages-mobile');
+        const zoomLevelEl = document.getElementById('zoom-level');
+
+        // State
+        let pdfDoc = null;
+        let currentPage = 1;
+        let totalPages = 0;
+        let scale = 1.0;
+        const baseScale = 1.5; // Base rendering scale for quality
+
+        // Initialize
+        if (!pdfFile) {
+            showError('No document specified. Please select a strategy from the home page.');
+        } else {
+            const pdfPath = `docs/${pdfFile}`;
+            docTitle.textContent = strategyTitles[pdfFile] || pdfFile;
+            document.title = `${strategyTitles[pdfFile] || pdfFile} - WealthBuilder Kolkata`;
+            downloadBtn.href = pdfPath;
+            downloadBtn.download = pdfFile;
+            loadPDF(pdfPath);
+        }
+
+        // Load PDF
+        async function loadPDF(url) {
+            try {
+                const loadingTask = pdfjsLib.getDocument(url);
+                pdfDoc = await loadingTask.promise;
+                totalPages = pdfDoc.numPages;
+
+                // Update page counters
+                totalPagesEl.textContent = totalPages;
+                totalPagesMobileEl.textContent = totalPages;
+
+                // Hide loading, show pages
+                loadingState.classList.add('hidden');
+
+                // Render all pages
+                await renderAllPages();
+
+            } catch (error) {
+                console.error('Error loading PDF:', error);
+                showError('Failed to load the PDF document. Please ensure the file exists and try again.');
+            }
+        }
+
+        // Render all pages
+        async function renderAllPages() {
+            pdfPagesContainer.innerHTML = '';
+
+            for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+                const page = await pdfDoc.getPage(pageNum);
+                const viewport = page.getViewport({ scale: baseScale * scale });
+
+                // Create canvas
+                const canvas = document.createElement('canvas');
+                canvas.className = 'pdf-page';
+                canvas.id = `page-${pageNum}`;
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+
+                const context = canvas.getContext('2d');
+
+                // Render page
+                await page.render({
+                    canvasContext: context,
+                    viewport: viewport
+                }).promise;
+
+                pdfPagesContainer.appendChild(canvas);
+            }
+
+            // Setup intersection observer for page tracking
+            setupPageTracking();
+        }
+
+        // Track current page while scrolling
+        function setupPageTracking() {
+            const options = {
+                root: document.getElementById('pdf-container'),
+                rootMargin: '-50% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const pageNum = parseInt(entry.target.id.replace('page-', ''));
+                        currentPage = pageNum;
+                        updatePageDisplay();
+                    }
+                });
+            }, options);
+
+            document.querySelectorAll('.pdf-page').forEach(page => {
+                observer.observe(page);
+            });
+        }
+
+        // Update page display
+        function updatePageDisplay() {
+            currentPageEl.textContent = currentPage;
+            currentPageMobileEl.textContent = currentPage;
+
+            // Update button states
+            document.getElementById('prev-page').disabled = currentPage <= 1;
+            document.getElementById('next-page').disabled = currentPage >= totalPages;
+            document.getElementById('prev-page-mobile').disabled = currentPage <= 1;
+            document.getElementById('next-page-mobile').disabled = currentPage >= totalPages;
+        }
+
+        // Navigation
+        function goToPage(pageNum) {
+            if (pageNum >= 1 && pageNum <= totalPages) {
+                const pageEl = document.getElementById(`page-${pageNum}`);
+                if (pageEl) {
+                    pageEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    currentPage = pageNum;
+                    updatePageDisplay();
+                }
+            }
+        }
+
+        // Event Listeners
+        document.getElementById('prev-page').addEventListener('click', () => goToPage(currentPage - 1));
+        document.getElementById('next-page').addEventListener('click', () => goToPage(currentPage + 1));
+        document.getElementById('prev-page-mobile').addEventListener('click', () => goToPage(currentPage - 1));
+        document.getElementById('next-page-mobile').addEventListener('click', () => goToPage(currentPage + 1));
+
+        // Zoom controls
+        document.getElementById('zoom-in').addEventListener('click', () => {
+            if (scale < 2.0) {
+                scale += 0.25;
+                updateZoom();
+            }
+        });
+
+        document.getElementById('zoom-out').addEventListener('click', () => {
+            if (scale > 0.5) {
+                scale -= 0.25;
+                updateZoom();
+            }
+        });
+
+        async function updateZoom() {
+            zoomLevelEl.textContent = Math.round(scale * 100) + '%';
+            await renderAllPages();
+            goToPage(currentPage);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                goToPage(currentPage - 1);
+            } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                goToPage(currentPage + 1);
+            } else if (e.key === '+' || e.key === '=') {
+                document.getElementById('zoom-in').click();
+            } else if (e.key === '-') {
+                document.getElementById('zoom-out').click();
+            }
+        });
+
+        // Show error
+        function showError(message) {
+            loadingState.classList.add('hidden');
+            errorState.classList.remove('hidden');
+            errorState.classList.add('flex');
+            errorMessage.textContent = message;
+        }
+    </script>
+
+</body>
+
+</html>
