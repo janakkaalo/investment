@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Digital Capitalist Protocol: 15L Investment Plan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- 
+    Palette Selection: "Energetic & Playful" / "Brilliant Blues" Hybrid
+    Primary: #2563EB (Royal Blue)
+    Secondary: #F59E0B (Amber/Gold for Wealth)
+    Accent: #10B981 (Emerald Green for Growth)
+    Background: #F3F4F6 (Light Gray)
+    Text: #1F2937 (Dark Gray)
+    -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F3F4F6;
+            color: #1F2937;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #2563EB, #10B981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .step-card {
+            transition: transform 0.2s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+    <!-- 
+    Source Material Analysis:
+    - User Constraint: 15 Lakhs, Min Effort, 20k/month (16% IRR), No EV/ATM.
+    - Source: "Investment and Business Plan for 15 Lakhs.pdf" & "Kolkata.pdf".
+    - Core Insight: Pivot from "Business Ops" to "Financial Engineering" & "FOCO".
+    - Strategy: "The Digital Lease & Lend Protocol".
+    - Narrative: 
+      1. Intro: The Pivot (Why no EV/ATM).
+      2. The Allocation: 40% Leasing, 30% Invoice Discounting, 30% Smart Vending/Momentum.
+      3. The Math: How it hits 20k.
+      4. Execution: Step by step setup.
+    -->
+</head>
+
+<body class="antialiased">
+
+    <!-- Header / Hook Section -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-700">Digital<span class="text-emerald-500">Capitalist</span></h1>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#strategy" class="text-gray-600 hover:text-blue-600 font-medium">The Strategy</a>
+                <a href="#allocation" class="text-gray-600 hover:text-blue-600 font-medium">Allocation</a>
+                <a href="#execution" class="text-gray-600 hover:text-blue-600 font-medium">Execution</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- Hero Section: Single Big Number & Goal -->
+        <section class="text-center space-y-4">
+            <div
+                class="inline-block bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase">
+                Maheshtala Edition • FY 2025-26</div>
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+                Turn <span class="text-blue-600">₹15 Lakhs</span> into <span
+                    class="text-emerald-500">₹20,000/Month</span>
+            </h2>
+            <p class="text-xl text-gray-500 max-w-3xl mx-auto">
+                Cancelling the EV Fleet and ATM models due to operational complexity.
+                Introducing the <strong>"Digital Rentier" Protocol</strong>: A minimum-effort architecture leveraging
+                Corporate Asset Leasing and Invoice Discounting.
+            </p>
+        </section>
+
+        <!-- Section 1: The Strategy Shift (Why Not EV/ATM?) -->
+        <section id="strategy" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="space-y-4">
+                <h3 class="text-2xl font-bold text-gray-800 border-l-4 border-blue-600 pl-4">Why Shift Strategy?</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Traditional "Passive" businesses like ATM Franchises or EV Fleets often hide significant
+                    <strong>Operational Risk</strong>. ATMs require cash loading security and physical maintenance. EV
+                    Fleets require driver management.
+                </p>
+                <p class="text-gray-600 leading-relaxed">
+                    For a salaried professional in Maheshtala seeking true passivity, the answer lies in
+                    <strong>Financial Engineering</strong>. Instead of owning the car, you own the <em>lease
+                        contract</em>. Instead of running the shop, you fund the <em>inventory</em>.
+                </p>
+                <div class="bg-white p-4 rounded-lg shadow-md border-t-2 border-emerald-500">
+                    <h4 class="font-bold text-emerald-600 mb-2">The New Mandate:</h4>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li class="flex items-center"><span class="mr-2 text-blue-500">✓</span> Target: <strong>16%
+                                Annualized ROI</strong> (₹2.4L / Year)</li>
+                        <li class="flex items-center"><span class="mr-2 text-blue-500">✓</span> Effort: <strong>
+                                < 2 Hours / Month</strong>
+                        </li>
+                        <li class="flex items-center"><span class="mr-2 text-blue-500">✓</span> Location: <strong>Remote
+                                Management</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Radar Chart: Comparing Models -->
+            <div class="bg-white rounded-xl shadow-lg p-2">
+                <div class="chart-container">
+                    <canvas id="riskRadarChart"></canvas>
+                </div>
+                <p class="text-center text-xs text-gray-400 mt-2">Comparison of Investment Vehicles on Key Metrics</p>
+            </div>
+        </section>
+
+        <!-- Section 2: The "Three-Legged Stool" Allocation -->
+        <section id="allocation" class="bg-white rounded-2xl shadow-xl p-8">
+            <h3 class="text-3xl font-bold text-center mb-2">The ₹15 Lakh Allocation Blueprint</h3>
+            <p class="text-center text-gray-500 mb-8">Diversifying across distinct asset classes to engineer stability
+                and yield.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Chart Column -->
+                <div class="lg:col-span-1 flex flex-col items-center justify-center">
+                    <div class="chart-container" style="height: 300px;">
+                        <canvas id="allocationDonutChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Details Column -->
+                <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Leg 1 -->
+                    <div class="p-6 bg-blue-50 rounded-xl border border-blue-100 hover:shadow-md transition">
+                        <div class="text-blue-600 text-3xl mb-2">🏢</div>
+                        <h4 class="text-lg font-bold text-gray-900">1. Corporate Asset Leasing (45%)</h4>
+                        <div class="text-2xl font-bold text-blue-600 my-1">₹6.75 Lakhs</div>
+                        <p class="text-sm text-gray-600 mb-3"><strong>Role:</strong> High-Yield Fixed Income</p>
+                        <p class="text-xs text-gray-500 leading-relaxed">
+                            Leasing physical assets (laptops, furniture, machinery) to credit-worthy companies. You own
+                            the asset; they pay monthly rent.
+                            <br><br>
+                            <span class="font-semibold">Projected Return:</span> 21-22% IRR (Pre-tax)
+                            <br>
+                            <span class="font-semibold">Platform:</span> Grip Invest / Jiraaf
+                        </p>
+                    </div>
+
+                    <!-- Leg 2 -->
+                    <div class="p-6 bg-amber-50 rounded-xl border border-amber-100 hover:shadow-md transition">
+                        <div class="text-amber-600 text-3xl mb-2">📄</div>
+                        <h4 class="text-lg font-bold text-gray-900">2. Invoice Discounting (30%)</h4>
+                        <div class="text-2xl font-bold text-amber-600 my-1">₹4.50 Lakhs</div>
+                        <p class="text-sm text-gray-600 mb-3"><strong>Role:</strong> Liquidity & Stability</p>
+                        <p class="text-xs text-gray-500 leading-relaxed">
+                            Funding short-term corporate invoices (30-90 days). Companies get cash now; you get paid
+                            when the invoice clears.
+                            <br><br>
+                            <span class="font-semibold">Projected Return:</span> 12-14% (Fixed)
+                            <br>
+                            <span class="font-semibold">Platform:</span> InvoiceX / Tyke
+                        </p>
+                    </div>
+
+                    <!-- Leg 3 -->
+                    <div
+                        class="p-6 bg-emerald-50 rounded-xl border border-emerald-100 hover:shadow-md transition md:col-span-2">
+                        <div class="flex items-start">
+                            <div class="text-emerald-600 text-3xl mr-4">🤖</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900">3. "Smart Retail" or Momentum (25%)</h4>
+                                <div class="text-2xl font-bold text-emerald-600 my-1">₹3.75 Lakhs</div>
+                                <p class="text-sm text-gray-600 mb-2"><strong>Role:</strong> The "Alpha" Kicker</p>
+                                <p class="text-xs text-gray-500 leading-relaxed">
+                                    <strong>Option A (Business):</strong> Invest in a "Smart Vending" machine (e.g.,
+                                    Daalchini) under FOCO model. Managed by them, owned by you.
+                                    <br>
+                                    <strong>Option B (Pure Digital):</strong> Momentum Small Cap Index Fund.
+                                    <br><br>
+                                    <span class="font-semibold">Projected Return:</span> 20-30% (Variable)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Monthly Income Simulation -->
+        <section class="space-y-6">
+            <div class="flex flex-col md:flex-row justify-between items-end border-b pb-4 border-gray-200">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900">Projected Monthly Cash Flow</h3>
+                    <p class="text-gray-500">How the portfolio stacks up to generate ~₹20k/month.</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm text-gray-400">Target</p>
+                    <p class="text-3xl font-bold text-emerald-600">₹20,500<span
+                            class="text-base font-normal text-gray-400">/mo</span></p>
+                </div>
+            </div>
+
+            <div class="chart-container h-80">
+                <canvas id="incomeStackChart"></canvas>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center mt-4">
+                <div class="bg-white p-3 rounded shadow-sm">
+                    <p class="text-xs text-gray-400 uppercase">Leasing Income</p>
+                    <p class="font-bold text-blue-600">₹11,800</p>
+                </div>
+                <div class="bg-white p-3 rounded shadow-sm">
+                    <p class="text-xs text-gray-400 uppercase">Invoice Interest</p>
+                    <p class="font-bold text-amber-600">₹4,900</p>
+                </div>
+                <div class="bg-white p-3 rounded shadow-sm">
+                    <p class="text-xs text-gray-400 uppercase">Vending/Equity</p>
+                    <p class="font-bold text-emerald-600">₹3,800</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Step-by-Step Execution Guide -->
+        <section id="execution" class="bg-gray-900 text-white rounded-2xl shadow-2xl p-8 overflow-hidden relative">
+            <!-- Decorative Background Element -->
+            <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-blue-500 rounded-full opacity-20 blur-3xl">
+            </div>
+
+            <h3 class="text-3xl font-bold mb-8 text-center">Execution Roadmap: Week 1-4</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <!-- Step 1 -->
+                <div class="step-card bg-gray-800 p-6 rounded-lg border border-gray-700 relative">
+                    <div
+                        class="absolute -top-3 -left-3 bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">
+                        1</div>
+                    <h4 class="font-bold text-lg mb-2 text-blue-400">Digital Perimeter</h4>
+                    <p class="text-sm text-gray-400">
+                        Create a dedicated email. Set up 2FA. Sign up on aggregator platforms (Grip, Tyke, Jiraaf).
+                        Complete CKYC.
+                    </p>
+                    <div class="mt-4 text-xs font-mono text-gray-500">Days 1-3</div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-card bg-gray-800 p-6 rounded-lg border border-gray-700 relative">
+                    <div
+                        class="absolute -top-3 -left-3 bg-amber-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">
+                        2</div>
+                    <h4 class="font-bold text-lg mb-2 text-amber-400">Liquid Deployment</h4>
+                    <p class="text-sm text-gray-400">
+                        Deploy ₹4.5L into <strong>Invoice Discounting</strong> deals (30-60 day tenure). This starts the
+                        cash flow cycle immediately.
+                    </p>
+                    <div class="mt-4 text-xs font-mono text-gray-500">Days 4-7</div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-card bg-gray-800 p-6 rounded-lg border border-gray-700 relative">
+                    <div
+                        class="absolute -top-3 -left-3 bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">
+                        3</div>
+                    <h4 class="font-bold text-lg mb-2 text-blue-400">Asset Lock-in</h4>
+                    <p class="text-sm text-gray-400">
+                        Deploy ₹6.75L into <strong>Corporate Leasing</strong>. Look for "Pre-tax yield > 18%" deals.
+                        This locks capital for 24 months but guarantees payouts.
+                    </p>
+                    <div class="mt-4 text-xs font-mono text-gray-500">Week 2-3</div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="step-card bg-gray-800 p-6 rounded-lg border border-gray-700 relative">
+                    <div
+                        class="absolute -top-3 -left-3 bg-emerald-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">
+                        4</div>
+                    <h4 class="font-bold text-lg mb-2 text-emerald-400">The "Alpha" Bet</h4>
+                    <p class="text-sm text-gray-400">
+                        Contact Vending Franchises (Daalchini) for Maheshtala/Kolkata sites OR start STP into Small Cap
+                        Index with remaining ₹3.75L.
+                    </p>
+                    <div class="mt-4 text-xs font-mono text-gray-500">Week 4</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Compounding Vision -->
+        <section class="bg-white rounded-xl shadow-md p-6">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Future Value: Reinvestment Effect</h3>
+            <p class="text-gray-600 mb-6 text-sm">
+                If you reinvest 50% of the returns (living on only ₹10k/mo), here is how the corpus grows over 5 years
+                versus a standard FD.
+            </p>
+            <div class="chart-container">
+                <canvas id="compoundingChart"></canvas>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-100 py-8 mt-12 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-500 text-sm">
+                <strong>Disclaimer:</strong> This infographic is for educational purposes based on the provided research
+                notes.
+                Asset Leasing and P2P investments carry risks including liquidity and default risks.
+                Past performance is not indicative of future results.
+            </p>
+            <p class="text-gray-400 text-xs mt-2">Generated for Maheshtala Investment Analysis • 2025</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Charts -->
+    <script>
+        // Common Chart Options for Responsiveness & Styling
+        const commonOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        font: { family: 'Inter', size: 12 },
+                        padding: 20,
+                        usePointStyle: true
+                    }
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(17, 24, 39, 0.9)',
+                    titleFont: { family: 'Inter', size: 13 },
+                    bodyFont: { family: 'Inter', size: 13 },
+                    padding: 12,
+                    cornerRadius: 8,
+                    callbacks: {
+                        title: function (tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            } else {
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // 1. Radar Chart: Risk vs Effort Comparison
+        const ctxRadar = document.getElementById('riskRadarChart').getContext('2d');
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: ['Passive Nature', 'Liquidity', 'Return Potential', 'Capital Safety', 'Ease of Setup'],
+                datasets: [{
+                    label: 'Digital Protocol (Recommended)',
+                    data: [9, 7, 8, 7, 8],
+                    fill: true,
+                    backgroundColor: 'rgba(37, 99, 235, 0.2)',
+                    borderColor: '#2563EB', // Royal Blue
+                    pointBackgroundColor: '#2563EB',
+                }, {
+                    label: 'ATM Franchise (Cancelled)',
+                    data: [6, 4, 7, 8, 3],
+                    fill: true,
+                    backgroundColor: 'rgba(156, 163, 175, 0.2)',
+                    borderColor: '#9CA3AF', // Gray
+                    pointBackgroundColor: '#9CA3AF',
+                }]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(0,0,0,0.05)' },
+                        grid: { color: 'rgba(0,0,0,0.05)' },
+                        pointLabels: {
+                            font: { family: 'Inter', size: 11, weight: '600' },
+                            color: '#4B5563'
+                        },
+                        ticks: { display: false, max: 10 }
+                    }
+                }
+            }
+        });
+
+        // 2. Donut Chart: Allocation
+        const ctxDonut = document.getElementById('allocationDonutChart').getContext('2d');
+        new Chart(ctxDonut, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    ['Corporate Asset', 'Leasing (45%)'],
+                    ['Invoice', 'Discounting (30%)'],
+                    ['Smart Vending /', 'Momentum (25%)']
+                ],
+                datasets: [{
+                    data: [6.75, 4.5, 3.75],
+                    backgroundColor: ['#2563EB', '#F59E0B', '#10B981'], // Blue, Amber, Emerald
+                    borderWidth: 0,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                ...commonOptions,
+                cutout: '70%',
+                plugins: {
+                    ...commonOptions.plugins,
+                    legend: { display: true, position: 'bottom' }
+                }
+            }
+        });
+
+        // 3. Stacked Bar Chart: Monthly Income
+        const ctxBar = document.getElementById('incomeStackChart').getContext('2d');
+        new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Month 1 (Setup)', 'Month 3 (Stabilizing)', 'Month 6 (Target Met)', 'Month 12 (Optimized)'],
+                datasets: [
+                    {
+                        label: 'Leasing Payouts',
+                        data: [0, 8000, 11800, 11800],
+                        backgroundColor: '#2563EB',
+                        barThickness: 40
+                    },
+                    {
+                        label: 'Invoice Interest',
+                        data: [2000, 4500, 4900, 4900],
+                        backgroundColor: '#F59E0B',
+                        barThickness: 40
+                    },
+                    {
+                        label: 'Vending/Equity Gain',
+                        data: [0, 1000, 3800, 4500],
+                        backgroundColor: '#10B981',
+                        barThickness: 40
+                    }
+                ]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    x: { grid: { display: false } },
+                    y: {
+                        stacked: true,
+                        grid: { color: '#F3F4F6' },
+                        ticks: { callback: function (value) { return '₹' + value; } }
+                    }
+                },
+                plugins: {
+                    ...commonOptions.plugins,
+                    tooltip: { mode: 'index', intersect: false }
+                }
+            }
+        });
+
+        // 4. Line Chart: Compounding Effect
+        const ctxLine = document.getElementById('compoundingChart').getContext('2d');
+
+        // Data simulation
+        const years = ['Year 0', 'Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'];
+        const fdData = [15, 16.05, 17.17, 18.37, 19.66, 21.03]; // 7% FD
+        const strategyData = [15, 17.4, 20.18, 23.41, 27.16, 31.50]; // ~16% with 50% reinvestment
+
+        new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [
+                    {
+                        label: 'Digital Protocol (Reinvesting 50%)',
+                        data: strategyData,
+                        borderColor: '#10B981', // Emerald
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 3
+                    },
+                    {
+                        label: 'Standard Fixed Deposit (7%)',
+                        data: fdData,
+                        borderColor: '#9CA3AF', // Gray
+                        borderDash: [5, 5],
+                        fill: false,
+                        tension: 0.4,
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: { color: '#F3F4F6' },
+                        title: { display: true, text: 'Corpus Value (in Lakhs)' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
