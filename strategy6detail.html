@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Behala Neural Nexus | Strategic Blueprint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Palette & Animations -->
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            /* Slate 900 */
+            --bg-card: #1e293b;
+            /* Slate 800 */
+            --accent-primary: #0ea5e9;
+            /* Sky 500 */
+            --accent-secondary: #d946ef;
+            /* Fuchsia 500 */
+            --accent-success: #22c55e;
+            /* Green 500 */
+            --text-main: #f8fafc;
+            /* Slate 50 */
+            --text-muted: #94a3b8;
+            /* Slate 400 */
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+            border-color: rgba(14, 165, 233, 0.4);
+        }
+
+        /* Chart Containers */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-card);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-primary);
+        }
+
+        /* Neon Text Utilities */
+        .text-glow-blue {
+            text-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
+        }
+
+        .text-glow-purple {
+            text-shadow: 0 0 10px rgba(217, 70, 239, 0.5);
+        }
+
+        .text-glow-green {
+            text-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- HERO SECTION -->
+    <header class="relative w-full py-16 px-4 overflow-hidden border-b border-slate-700">
+        <div
+            class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMTQsIDE2NSwgMjMzLCAwLjEpIi8+PC9zdmc+')] opacity-20">
+        </div>
+        <div class="max-w-7xl mx-auto text-center relative z-10 animate-fade-in">
+            <div
+                class="inline-block px-4 py-1 mb-4 rounded-full bg-slate-800 border border-cyan-500/50 text-cyan-400 text-sm font-bold tracking-wider uppercase">
+                Strategy Code: Neural Nexus
+            </div>
+            <h1
+                class="text-5xl md:text-7xl font-black mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-500 to-cyan-400 text-glow-blue">
+                THE BEHALA NEURAL NEXUS
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto mb-8 font-light">
+                Transforming a <span class="text-cyan-400 font-semibold">Behala Residential Unit</span> into a <span
+                    class="text-purple-400 font-semibold">Decentralized AI Data Center</span>.
+            </p>
+
+            <!-- Key KPI Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-12">
+                <div class="glass-card p-6 rounded-2xl border-t-4 border-green-500">
+                    <div class="text-slate-400 text-sm uppercase font-bold tracking-wider">Target ROI</div>
+                    <div class="text-4xl font-bold text-green-400 mt-2">52% - 92%</div>
+                    <div class="text-xs text-slate-500 mt-1">Annualized Net Yield</div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border-t-4 border-cyan-500">
+                    <div class="text-slate-400 text-sm uppercase font-bold tracking-wider">Monthly Income</div>
+                    <div class="text-4xl font-bold text-cyan-400 mt-2">₹66k - ₹1.1L</div>
+                    <div class="text-xs text-slate-500 mt-1">Passive Automated Revenue</div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border-t-4 border-purple-500">
+                    <div class="text-slate-400 text-sm uppercase font-bold tracking-wider">Asset Class</div>
+                    <div class="text-4xl font-bold text-purple-400 mt-2">AI Compute</div>
+                    <div class="text-xs text-slate-500 mt-1">Infrastructure-as-Code</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 1: THE MACRO THESIS -->
+    <section class="py-16 px-4 bg-slate-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="w-full md:w-1/2 animate-fade-in delay-100">
+                    <h2 class="text-3xl font-bold text-white mb-6 border-l-4 border-cyan-500 pl-4">Why This? Why Now?
+                    </h2>
+                    <p class="text-slate-400 mb-4 text-lg leading-relaxed">
+                        The world is facing a <strong class="text-white">"Compute Famine"</strong>. Training AI models
+                        (like GPT-4) requires massive power. Centralized clouds (AWS, Azure) are too expensive for
+                        startups.
+                    </p>
+                    <p class="text-slate-400 mb-6 text-lg leading-relaxed">
+                        Your strategy is <strong class="text-purple-400">"Arbitrage"</strong>. You build a
+                        mini-supercomputer in Behala using consumer parts (cheaper) and rent it to global AI researchers
+                        (premium price).
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center p-3 rounded-lg bg-slate-800 border border-slate-700">
+                            <i class="fa-solid fa-ban text-red-500 text-xl w-8"></i>
+                            <div>
+                                <span class="block text-white font-bold">No EV Leasing</span>
+                                <span class="text-xs text-slate-400">Asset depreciates to zero. High physical
+                                    risk.</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-3 rounded-lg bg-slate-800 border border-slate-700">
+                            <i class="fa-solid fa-ban text-red-500 text-xl w-8"></i>
+                            <div>
+                                <span class="block text-white font-bold">No ATMs</span>
+                                <span class="text-xs text-slate-400">Cash is dying. Logistics are heavy. Theft
+                                    risk.</span>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-center p-3 rounded-lg bg-slate-800 border border-slate-700 border-l-4 border-l-green-500">
+                            <i class="fa-solid fa-microchip text-green-500 text-xl w-8"></i>
+                            <div>
+                                <span class="block text-white font-bold">Yes to AI Compute</span>
+                                <span class="text-xs text-slate-400">Asset generates USD revenue. Automated. High
+                                    demand.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/2 animate-fade-in delay-200">
+                    <div class="glass-card p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold text-cyan-400 mb-4 text-center">Global Compute Demand vs Supply
+                        </h3>
+                        <div class="chart-container">
+                            <canvas id="demandChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: THE 15 LAKH MACHINE (HARDWARE) -->
+    <section class="py-16 px-4 bg-slate-800/50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center text-white mb-2">Pillar I: The Hardware Blueprint</h2>
+            <p class="text-center text-slate-400 mb-12">How the ₹15,00,000 capital is surgically deployed.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Chart Column -->
+                <div class="lg:col-span-1 animate-fade-in delay-100">
+                    <div class="glass-card p-6 rounded-2xl h-full flex flex-col justify-center">
+                        <h3 class="text-lg font-bold text-purple-400 mb-4 text-center">Budget Allocation</h3>
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="budgetChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Details Column -->
+                <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in delay-200">
+
+                    <!-- Component Card -->
+                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex gap-4 items-start">
+                        <div class="bg-purple-900/30 p-3 rounded-lg text-purple-400"><i
+                                class="fa-solid fa-memory text-2xl"></i></div>
+                        <div>
+                            <h4 class="text-white font-bold">4x NVIDIA RTX 4090</h4>
+                            <p class="text-sm text-slate-400">The Revenue Engine. 24GB VRAM each. Consumer cards with
+                                Enterprise power.</p>
+                            <span class="text-xs font-bold text-green-400">Cost: ₹7.8 Lakhs</span>
+                        </div>
+                    </div>
+
+                    <!-- Component Card -->
+                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex gap-4 items-start">
+                        <div class="bg-cyan-900/30 p-3 rounded-lg text-cyan-400"><i
+                                class="fa-solid fa-microchip text-2xl"></i></div>
+                        <div>
+                            <h4 class="text-white font-bold">Threadripper Platform</h4>
+                            <p class="text-sm text-slate-400">CPU + Motherboard. Required to run 4 GPUs simultaneously
+                                at full speed.</p>
+                            <span class="text-xs font-bold text-green-400">Cost: ₹3.0 Lakhs</span>
+                        </div>
+                    </div>
+
+                    <!-- Component Card -->
+                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex gap-4 items-start">
+                        <div class="bg-blue-900/30 p-3 rounded-lg text-blue-400"><i
+                                class="fa-solid fa-wind text-2xl"></i></div>
+                        <div>
+                            <h4 class="text-white font-bold">Liquid Cooling Loop</h4>
+                            <p class="text-sm text-slate-400">Custom blocks & pumps. Essential for Kolkata heat
+                                management.</p>
+                            <span class="text-xs font-bold text-green-400">Cost: ₹80,000</span>
+                        </div>
+                    </div>
+
+                    <!-- Component Card -->
+                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex gap-4 items-start">
+                        <div class="bg-yellow-900/30 p-3 rounded-lg text-yellow-400"><i
+                                class="fa-solid fa-bolt text-2xl"></i></div>
+                        <div>
+                            <h4 class="text-white font-bold">Power & Infrastructure</h4>
+                            <p class="text-sm text-slate-400">2x 1600W Titanium PSUs + Server Rack + Cabling.</p>
+                            <span class="text-xs font-bold text-green-400">Cost: ₹1.8 Lakhs</span>
+                        </div>
+                    </div>
+
+                    <!-- Component Card -->
+                    <div
+                        class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex gap-4 items-start md:col-span-2">
+                        <div class="bg-red-900/30 p-3 rounded-lg text-red-400"><i
+                                class="fa-solid fa-server text-2xl"></i></div>
+                        <div>
+                            <h4 class="text-white font-bold">Memory & Storage</h4>
+                            <p class="text-sm text-slate-400">256GB ECC DDR5 RAM + 8TB Gen5 NVMe Storage. Needed for
+                                large AI model swapping.</p>
+                            <span class="text-xs font-bold text-green-400">Cost: ₹1.6 Lakhs</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: ENGINEERING (COOLING) -->
+    <section class="py-16 px-4 bg-slate-900">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center text-white mb-8">Pillar II: The Kolkata Thermal Challenge</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="animate-fade-in delay-100">
+                    <p class="text-lg text-slate-300 mb-6">
+                        A 4-GPU rig generates <span class="text-red-400 font-bold">2000 Watts of heat</span>. In a
+                        Kolkata summer (35°C+), a standard room will reach 50°C in minutes, destroying the hardware.
+                    </p>
+                    <h3 class="text-xl font-bold text-cyan-400 mb-4">The Solution: "Hot Aisle Extraction"</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center text-slate-400">
+                            <i class="fa-solid fa-circle-check text-green-500 mr-3"></i>
+                            Dedicated 2-Ton Inverter AC for Intake.
+                        </li>
+                        <li class="flex items-center text-slate-400">
+                            <i class="fa-solid fa-circle-check text-green-500 mr-3"></i>
+                            Sealed Rack Enclosure.
+                        </li>
+                        <li class="flex items-center text-slate-400">
+                            <i class="fa-solid fa-circle-check text-green-500 mr-3"></i>
+                            Industrial Inline Fan (800 CFM) pulling heat.
+                        </li>
+                        <li class="flex items-center text-slate-400">
+                            <i class="fa-solid fa-circle-check text-green-500 mr-3"></i>
+                            Direct exhaust vent out of the 3rd-floor window.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CSS Diagram for Airflow -->
+                <div
+                    class="glass-card p-8 rounded-2xl relative h-80 flex items-center justify-center overflow-hidden animate-fade-in delay-200">
+                    <!-- Room Boundary -->
+                    <div class="absolute inset-0 border-2 border-slate-600 m-4 rounded-lg flex">
+
+                        <!-- Cold Zone -->
+                        <div
+                            class="w-1/2 h-full bg-blue-500/10 border-r border-slate-600 relative flex flex-col items-center justify-center">
+                            <span class="absolute top-2 left-2 text-blue-400 font-bold text-xs">COLD ZONE (22°C)</span>
+                            <i class="fa-solid fa-snowflake text-blue-400 text-4xl mb-2 animate-pulse"></i>
+                            <div class="text-xs text-blue-300">AC Input</div>
+
+                            <!-- Arrows -->
+                            <div class="mt-4 flex space-x-2">
+                                <i class="fa-solid fa-arrow-right text-blue-500 animate-bounce"
+                                    style="animation-direction: alternate;"></i>
+                                <i class="fa-solid fa-arrow-right text-blue-500 animate-bounce"
+                                    style="animation-direction: alternate; animation-delay: 0.1s;"></i>
+                            </div>
+                        </div>
+
+                        <!-- Server Rack -->
+                        <div
+                            class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-48 bg-slate-800 border-2 border-purple-500 rounded z-10 flex flex-col items-center justify-evenly shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+                            <div class="w-20 h-2 bg-slate-600"></div>
+                            <div class="text-[10px] text-purple-300 font-bold">GPUs</div>
+                            <div class="w-20 h-8 bg-slate-700 border border-slate-500 grid grid-cols-4 gap-1 p-1">
+                                <div class="bg-green-500 rounded-full animate-pulse"></div>
+                                <div class="bg-green-500 rounded-full animate-pulse delay-75"></div>
+                                <div class="bg-green-500 rounded-full animate-pulse delay-150"></div>
+                                <div class="bg-green-500 rounded-full animate-pulse delay-200"></div>
+                            </div>
+                            <div class="w-20 h-2 bg-slate-600"></div>
+                        </div>
+
+                        <!-- Hot Zone -->
+                        <div class="w-1/2 h-full bg-red-500/10 relative flex flex-col items-center justify-center">
+                            <span class="absolute top-2 right-2 text-red-400 font-bold text-xs">HOT ZONE (55°C)</span>
+
+                            <!-- Arrows -->
+                            <div class="mb-4 flex space-x-2">
+                                <i class="fa-solid fa-arrow-right text-red-500 animate-bounce"
+                                    style="animation-direction: alternate;"></i>
+                                <i class="fa-solid fa-arrow-right text-red-500 animate-bounce"
+                                    style="animation-direction: alternate; animation-delay: 0.1s;"></i>
+                            </div>
+
+                            <i class="fa-solid fa-fan text-red-400 text-4xl mb-2 animate-spin"
+                                style="animation-duration: 3s;"></i>
+                            <div class="text-xs text-red-300">Exhaust Fan</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: FINANCIALS -->
+    <section class="py-16 px-4 bg-slate-800/30">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center text-white mb-2">Pillar III: Financial Projections</h2>
+            <p class="text-center text-slate-400 mb-12">Revenue, Expenses, and the Path to Profit.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                <!-- ROI Chart -->
+                <div class="glass-card p-6 rounded-2xl animate-fade-in delay-100">
+                    <h3 class="text-xl font-bold text-green-400 mb-4">Annualized ROI Scenarios</h3>
+                    <div class="chart-container">
+                        <canvas id="roiChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Monthly Breakdown -->
+                <div class="flex flex-col gap-6 animate-fade-in delay-200">
+
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-green-500">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-slate-300 font-bold">Gross Monthly Revenue</span>
+                            <span class="text-green-400 font-bold text-xl">₹ 1,00,000 - ₹ 1,50,000</span>
+                        </div>
+                        <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-green-500 h-full w-[80%]"></div>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">Based on daily rental rates of $40-$60 USD for 4x RTX
+                            4090s.</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-red-500">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-slate-300 font-bold">Monthly OpEx (Costs)</span>
+                            <span class="text-red-400 font-bold text-xl">₹ 34,000</span>
+                        </div>
+                        <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-red-500 h-full w-[30%]"></div>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">Electricity (2880 units @ ₹9/unit) + Internet +
+                            Maintenance.</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-cyan-500 bg-cyan-900/10">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-white font-bold text-lg">Net Monthly Profit</span>
+                            <span class="text-cyan-400 font-bold text-2xl">₹ 66,000 - ₹ 1,16,000</span>
+                        </div>
+                        <p class="text-sm text-cyan-200 mt-2">
+                            <i class="fa-solid fa-rocket mr-2"></i>
+                            Pays off entire investment in ~22 Months.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: ROADMAP & RISKS -->
+    <section class="py-16 px-4 bg-slate-900">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+            <!-- Roadmap -->
+            <div class="animate-fade-in delay-100">
+                <h2 class="text-2xl font-bold text-white mb-6">Execution Roadmap (90 Days)</h2>
+                <div class="relative border-l-2 border-slate-700 ml-4 space-y-8">
+
+                    <div class="relative pl-8">
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-purple-500"></div>
+                        <h4 class="text-purple-400 font-bold mb-1">Phase 1: Digital Hygiene (Days 1-15)</h4>
+                        <p class="text-slate-400 text-sm">Create fresh ProtonMail. Buy YubiKey. Isolate Network. <strong
+                                class="text-white">Crucial Step: Prevent "Glass Door" Hack.</strong></p>
+                    </div>
+
+                    <div class="relative pl-8">
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-cyan-500"></div>
+                        <h4 class="text-cyan-400 font-bold mb-1">Phase 2: Retrofit & Procurement (Days 16-30)</h4>
+                        <p class="text-slate-400 text-sm">Order Hardware. Install 32A Electrical Line. Build Window
+                            Exhaust Duct.</p>
+                    </div>
+
+                    <div class="relative pl-8">
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-green-500"></div>
+                        <h4 class="text-green-400 font-bold mb-1">Phase 3: Deployment (Days 31-45)</h4>
+                        <p class="text-slate-400 text-sm">Install Ubuntu Server & Docker. Run 48hr Stress Test
+                            (FurMark). Connect to io.net.</p>
+                    </div>
+
+                    <div class="relative pl-8">
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-500"></div>
+                        <h4 class="text-slate-400 font-bold mb-1">Phase 4: Automation (Days 46-90)</h4>
+                        <p class="text-slate-400 text-sm">Set up auto-reboot scripts. Configure Telegram alerts. First
+                            revenue withdrawal.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Risk Radar -->
+            <div class="animate-fade-in delay-200">
+                <h2 class="text-2xl font-bold text-white mb-6">Risk Profile Assessment</h2>
+                <div class="glass-card p-4 rounded-2xl">
+                    <div class="chart-container">
+                        <canvas id="riskRadar"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-slate-950 border-t border-slate-800 text-center">
+        <p class="text-slate-500 text-sm max-w-2xl mx-auto px-4">
+            <strong>Disclaimer:</strong> This infographic represents a high-risk, high-tech investment strategy.
+            Hardware depreciation, crypto-asset volatility, and electrical safety are significant factors. Professional
+            consultation for tax and electrical engineering is recommended.
+        </p>
+    </footer>
+
+    <!-- CHART CONFIGURATION -->
+    <script>
+        // Utilities
+        function wrapLabel(label, maxChars) {
+            if (label.length <= maxChars) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + 1 + words[i].length <= maxChars) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const commonOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { labels: { color: '#94a3b8' } },
+                tooltip: {
+                    backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                    titleColor: '#38bdf8',
+                    bodyColor: '#f8fafc',
+                    borderColor: '#334155',
+                    borderWidth: 1,
+                    callbacks: {
+                        title: function (tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            return Array.isArray(label) ? label.join(' ') : label;
+                        }
+                    }
+                }
+            }
+        };
+
+        // 1. Demand Chart (Bar)
+        new Chart(document.getElementById('demandChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Available Compute', 'AI Model Demand'],
+                datasets: [{
+                    label: 'Global Index (2025)',
+                    data: [30, 100],
+                    backgroundColor: ['#64748b', '#d946ef'],
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    y: { beginAtZero: true, grid: { color: '#334155' }, ticks: { display: false } },
+                    x: { grid: { display: false }, ticks: { color: '#cbd5e1' } }
+                }
+            }
+        });
+
+        // 2. Budget Chart (Doughnut)
+        const budgetLabels = ['RTX 4090 GPUs (4x)', 'Threadripper Platform', 'Power Supply & Rack', 'Cooling System', 'RAM & Storage'];
+        const wrappedBudgetLabels = budgetLabels.map(l => wrapLabel(l, 20));
+
+        new Chart(document.getElementById('budgetChart'), {
+            type: 'doughnut',
+            data: {
+                labels: wrappedBudgetLabels,
+                datasets: [{
+                    data: [780000, 300000, 180000, 80000, 160000],
+                    backgroundColor: ['#d946ef', '#0ea5e9', '#eab308', '#3b82f6', '#ef4444'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                ...commonOptions,
+                cutout: '60%',
+                plugins: {
+                    legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { size: 10 } } }
+                }
+            }
+        });
+
+        // 3. ROI Chart (Bar)
+        new Chart(document.getElementById('roiChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Bank FD', 'Mutual Funds', 'Rental Property', 'Neural Nexus (Conservative)', 'Neural Nexus (Aggressive)'],
+                datasets: [{
+                    label: 'Annual ROI %',
+                    data: [7, 12, 3, 52, 92],
+                    backgroundColor: ['#64748b', '#64748b', '#64748b', '#22c55e', '#d946ef'],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                ...commonOptions,
+                indexAxis: 'y',
+                scales: {
+                    x: { grid: { color: '#334155' }, ticks: { color: '#cbd5e1' } },
+                    y: { grid: { display: false }, ticks: { color: '#cbd5e1' } }
+                }
+            }
+        });
+
+        // 4. Risk Radar
+        new Chart(document.getElementById('riskRadar'), {
+            type: 'radar',
+            data: {
+                labels: ['Technical Complexity', 'Heat Mgmt Risk', 'Cyber Security Risk', 'Market Volatility', 'Physical Theft'],
+                datasets: [{
+                    label: 'Behala Neural Nexus',
+                    data: [90, 85, 80, 60, 20],
+                    borderColor: '#0ea5e9',
+                    backgroundColor: 'rgba(14, 165, 233, 0.2)',
+                    pointBackgroundColor: '#fff'
+                }]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    r: {
+                        angleLines: { color: '#334155' },
+                        grid: { color: '#334155' },
+                        pointLabels: { color: '#cbd5e1', font: { size: 11 } },
+                        ticks: { display: false }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

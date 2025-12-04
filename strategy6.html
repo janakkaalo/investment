@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Neuro-Logistic Protocol | Strategy 6</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Palette: Cyberpunk Neon -->
+    <!-- Background: Slate 900 (#0f172a) -->
+    <!-- Cards: Slate 800 (#1e293b) -->
+    <!-- Primary Accent: Neon Cyan (#06b6d4) -->
+    <!-- Secondary Accent: Neon Purple (#d946ef) -->
+    <!-- Success: Neon Green (#22c55e) -->
+    <!-- Text: Slate 50 (#f8fafc) -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            /* Slate 900 */
+            color: #f8fafc;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        @media (max-width: 640px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .neon-text {
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header
+        class="w-full py-12 px-4 text-center bg-gradient-to-b from-slate-900 to-slate-800 border-b border-slate-700">
+        <h1
+            class="text-4xl md:text-6xl font-black mb-4 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 neon-text">
+            STRATEGY 6: THE NEURO-LOGISTIC PROTOCOL
+        </h1>
+        <p class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">
+            Maximum Aggression. Minimum Effort. The "Behala Arbitrage" Model.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-6">
+            <div
+                class="bg-slate-800 px-6 py-3 rounded-full border border-cyan-500/30 shadow-[0_0_15px_rgba(6,182,212,0.3)]">
+                <span class="text-slate-400 text-sm uppercase tracking-wider block">Target ROI</span>
+                <span class="text-2xl font-bold text-cyan-400">46.5% / Year</span>
+            </div>
+            <div
+                class="bg-slate-800 px-6 py-3 rounded-full border border-purple-500/30 shadow-[0_0_15px_rgba(217,70,239,0.3)]">
+                <span class="text-slate-400 text-sm uppercase tracking-wider block">Monthly Passive Income</span>
+                <span class="text-2xl font-bold text-purple-400">₹ 58,000+</span>
+            </div>
+            <div
+                class="bg-slate-800 px-6 py-3 rounded-full border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.3)]">
+                <span class="text-slate-400 text-sm uppercase tracking-wider block">Capital Deployed</span>
+                <span class="text-2xl font-bold text-green-400">₹ 15,00,000</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Introduction -->
+    <section class="max-w-7xl mx-auto px-4 py-12">
+        <div class="glass-card rounded-2xl p-8 mb-12 shadow-xl">
+            <h2 class="text-2xl font-bold text-white mb-4 border-l-4 border-cyan-500 pl-4">The Executive Mandate</h2>
+            <p class="text-slate-300 leading-relaxed text-lg">
+                The "Rentier" model is dead. Standard rentals in Behala yield 2%. Fixed Deposits yield 7%. To achieve a
+                <strong>50% Annual Return</strong> while maintaining a full-time job, we must abandon safety for
+                <strong>Asymmetric Volatility</strong>. <br><br>
+                This strategy converts your assets—the <strong>3rd Floor Space</strong> and your
+                <strong>High-Performance PC knowledge</strong>—into a <strong>Distributed Data Center</strong> and
+                <strong>Hyper-Local Logistics Hub</strong>. We are not "investing"; we are building an automated
+                infrastructure engine.
+            </p>
+        </div>
+
+        <!-- Layout Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- Chart 1: Capital Allocation -->
+            <div class="glass-card rounded-2xl p-6 flex flex-col">
+                <h3 class="text-xl font-bold text-cyan-400 mb-2">The "Tri-Vector" Allocation</h3>
+                <p class="text-sm text-slate-400 mb-6">How your ₹15 Lakhs is surgically deployed for maximum velocity.
+                </p>
+                <div class="chart-container flex-grow">
+                    <canvas id="allocationChart"></canvas>
+                </div>
+                <div class="mt-4 text-sm text-slate-400 italic text-center">
+                    *The "Forge" uses the majority of capital to build a high-moat tech asset.
+                </div>
+            </div>
+
+            <!-- Strategy Detail: The Forge -->
+            <div class="glass-card rounded-2xl p-6 border-t-4 border-purple-500">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-2xl font-bold text-white">VECTOR 1: THE FORGE (AI Compute)</h3>
+                    <span class="bg-purple-900 text-purple-200 px-3 py-1 rounded text-xs font-bold">PASSIVE</span>
+                </div>
+                <p class="text-slate-300 mb-4">
+                    Your PC knowledge is the key. We don't game; we rent "Compute".
+                </p>
+                <ul class="space-y-3 mb-6">
+                    <li class="flex items-start">
+                        <span class="text-purple-400 mr-2">➤</span>
+                        <span class="text-slate-300"><strong>Action:</strong> Build 2x Multi-GPU Workstations (Dual RTX
+                            4090s). Use 1 empty room.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-purple-400 mr-2">➤</span>
+                        <span class="text-slate-300"><strong>Platform:</strong> Connect to <em>Vast.ai</em> or
+                            <em>RunPod</em>. Rent GPUs to AI researchers.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-purple-400 mr-2">➤</span>
+                        <span class="text-slate-300"><strong>Advantage:</strong> Behala electricity is standard, but AI
+                            rental rates are in USD.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-purple-400 mr-2">➤</span>
+                        <span class="text-slate-300"><strong>Investment:</strong> ₹9,00,000 (Hardware + AC +
+                            UPS).</span>
+                    </li>
+                </ul>
+                <div class="bg-purple-500/10 p-4 rounded-lg border border-purple-500/20">
+                    <span class="block text-purple-400 text-sm font-bold uppercase">Projected Net Income</span>
+                    <span class="block text-2xl font-bold text-white">₹ 38,000 / Month</span>
+                </div>
+            </div>
+
+            <!-- Chart 2: Revenue Projection -->
+            <div class="glass-card rounded-2xl p-6 flex flex-col md:col-span-2">
+                <h3 class="text-xl font-bold text-green-400 mb-2">Projected Annual Cash Flow Engine</h3>
+                <p class="text-sm text-slate-400 mb-6">Monthly passive inflow breakdown totaling ~₹6.9L annually.</p>
+                <div class="chart-container">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Strategy Detail: The Vault -->
+            <div class="glass-card rounded-2xl p-6 border-t-4 border-cyan-500">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-2xl font-bold text-white">VECTOR 2: THE VAULT (Dark Storage)</h3>
+                    <span class="bg-cyan-900 text-cyan-200 px-3 py-1 rounded text-xs font-bold">ZERO EFFORT</span>
+                </div>
+                <p class="text-slate-300 mb-4">
+                    Residential tenants are a headache. Inventory is silent.
+                </p>
+                <ul class="space-y-3 mb-6">
+                    <li class="flex items-start">
+                        <span class="text-cyan-400 mr-2">➤</span>
+                        <span class="text-slate-300"><strong>Action:</strong> Convert 2 empty rooms into "B2B Dark
+                            Storage".</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-cyan-400 mr-2">➤</span>
+                        <span class="text-slate-300"><strong>Client:</strong> Local Behala saree traders, hardware
+                            shops, or e-commerce sellers needing local "Godowns".</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-cyan-400 mr-2">➤</span>
+                        <span class="text-slate-300"><strong>Advantage:</strong> Zero furnishing cost. Long leases. Cash
+                            payments common.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-cyan-400 mr-2">➤</span>
+                        <span class="text-slate-300"><strong>Investment:</strong> ₹50,000 (Racks + Security
+                            Camera).</span>
+                    </li>
+                </ul>
+                <div class="bg-cyan-500/10 p-4 rounded-lg border border-cyan-500/20">
+                    <span class="block text-cyan-400 text-sm font-bold uppercase">Projected Net Income</span>
+                    <span class="block text-2xl font-bold text-white">₹ 15,000 / Month</span>
+                </div>
+            </div>
+
+            <!-- Strategy Detail: The Casino -->
+            <div class="glass-card rounded-2xl p-6 border-t-4 border-yellow-500">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-2xl font-bold text-white">VECTOR 3: THE CASINO (SME IPOs)</h3>
+                    <span class="bg-yellow-900 text-yellow-200 px-3 py-1 rounded text-xs font-bold">AGGRESSIVE</span>
+                </div>
+                <p class="text-slate-300 mb-4">
+                    The highest returns in India today are in the SME IPO listing gains.
+                </p>
+                <ul class="space-y-3 mb-6">
+                    <li class="flex items-start">
+                        <span class="text-yellow-400 mr-2">➤</span>
+                        <span class="text-slate-300"><strong>Action:</strong> Rotate ₹5.5 Lakhs capital purely for SME
+                            IPO Applications (HNI Category).</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-yellow-400 mr-2">➤</span>
+                        <span class="text-slate-300"><strong>Strategy:</strong> Apply for premium SME IPOs. Sell on
+                            listing day (Listing gains ~50-100%).</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-yellow-400 mr-2">➤</span>
+                        <span class="text-slate-300"><strong>Risk:</strong> Allotment is luck-based, but HNI category
+                            increases odds.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-yellow-400 mr-2">➤</span>
+                        <span class="text-slate-300"><strong>Investment:</strong> ₹5,50,000 (Liquid Capital).</span>
+                    </li>
+                </ul>
+                <div class="bg-yellow-500/10 p-4 rounded-lg border border-yellow-500/20">
+                    <span class="block text-yellow-400 text-sm font-bold uppercase">Projected Avg. Gains</span>
+                    <span class="block text-2xl font-bold text-white">₹ 50k - 1L / Event</span>
+                </div>
+            </div>
+
+            <!-- Chart 3: Risk Radar -->
+            <div class="glass-card rounded-2xl p-6 flex flex-col">
+                <h3 class="text-xl font-bold text-red-400 mb-2">Risk Profile Visualization</h3>
+                <p class="text-sm text-slate-400 mb-6">Where the danger lies. This is not a "Safe" FD.</p>
+                <div class="chart-container">
+                    <canvas id="riskChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Execution Steps -->
+            <div class="glass-card rounded-2xl p-6 flex flex-col justify-center">
+                <h3 class="text-xl font-bold text-white mb-4">Immediate Execution Roadmap</h3>
+                <div class="space-y-4">
+                    <div class="flex">
+                        <div
+                            class="flex-shrink-0 h-8 w-8 rounded-full bg-cyan-500 flex items-center justify-center font-bold text-slate-900">
+                            1</div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-cyan-400">Week 1: The Cleanout</h4>
+                            <p class="text-slate-400 text-sm">Clear the 3rd floor. Install industrial shelving in Rooms
+                                2 & 3. Upgrade Internet to Fiber (1Gbps).</p>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div
+                            class="flex-shrink-0 h-8 w-8 rounded-full bg-purple-500 flex items-center justify-center font-bold text-slate-900">
+                            2</div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-purple-400">Week 2: The Build</h4>
+                            <p class="text-slate-400 text-sm">Order PC parts (RtX 4090s). Assemble Rig in Room 1.
+                                Install heavy-duty AC.</p>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div
+                            class="flex-shrink-0 h-8 w-8 rounded-full bg-yellow-500 flex items-center justify-center font-bold text-slate-900">
+                            3</div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-yellow-400">Week 4: The Listing</h4>
+                            <p class="text-slate-400 text-sm">List Rig on Vast.ai. List Storage space on local Facebook
+                                Marketplace groups for "Godown". Open HNI Demat account.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-12 text-center text-slate-500 text-xs">
+            <p>DISCLAIMER: This infographic represents a high-risk, high-reward strategy ("The Neuro-Logistic Protocol")
+                designed for aggressive capital appreciation. Past performance of IPOs or Crypto-AI markets does not
+                guarantee future results. Hardware depreciation is a real factor.</p>
+        </div>
+    </section>
+
+    <script>
+        // --- DATA PREPARATION & CONFIGURATION ---
+
+        // Label Wrapping Helper
+        function wrapLabel(label, maxChars) {
+            if (label.length <= maxChars) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + 1 + words[i].length <= maxChars) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // Common Chart Options
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.font.family = 'Inter';
+        const commonOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: { color: '#f8fafc' }
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                    titleColor: '#22d3ee',
+                    bodyColor: '#f8fafc',
+                    borderColor: '#334155',
+                    borderWidth: 1,
+                    callbacks: {
+                        title: function (tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) return label.join(' ');
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+
+        // --- CHART 1: CAPITAL ALLOCATION (Doughnut) ---
+        const ctxAllocation = document.getElementById('allocationChart').getContext('2d');
+        const allocationLabels = ['AI Compute Hardware (The Forge)', 'SME IPO Capital (The Casino)', 'Storage Renovation (The Vault)', 'Liquidity Buffer'];
+        const processedAllocLabels = allocationLabels.map(l => wrapLabel(l, 18)); // Wrap at 18 chars
+
+        new Chart(ctxAllocation, {
+            type: 'doughnut',
+            data: {
+                labels: processedAllocLabels,
+                datasets: [{
+                    data: [900000, 500000, 50000, 50000],
+                    backgroundColor: ['#d946ef', '#eab308', '#06b6d4', '#64748b'], // Purple, Yellow, Cyan, Slate
+                    borderWidth: 0,
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                ...commonOptions,
+                cutout: '65%',
+                plugins: {
+                    ...commonOptions.plugins,
+                    legend: { position: 'bottom', labels: { color: '#f8fafc', boxWidth: 12 } }
+                }
+            }
+        });
+
+        // --- CHART 2: REVENUE PROJECTION (Bar) ---
+        const ctxRevenue = document.getElementById('revenueChart').getContext('2d');
+        const revenueLabels = ['AI Compute Rental (Net)', 'Dark Storage Rent', 'Avg SME IPO Gains'];
+
+        new Chart(ctxRevenue, {
+            type: 'bar',
+            data: {
+                labels: revenueLabels, // Short enough, no wrapping needed
+                datasets: [{
+                    label: 'Monthly Net Income (₹)',
+                    data: [38000, 15000, 25000], // Averaged monthly IPO gain
+                    backgroundColor: ['#d946ef', '#06b6d4', '#eab308'],
+                    borderRadius: 6,
+                    barThickness: 40
+                }]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#334155' },
+                        ticks: { color: '#cbd5e1' }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#cbd5e1' }
+                    }
+                }
+            }
+        });
+
+        // --- CHART 3: RISK RADAR ---
+        const ctxRisk = document.getElementById('riskChart').getContext('2d');
+
+        new Chart(ctxRisk, {
+            type: 'radar',
+            data: {
+                labels: ['Tech Obsolescence', 'Market Volatility', 'Operational Effort', 'Liquidity Risk', 'Regulatory Risk'],
+                datasets: [{
+                    label: 'The Neuro-Logistic Protocol',
+                    data: [85, 70, 20, 40, 30], // High tech risk, Low effort
+                    backgroundColor: 'rgba(6, 182, 212, 0.2)',
+                    borderColor: '#06b6d4',
+                    pointBackgroundColor: '#d946ef',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#d946ef'
+                },
+                {
+                    label: 'Traditional Rental/FD',
+                    data: [10, 10, 60, 10, 10], // Safe but low return (Reference)
+                    backgroundColor: 'rgba(148, 163, 184, 0.1)',
+                    borderColor: '#64748b',
+                    pointBackgroundColor: '#64748b',
+                    borderDash: [5, 5]
+                }]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    r: {
+                        angleLines: { color: '#334155' },
+                        grid: { color: '#334155' },
+                        pointLabels: { color: '#cbd5e1', font: { size: 12 } },
+                        ticks: { display: false }
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
