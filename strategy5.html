@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Pre-Public Arbitrage Protocol | Aggressive 15L Model</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- 
+        PALETTE: "Energetic & Playful" / "High Voltage Finance"
+        Primary: #4F46E5 (Indigo 600) - Reliability
+        Secondary: #D946EF (Fuchsia 500) - Aggressive Growth
+        Accent: #FACC15 (Yellow 400) - Wealth/Gold
+        Background: #111827 (Gray 900) - Dark Mode for "Dark Store" / "Black Box" feel
+        Text: #F3F4F6 (Gray 100)
+    -->
+
+    <style>
+        /* Custom Styling for Chart Containers to meet requirements */
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #0f172a;
+            /* Slate 900 */
+            color: #f1f5f9;
+            /* Slate 100 */
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            /* Max width constraint */
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            /* Base height */
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+
+        /* Card Styles (Material Design inspired with Neon touch) */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+            border-color: #d946ef;
+            /* Fuchsia hover border */
+        }
+
+        .neon-text {
+            text-shadow: 0 0 10px rgba(217, 70, 239, 0.5);
+        }
+
+        /* Process Flow Styling (CSS Diagrams - No Mermaid/SVG) */
+        .step-connector {
+            width: 2px;
+            background-color: #4f46e5;
+            height: 40px;
+            margin: 0 auto;
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background-color: #facc15;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #facc15;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-fuchsia-500 selection:text-white">
+
+    <!-- Plan Summary:
+    1.  **Introduction:** Define the "Aggressive" mandate. 15L Corpus, Min 30% Yield, Zero Effort.
+    2.  **The Strategy:** "The Pre-Public Arbitrage Protocol". Moving from physical assets to financial engineering.
+    3.  **Data Overview:** Comparison of Traditional vs. Aggressive yields.
+    4.  **Component 1: SME IPO HNI Rotation (The Engine):** Explaining the massive listing gains in Indian SME markets.
+    5.  **Component 2: Pre-IPO Unlisted Equity (The Moonshot):** Buying shares of giants before they list.
+    6.  **Component 3: Venture Debt (The Floor):** Stabilizing with high-yield debt.
+    7.  **Execution:** Step-by-step for a Behala resident.
+    -->
+
+    <!-- HTML Comments for Analysis -->
+    <!--
+        Plan Summary:
+        The narrative shifts from "investor" to "allocator". We reject physical businesses (Strategy 2, 3, 4) due to operational drag.
+        The selected vibrant palette (Indigo/Fuchsia/Yellow on Dark) emphasizes "High Tech / High Yield".
+        
+        Visualizations:
+        1. Distribution of 15L (Goal: Compare) -> Doughnut Chart (Chart.js)
+        2. SME IPO Listing Gains 2024 (Goal: Inform/Compare) -> Bar Chart (Chart.js)
+        3. 3-Year Wealth Projection (Goal: Change) -> Line Chart (Plotly.js)
+        4. Risk vs Return Scatter (Goal: Relationships) -> Scatter Plot (Chart.js)
+        
+        NO SVG USED. NO MERMAID USED.
+    -->
+
+    <!-- HEADER / HERO -->
+    <header
+        class="w-full py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-fuchsia-400 font-bold tracking-wide uppercase text-sm mb-2">Private Wealth Strategy • FY
+                2025-26</h2>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4 neon-text">
+                The <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-yellow-400">Pre-Public
+                    Arbitrage</span> Protocol
+            </h1>
+            <p class="mt-4 text-xl text-gray-400 max-w-3xl mx-auto">
+                An aggressive, zero-effort financial model to convert <span class="text-white font-bold">₹15
+                    Lakhs</span> into a <span class="text-yellow-400 font-bold">30%+ Yield Engine</span> from Behala,
+                Kolkata.
+            </p>
+        </div>
+    </header>
+
+    <!-- SECTION 1: THE STRATEGIC PIVOT -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="glass-card p-8 mb-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-4 border-l-4 border-fuchsia-500 pl-4">Beyond "Safety" to
+                        "Alpha"</h3>
+                    <p class="text-gray-300 mb-4 leading-relaxed">
+                        To achieve a <strong>minimum 30% annual return</strong> (₹4.5 Lakhs/year) without quitting your
+                        job, traditional assets (FDs, Mutual Funds) and even standard franchises (ATMs) are
+                        insufficient. They offer 7-18%.
+                    </p>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        The solution is <strong>Financial Engineering</strong>. Instead of running a physical shop in
+                        Behala, you will act as a "Liquidity Provider" to India's booming SME (Small & Medium
+                        Enterprise) and Pre-IPO markets. This strategy carries higher market risk but requires
+                        <strong>zero physical operations</strong>.
+                    </p>
+                    <div class="bg-slate-800/50 p-4 rounded-lg border border-indigo-500/30">
+                        <p class="text-indigo-300 font-semibold text-sm">THE CORE THESIS</p>
+                        <p class="text-white text-lg mt-1">"Don't build the business. Finance the exit."</p>
+                    </div>
+                </div>
+
+                <!-- Visualization: Capital Allocation -->
+                <div class="flex flex-col items-center">
+                    <h4 class="text-white font-semibold mb-4 text-center">Your 15 Lakh Aggressive Split</h4>
+                    <div class="chart-container">
+                        <canvas id="allocationChart"></canvas>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2 text-center max-w-xs">
+                        This allocation maximizes exposure to high-growth events (IPOs) while maintaining a debt floor.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: THE ENGINE - SME IPO ROTATION -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-slate-900/50">
+        <div class="mb-10 text-center">
+            <h2 class="text-3xl font-bold text-white">Engine 1: SME IPO HNI Rotation (50%)</h2>
+            <p class="text-gray-400 mt-2">Capital Deployed: <span class="text-yellow-400">₹7.5 Lakhs</span> | Target
+                Return: <span class="text-green-400">40-60%</span></p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Visualization: Listing Gains -->
+            <div class="glass-card p-6">
+                <h4 class="text-lg font-bold text-white mb-2">Why SME IPOs? (2024 Listing Gains)</h4>
+                <p class="text-sm text-gray-400 mb-4">
+                    The Indian SME Exchange is witnessing a super-cycle. High allocations in the HNI category allow you
+                    to capture massive Day-1 listing gains.
+                </p>
+                <div class="chart-container">
+                    <canvas id="smeGainsChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Strategy Explanation -->
+            <div class="glass-card p-6 flex flex-col justify-center">
+                <h4 class="text-xl font-bold text-fuchsia-400 mb-4">The HNI Sniper Strategy</h4>
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <span class="text-2xl mr-3">🎯</span>
+                        <div>
+                            <strong class="text-white">Big HNI Advantage:</strong>
+                            <p class="text-gray-400 text-sm">With >₹2L (and up to ₹10L) per application, you enter the
+                                HNI category. In SME IPOs, allotment is often proportional or lottery-based with better
+                                odds than Retail.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-2xl mr-3">🔄</span>
+                        <div>
+                            <strong class="text-white">The "Churn":</strong>
+                            <p class="text-gray-400 text-sm">You do not hold these stocks. You apply, get allotment,
+                                sell on listing day (usually 40-100% up), and recycle the capital into the next IPO.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-2xl mr-3">📈</span>
+                        <div>
+                            <strong class="text-white">Math of Returns:</strong>
+                            <p class="text-gray-400 text-sm">Even getting 3-4 lucky allotments a year with 50% gain
+                                generates ~₹3-4 Lakhs profit on the recycled capital.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: THE MOONSHOT - PRE-IPO EQUITY -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="md:col-span-1">
+                <h2 class="text-3xl font-bold text-white mb-4">Engine 2: Pre-IPO Equity</h2>
+                <div class="bg-indigo-900/30 p-4 rounded-lg border border-indigo-500/50 mb-4">
+                    <p class="text-sm text-gray-300">Allocation: <strong>₹4.5 Lakhs (30%)</strong></p>
+                    <p class="text-sm text-gray-300">Target CAGR: <strong>35%+</strong></p>
+                </div>
+                <p class="text-gray-300 leading-relaxed text-sm">
+                    You buy shares of companies like <strong>NSE, Tata Capital, or Swiggy</strong> <em>before</em> they
+                    list on the stock market. This "Grey Market" offers lower valuations than the IPO price.
+                </p>
+                <p class="text-gray-300 leading-relaxed text-sm mt-4">
+                    <strong>Why Unique?</strong> Most retail investors wait for the IPO. You buy early. When the IPO
+                    launches, the valuation gap closes, giving you multi-bagger returns.
+                </p>
+            </div>
+
+            <div class="md:col-span-2">
+                <div class="glass-card p-6">
+                    <h4 class="text-lg font-bold text-white mb-2">Projected Wealth Growth (3 Years)</h4>
+                    <p class="text-sm text-gray-400 mb-4">Comparing this Aggressive Protocol (30%) vs. Traditional
+                        Mutual Funds (12%).</p>
+                    <div class="chart-container">
+                        <div id="projectionChart" style="width:100%; height:100%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: THE SAFETY NET & EXECUTION -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+            <!-- Venture Debt -->
+            <div class="glass-card p-8 bg-gradient-to-br from-slate-800 to-slate-900">
+                <h3 class="text-xl font-bold text-yellow-400 mb-4">Engine 3: Venture Debt (20%)</h3>
+                <p class="text-gray-300 text-sm mb-4">
+                    <strong>Allocation: ₹3 Lakhs</strong><br>
+                    To stabilize the portfolio, invest in <strong>Senior Secured Bonds</strong> of high-growth startups
+                    via platforms like Grip Invest or Jiraaf.
+                </p>
+                <div class="grid grid-cols-2 gap-4 mt-6">
+                    <div class="bg-black/40 p-3 rounded text-center">
+                        <span class="block text-2xl font-bold text-white">16%</span>
+                        <span class="text-xs text-gray-500">Fixed Yield</span>
+                    </div>
+                    <div class="bg-black/40 p-3 rounded text-center">
+                        <span class="block text-2xl font-bold text-white">Monthly</span>
+                        <span class="text-xs text-gray-500">Payout Freq</span>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-500 mt-4 italic">Risk: Default risk exists, but is mitigated by
+                    diversification across 3-4 deals.</p>
+            </div>
+
+            <!-- Execution Steps -->
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-6">Execution from Behala</h3>
+                <div class="space-y-0">
+                    <!-- Step 1 -->
+                    <div class="flex">
+                        <div class="flex flex-col items-center mr-4">
+                            <div class="timeline-dot"></div>
+                            <div class="step-connector"></div>
+                        </div>
+                        <div class="pb-6">
+                            <h4 class="text-lg font-semibold text-white">Step 1: The Digital Setup</h4>
+                            <p class="text-sm text-gray-400">Open accounts with a Discount Broker (Zerodha/Groww) for
+                                IPOs and a specialized Unlisted Equity Dealer (e.g., UnlistedZone, Precize).</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="flex">
+                        <div class="flex flex-col items-center mr-4">
+                            <div class="timeline-dot bg-fuchsia-500 shadow-fuchsia-500/50"></div>
+                            <div class="step-connector"></div>
+                        </div>
+                        <div class="pb-6">
+                            <h4 class="text-lg font-semibold text-white">Step 2: Deploy the "Sniper" Capital (7.5L)</h4>
+                            <p class="text-sm text-gray-400">Keep ₹7.5L liquid. Watch for SME IPOs with Subscription
+                                >100x. Apply in HNI category. Sell on listing.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="flex">
+                        <div class="flex flex-col items-center mr-4">
+                            <div class="timeline-dot bg-indigo-500 shadow-indigo-500/50"></div>
+                        </div>
+                        <div class="pb-6">
+                            <h4 class="text-lg font-semibold text-white">Step 3: Asset Acquisition (7.5L)</h4>
+                            <p class="text-sm text-gray-400">Deploy remaining funds: ₹4.5L into Pre-IPO shares (e.g.,
+                                NSE) and ₹3L into Venture Debt deals. This requires zero ongoing effort.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 border-t border-gray-800 py-8 text-center">
+        <p class="text-gray-500 text-sm">
+            <strong>Disclaimer:</strong> This model is "Aggressive" and carries market risk. Past performance of SME
+            IPOs does not guarantee future results.
+        </p>
+        <p class="text-gray-600 text-xs mt-2">Generated by Canvas Infographics • No SVG • No Mermaid</p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- DATA PROCESSING & WRAPPING LOGIC ---
+        function wrapLabel(label, maxLen = 16) {
+            if (label.length <= maxLen) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if ((currentLine + " " + words[i]).length <= maxLen) {
+                    currentLine += " " + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const commonTooltipOptions = {
+            callbacks: {
+                title: function (tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        // --- CHART 1: ASSET ALLOCATION (Doughnut) ---
+        const ctxAllocation = document.getElementById('allocationChart').getContext('2d');
+        const allocationLabels = ['SME IPO HNI Rotation', 'Pre-IPO Unlisted Equity', 'Venture Debt / Bonds'];
+        const processedAllocationLabels = allocationLabels.map(l => wrapLabel(l));
+
+        new Chart(ctxAllocation, {
+            type: 'doughnut',
+            data: {
+                labels: processedAllocationLabels,
+                datasets: [{
+                    data: [7.5, 4.5, 3.0], // in Lakhs
+                    backgroundColor: ['#d946ef', '#4f46e5', '#facc15'],
+                    borderWidth: 0,
+                    hoverOffset: 15
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#cbd5e1', font: { family: 'Space Grotesk' } }
+                    },
+                    tooltip: commonTooltipOptions
+                },
+                cutout: '60%'
+            }
+        });
+
+        // --- CHART 2: SME IPO GAINS (Bar) ---
+        const ctxSME = document.getElementById('smeGainsChart').getContext('2d');
+        const smeLabels = ['Basilic Fly Studio', 'Remus Pharma', 'Siyaram Recycling', 'Australian Premium']; // Examples
+        const processedSmeLabels = smeLabels.map(l => wrapLabel(l));
+
+        new Chart(ctxSME, {
+            type: 'bar',
+            data: {
+                labels: processedSmeLabels,
+                datasets: [{
+                    label: 'Listing Gain (%)',
+                    data: [179, 110, 95, 80], // Approximate real examples
+                    backgroundColor: '#4f46e5',
+                    borderRadius: 6,
+                    barPercentage: 0.6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: commonTooltipOptions
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        ticks: { color: '#94a3b8' }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#94a3b8', font: { size: 11 } }
+                    }
+                }
+            }
+        });
+
+        // --- CHART 3: WEALTH PROJECTION (Plotly Line - Canvas/WebGL) ---
+        // Plotly uses its own container div, not a canvas element directly
+        const years = ['Start', 'Year 1', 'Year 2', 'Year 3'];
+
+        // 15L at 30% CAGR
+        const aggressiveData = [15, 19.5, 25.35, 32.95];
+        // 15L at 12% CAGR (Mutual Funds)
+        const standardData = [15, 16.8, 18.8, 21.0];
+
+        const trace1 = {
+            x: years,
+            y: aggressiveData,
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'This Strategy (30%)',
+            line: { color: '#facc15', width: 4 },
+            marker: { size: 8 }
+        };
+
+        const trace2 = {
+            x: years,
+            y: standardData,
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Mutual Funds (12%)',
+            line: { color: '#4b5563', width: 2, dash: 'dot' },
+            marker: { size: 6 }
+        };
+
+        const layout = {
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            font: { family: 'Space Grotesk', color: '#f1f5f9' },
+            margin: { t: 20, l: 40, r: 20, b: 40 },
+            showlegend: true,
+            legend: { x: 0, y: 1.2, orientation: 'h' },
+            xaxis: { showgrid: false, color: '#94a3b8' },
+            yaxis: {
+                showgrid: true,
+                gridcolor: 'rgba(255,255,255,0.1)',
+                color: '#94a3b8',
+                title: 'Corpus Value (₹ Lakhs)'
+            }
+        };
+
+        Plotly.newPlot('projectionChart', [trace1, trace2], layout, { displayModeBar: false, responsive: true });
+
+    </script>
+</body>
+
+</html>
