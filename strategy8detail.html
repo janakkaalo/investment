@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Asset Re-Engineering: The Behala Garage Project</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Custom Styles for Infographic Feel */
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0f172a;
+            /* Slate 900 */
+            color: #e2e8f0;
+            /* Slate 200 */
+        }
+
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            /* Slate 800 with opacity */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .highlight-text {
+            color: #38bdf8;
+            /* Sky 400 */
+            font-weight: 700;
+        }
+
+        .accent-orange {
+            color: #fb923c;
+            /* Orange 400 */
+        }
+
+        .accent-green {
+            color: #34d399;
+            /* Emerald 400 */
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        /* Unicode Icon Styling */
+        .icon-lg {
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .step-connector {
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            width: 2px;
+            height: 3rem;
+            background-color: #38bdf8;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .chart-container {
+                height: 300px;
+            }
+        }
+    </style>
+    <!-- 
+        Palette Used: "Strategic Blue & Industrial Orange"
+        Primary Background: #0f172a (Dark Slate)
+        Card Background: #1e293b (Slate 800)
+        Text: #e2e8f0 (Slate 200)
+        Accent 1 (Tech/Logic): #38bdf8 (Sky Blue)
+        Accent 2 (Action/Alert): #fb923c (Orange)
+        Accent 3 (Money/Success): #34d399 (Emerald)
+    -->
+</head>
+
+<body class="antialiased overflow-x-hidden">
+
+    <!-- HERO SECTION -->
+    <header
+        class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative bg-[url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center bg-no-repeat bg-blend-overlay bg-slate-900/90">
+        <div class="glass-panel p-8 md:p-12 rounded-3xl max-w-4xl mx-auto animate-fade-in-up">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-white">
+                Strategic Asset <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Re-Engineering</span>
+            </h1>
+            <h2 class="text-xl md:text-2xl text-slate-300 mb-8 font-light">
+                Micro-Commercialization of Non-Vehicular Infrastructure in <span class="highlight-text">Behala-Sakuntala
+                    Park</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+                    <span class="icon-lg">📍</span>
+                    <h3 class="font-bold text-white">The Asset</h3>
+                    <p class="text-sm text-slate-400">Ground Floor Garage, Guarded Entry. <br><span
+                            class="text-red-400">Problem:</span> No Car Access.</p>
+                </div>
+                <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+                    <span class="icon-lg">💡</span>
+                    <h3 class="font-bold text-white">The Thesis</h3>
+                    <p class="text-sm text-slate-400">"Guarded" = Strategic Filter. Ideal for High-Value Inventory, not
+                        Parking.</p>
+                </div>
+                <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+                    <span class="icon-lg">🚀</span>
+                    <h3 class="font-bold text-white">The Goal</h3>
+                    <p class="text-sm text-slate-400">Transform from <span class="italic">Rentier</span> to <span
+                            class="highlight-text">Infrastructure Provider</span>.</p>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 animate-bounce text-slate-400">
+            <p>Scroll to Unlock Blueprints</p>
+            <span class="text-2xl">⬇</span>
+        </div>
+    </header>
+
+    <!-- CONTEXT SECTION: The Opportunity -->
+    <section class="py-16 md:py-24 px-4 bg-slate-900">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title text-center">The Behala-Sakuntala Paradox</h2>
+            <p class="text-lg text-slate-300 text-center max-w-3xl mx-auto mb-12">
+                Sakuntala Park is a <strong>"Consumption Sink"</strong>. Thousands of households demand services, but
+                commercial space is scarce. Your garage bridges this gap.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="glass-panel p-6 rounded-2xl">
+                    <h3 class="text-2xl font-bold text-white mb-4">Why "Guarded" is Good</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-3xl mr-3">🛡️</span>
+                            <div>
+                                <strong class="text-white">Security Asset:</strong>
+                                <p class="text-slate-400 text-sm">Vehicular restriction prevents theft and creates a
+                                    secure perimeter for high-value stock.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-3xl mr-3">🛵</span>
+                            <div>
+                                <strong class="text-white">Logistics Optimized:</strong>
+                                <p class="text-slate-400 text-sm">Perfect for Bikes, Totos, and Walkers—the lifeblood of
+                                    Quick Commerce.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-3xl mr-3">🔌</span>
+                            <div>
+                                <strong class="text-white">Tech-Ready Shell:</strong>
+                                <p class="text-slate-400 text-sm">A concrete box ready for power upgrades, unlike flimsy
+                                    shop counters.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CHART: Demographics/Demand (Conceptual) -->
+                <div class="glass-panel p-6 rounded-2xl">
+                    <h4 class="text-center font-bold text-slate-300 mb-2">The Value Gap: Commercial vs. Residential</h4>
+                    <div class="chart-container">
+                        <canvas id="valueGapChart"></canvas>
+                    </div>
+                    <p class="text-xs text-center text-slate-500 mt-2">Standard Residential Yield vs. Engineered
+                        Commercial Yield</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLUEPRINT 1: The Logistics Node -->
+    <section class="py-16 px-4 bg-slate-800 border-t border-slate-700">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex items-center mb-8">
+                <span class="text-5xl mr-4">📦</span>
+                <div>
+                    <h2 class="text-3xl font-bold text-white">Blueprint I: The Micro-Warehouse</h2>
+                    <span class="bg-blue-600 text-white text-xs px-2 py-1 rounded">Recommended Phase 1</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Concept -->
+                <div class="glass-panel p-6 rounded-2xl lg:col-span-2">
+                    <h3 class="text-xl font-bold text-sky-400 mb-4">The "Dark Store" Model</h3>
+                    <p class="text-slate-300 mb-6">
+                        Convert the garage into a <strong>Spoke Fulfillment Center</strong> for Quick Commerce
+                        (Blinkit/Zepto) or an <strong>Amazon "I Have Space"</strong> hub.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-slate-900 p-4 rounded-lg border border-slate-700">
+                            <h4 class="font-bold text-white border-b border-slate-700 pb-2 mb-2">Why It Works</h4>
+                            <ul class="text-sm text-slate-400 space-y-2">
+                                <li>• No customer parking needed.</li>
+                                <li>• "Guarded" status = Inventory Safety.</li>
+                                <li>• Low operational effort (Fixed Rental).</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-lg border border-slate-700">
+                            <h4 class="font-bold text-white border-b border-slate-700 pb-2 mb-2">Financials</h4>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-slate-400 text-sm">Est. Rent:</span>
+                                <span class="text-green-400 font-bold">₹10k - ₹15k / mo</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400 text-sm">ROI (Year 1):</span>
+                                <span class="text-green-400 font-bold">~400%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CapEx Breakdown Chart -->
+                <div class="glass-panel p-6 rounded-2xl flex flex-col justify-center">
+                    <h4 class="text-center font-bold text-slate-300 mb-4">Required Upgrade Costs (CapEx)</h4>
+                    <div class="chart-container" style="height: 250px;">
+                        <canvas id="logisticsCapexChart"></canvas>
+                    </div>
+                    <p class="text-xs text-center text-slate-500 mt-4">Total Est. Cost: ₹30,000 - ₹40,000</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLUEPRINT 2: The Cloud Kitchen -->
+    <section class="py-16 px-4 bg-slate-900 border-t border-slate-700">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex items-center mb-8">
+                <span class="text-5xl mr-4">🍳</span>
+                <div>
+                    <h2 class="text-3xl font-bold text-white">Blueprint II: The Culinary Node</h2>
+                    <span class="bg-orange-600 text-white text-xs px-2 py-1 rounded">High Cashflow Strategy</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Text Content -->
+                <div class="space-y-6">
+                    <p class="text-lg text-slate-300">
+                        Sakuntala Park craves premium food but lacks high-street space. You provide the
+                        <strong>"Compliant Shell"</strong> for brands like Biryani chains or bakeries.
+                    </p>
+
+                    <div class="bg-slate-800 p-6 rounded-xl border-l-4 border-orange-500">
+                        <h3 class="font-bold text-white mb-2">⚠️ The Infrastructure Barrier</h3>
+                        <p class="text-sm text-slate-400 mb-4">You must upgrade from Residential to Commercial specs to
+                            attract tenants.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <span class="text-orange-400 mr-2">⚡</span>
+                                <span class="text-slate-300 text-sm"><strong>Power:</strong> Upgrade to 10KW-15KW
+                                    (3-Phase) for Ovens.</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-orange-400 mr-2">💧</span>
+                                <span class="text-slate-300 text-sm"><strong>Drainage:</strong> Grease Trap (FOG)
+                                    installation is mandatory.</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-orange-400 mr-2">💨</span>
+                                <span class="text-slate-300 text-sm"><strong>Exhaust:</strong> High-static fans vented
+                                    to roof/filtered.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ROI Visual -->
+                <div class="glass-panel p-6 rounded-2xl">
+                    <h4 class="text-center font-bold text-slate-300 mb-4">Cloud Kitchen Economics</h4>
+                    <div class="chart-container">
+                        <canvas id="kitchenEconomicsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLUEPRINT 3: The Energy Node (EV) -->
+    <section class="py-16 px-4 bg-slate-800 border-t border-slate-700">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex items-center mb-8">
+                <span class="text-5xl mr-4">🔋</span>
+                <div>
+                    <h2 class="text-3xl font-bold text-white">Blueprint III: EV Energy Station</h2>
+                    <span class="bg-emerald-600 text-white text-xs px-2 py-1 rounded">Strategic Synergy</span>
+                </div>
+            </div>
+
+            <div class="glass-panel p-8 rounded-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-10 text-9xl">⚡</div>
+
+                <h3 class="text-2xl font-bold text-emerald-400 mb-4">The "Energy ATM" Concept</h3>
+                <p class="text-slate-300 mb-6 max-w-3xl">
+                    Behala runs on Totos (E-Rickshaws). They need 2-minute battery swaps, not 4-hour charges. Your
+                    garage becomes a <strong>Swap Station</strong> for Zypp/Yulu.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-900/80 p-6 rounded-xl text-center">
+                        <div class="text-4xl mb-2">🤖</div>
+                        <h4 class="font-bold text-white">Automated</h4>
+                        <p class="text-xs text-slate-400 mt-2">Driver scans QR, locker opens. Zero staff needed.</p>
+                    </div>
+                    <div class="bg-slate-900/80 p-6 rounded-xl text-center">
+                        <div class="text-4xl mb-2">🏗️</div>
+                        <h4 class="font-bold text-white">Synergy</h4>
+                        <p class="text-xs text-slate-400 mt-2">Shares power infrastructure with your 3rd Floor Server
+                            Farm.</p>
+                    </div>
+                    <div class="bg-slate-900/80 p-6 rounded-xl text-center">
+                        <div class="text-4xl mb-2">📈</div>
+                        <h4 class="font-bold text-white">Returns</h4>
+                        <p class="text-xs text-slate-400 mt-2">~200% ROI. Passive income via "Host Model".</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECURITY & OPS -->
+    <section class="py-16 px-4 bg-red-900/20 border-t border-red-900/50">
+        <div class="max-w-5xl mx-auto text-center">
+            <span class="text-5xl">🔐</span>
+            <h2 class="text-3xl font-bold text-white mt-4 mb-2">The "Glass Door" Protocol</h2>
+            <p class="text-red-300 font-mono mb-8">CRITICAL SECURITY REQUIREMENT</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                <div class="bg-slate-900 p-6 rounded-xl border border-red-800">
+                    <h3 class="font-bold text-white mb-2">1. Digital Airlock</h3>
+                    <p class="text-sm text-slate-400 mb-4">
+                        Your home network must be invisible to the garage.
+                    </p>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li>✅ <strong>VLAN Segmentation:</strong> Garage devices on Guest Network only.</li>
+                        <li>✅ <strong>No Shared Wifi:</strong> Commercial tenants get their own line.</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-900 p-6 rounded-xl border border-red-800">
+                    <h3 class="font-bold text-white mb-2">2. Credential Sovereignty</h3>
+                    <p class="text-sm text-slate-400 mb-4">
+                        Mitigate the "modi123..." vulnerability.
+                    </p>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li>✅ <strong>New Identity:</strong> Fresh Gmail for business ops.</li>
+                        <li>✅ <strong>Hardware 2FA:</strong> YubiKey for all financial logins.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINANCIAL SUMMARY -->
+    <section class="py-16 px-4 bg-slate-900 border-t border-slate-700">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title text-center">Comparative ROI Matrix</h2>
+            <p class="text-center text-slate-400 mb-12">Comparing the projected performance of all 5 Strategic
+                Blueprints.</p>
+
+            <div class="glass-panel p-6 rounded-2xl">
+                <div class="chart-container" style="max-width: 900px; height: 400px;">
+                    <canvas id="roiComparisonChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Conclusion/Roadmap -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold text-white mb-8 text-center">The Execution Roadmap</h3>
+                <div class="relative max-w-4xl mx-auto">
+                    <!-- Line -->
+                    <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-slate-700 md:-translate-x-1/2"></div>
+
+                    <!-- Phase 1 -->
+                    <div class="relative flex flex-col md:flex-row items-center mb-12">
+                        <div class="md:w-1/2 p-4 text-right md:pr-12">
+                            <h4 class="text-xl font-bold text-blue-400">Phase 1: Immediate</h4>
+                            <p class="text-slate-300 text-sm">Deploy <strong>Micro-Warehouse</strong>
+                                (Logistics).<br>Secure Digital Perimeter.<br>Low Cost, Instant Cashflow.</p>
+                        </div>
+                        <div
+                            class="absolute left-4 md:left-1/2 -translate-x-1/2 w-8 h-8 bg-blue-500 rounded-full border-4 border-slate-900 z-10">
+                        </div>
+                        <div class="md:w-1/2 p-4 md:pl-12 hidden md:block"></div>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="relative flex flex-col md:flex-row items-center mb-12">
+                        <div class="md:w-1/2 p-4 hidden md:block"></div>
+                        <div
+                            class="absolute left-4 md:left-1/2 -translate-x-1/2 w-8 h-8 bg-orange-500 rounded-full border-4 border-slate-900 z-10">
+                        </div>
+                        <div class="md:w-1/2 p-4 md:pl-12 text-left">
+                            <h4 class="text-xl font-bold text-orange-400">Phase 2: Expansion</h4>
+                            <p class="text-slate-300 text-sm">Reinvest profits into <strong>3-Phase
+                                    Power</strong>.<br>Upgrade Flooring & Drainage.<br>Prepare for High-Yield tenants.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 p-4 text-right md:pr-12">
+                            <h4 class="text-xl font-bold text-emerald-400">Phase 3: Optimization</h4>
+                            <p class="text-slate-300 text-sm">Transition to <strong>EV Swap Station</strong> or
+                                <strong>Cloud Kitchen</strong>.<br>Synergize with 3rd Floor Server Farm.<br>Maximize
+                                ROI.</p>
+                        </div>
+                        <div
+                            class="absolute left-4 md:left-1/2 -translate-x-1/2 w-8 h-8 bg-emerald-500 rounded-full border-4 border-slate-900 z-10">
+                        </div>
+                        <div class="md:w-1/2 p-4 md:pl-12 hidden md:block"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 py-8 text-center text-slate-600 text-sm border-t border-slate-800">
+        <p>Strategic Asset Re-Engineering Report • Behala-Sakuntala Corridor • FY 2025-26</p>
+    </footer>
+
+    <!-- SCRIPT FOR CHARTS -->
+    <script>
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.font.family = "'Segoe UI', sans-serif";
+
+        // Helper for wrapping labels
+        function wrapLabel(label) {
+            if (Array.isArray(label)) return label;
+            if (label.length > 16) {
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = words[0];
+                for (let i = 1; i < words.length; i++) {
+                    if ((currentLine + " " + words[i]).length < 16) {
+                        currentLine += " " + words[i];
+                    } else {
+                        lines.push(currentLine);
+                        currentLine = words[i];
+                    }
+                }
+                lines.push(currentLine);
+                return lines;
+            }
+            return label;
+        }
+
+        const tooltipConfig = {
+            callbacks: {
+                title: function (tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        // CHART 1: Value Gap
+        new Chart(document.getElementById('valueGapChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Residential Storage', 'Micro-Logistics Hub', 'Cloud Kitchen Node'],
+                datasets: [{
+                    label: 'Yield per Sq. Ft. (₹)',
+                    data: [25, 60, 120],
+                    backgroundColor: ['#64748b', '#38bdf8', '#fb923c'],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: tooltipConfig
+                },
+                scales: {
+                    y: { beginAtZero: true, grid: { color: '#334155' } },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        // CHART 2: Logistics CapEx
+        const logisticsCtx = document.getElementById('logisticsCapexChart').getContext('2d');
+        new Chart(logisticsCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Epoxy Flooring', 'Heavy Duty Racks', 'Smart Shutter', 'Dehumidifier', 'CCTV/Router'],
+                datasets: [{
+                    data: [18000, 30000, 20000, 12000, 6000],
+                    backgroundColor: ['#3b82f6', '#6366f1', '#8b5cf6', '#ec4899', '#14b8a6'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'right', labels: { boxWidth: 10 } },
+                    tooltip: {
+                        ...tooltipConfig,
+                        callbacks: {
+                            label: function (context) {
+                                return ' ₹' + context.raw.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // CHART 3: Cloud Kitchen Economics
+        new Chart(document.getElementById('kitchenEconomicsChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Base Rent', 'Utility Markup', 'Revenue Share (Est)'],
+                datasets: [{
+                    label: 'Monthly Revenue Components',
+                    data: [18000, 5000, 4000],
+                    backgroundColor: ['#fb923c', '#fcd34d', '#34d399'],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: 'Potential Monthly Inflow: ~₹27,000' },
+                    tooltip: tooltipConfig
+                },
+                scales: {
+                    y: { beginAtZero: true, grid: { color: '#334155' } },
+                    x: { stacked: true, grid: { display: false } }
+                }
+            }
+        });
+
+        // CHART 4: ROI Comparison Matrix
+        const roiLabels = ['Passive Storage', 'Cloud Kitchen', 'EV Swap Station', 'Micro-Warehouse', 'Automated Vending'].map(wrapLabel);
+
+        new Chart(document.getElementById('roiComparisonChart'), {
+            type: 'bar',
+            data: {
+                labels: roiLabels,
+                datasets: [{
+                    label: 'Annualized ROI (%)',
+                    data: [5, 125, 215, 400, 50],
+                    backgroundColor: [
+                        '#64748b', // Passive - Grey
+                        '#fb923c', // Kitchen - Orange
+                        '#34d399', // EV - Green
+                        '#38bdf8', // Warehouse - Blue (Winning)
+                        '#a78bfa'  // Vending - Purple
+                    ],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: tooltipConfig
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#334155' },
+                        title: { display: true, text: 'Return on Investment (%)' }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -12,6 +12,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 
     <!-- Font Awesome Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -33,6 +34,7 @@
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                        display: ['Orbitron', 'sans-serif']
                     }
                 }
             }
@@ -53,18 +55,6 @@
             }
         }
 
-        @keyframes pulse-glow {
-
-            0%,
-            100% {
-                box-shadow: 0 0 20px rgba(98, 0, 234, 0.3);
-            }
-
-            50% {
-                box-shadow: 0 0 40px rgba(98, 0, 234, 0.6);
-            }
-        }
-
         @keyframes gradient-shift {
             0% {
                 background-position: 0% 50%;
@@ -76,6 +66,18 @@
 
             100% {
                 background-position: 0% 50%;
+            }
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px currentColor;
+            }
+
+            50% {
+                box-shadow: 0 0 40px currentColor;
             }
         }
 
@@ -94,15 +96,7 @@
         }
 
         .card-hover:hover {
-            transform: translateY(-12px) scale(1.02);
-        }
-
-        .card-hover:hover .card-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .card-icon {
-            transition: all 0.4s ease;
+            transform: translateY(-8px) scale(1.01);
         }
 
         /* Glass Effect */
@@ -120,29 +114,67 @@
             background-clip: text;
         }
 
-        /* Particle Background */
-        .particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+        /* Risk Badge Colors */
+        .risk-safe {
+            background: linear-gradient(135deg, #10B981, #059669);
         }
 
-        .particle {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+        .risk-moderate {
+            background: linear-gradient(135deg, #3B82F6, #2563EB);
+        }
+
+        .risk-aggressive {
+            background: linear-gradient(135deg, #F59E0B, #D97706);
+        }
+
+        .risk-very-aggressive {
+            background: linear-gradient(135deg, #EF4444, #DC2626);
+        }
+
+        .risk-hyper {
+            background: linear-gradient(135deg, #EC4899, #BE185D);
+        }
+
+        /* Section Headers */
+        .section-safe {
+            border-color: #10B981;
+        }
+
+        .section-moderate {
+            border-color: #3B82F6;
+        }
+
+        .section-aggressive {
+            border-color: #F59E0B;
+        }
+
+        .section-very-aggressive {
+            border-color: #EF4444;
+        }
+
+        .section-hyper {
+            border-color: #EC4899;
+        }
+
+        /* Neon Effects for Aggressive Cards */
+        .neon-green {
+            text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
+        }
+
+        .neon-cyan {
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+        }
+
+        .neon-pink {
+            text-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
         }
     </style>
 </head>
 
 <body class="bg-brand-light text-brand-dark font-sans antialiased">
 
-    <!-- Hero Section with Animated Background -->
+    <!-- Hero Section -->
     <header class="relative gradient-bg min-h-screen flex items-center justify-center overflow-hidden">
-        <!-- Decorative Elements -->
         <div class="absolute inset-0 overflow-hidden">
             <div class="absolute top-20 left-10 w-72 h-72 bg-white/5 rounded-full blur-3xl"></div>
             <div class="absolute bottom-20 right-10 w-96 h-96 bg-brand-teal/10 rounded-full blur-3xl"></div>
@@ -152,7 +184,6 @@
         </div>
 
         <div class="relative z-10 container mx-auto px-4 text-center">
-            <!-- Logo & Brand -->
             <div class="mb-8 float-animation">
                 <div
                     class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
@@ -166,18 +197,18 @@
             </h1>
 
             <p class="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-8 leading-relaxed">
-                Strategic Investment Portfolio designed for <strong class="text-brand-gold">20%+ Annual Returns</strong>
-                with calculated risk management
+                <strong class="text-brand-gold">9 Strategic Investment Models</strong> from Safe to Hyper-Aggressive
+                <br>Choose your risk appetite and wealth-building path
             </p>
 
             <div class="flex flex-wrap justify-center gap-4 mb-12">
                 <div class="glass rounded-full px-6 py-3 text-white">
                     <i class="fa-solid fa-indian-rupee-sign mr-2"></i>
-                    <span class="font-semibold">₹4.5 Lakhs Capital</span>
+                    <span class="font-semibold">₹4.5L - ₹15L Capital</span>
                 </div>
                 <div class="glass rounded-full px-6 py-3 text-white">
                     <i class="fa-solid fa-bullseye mr-2"></i>
-                    <span class="font-semibold">Target: 20%+ ROI</span>
+                    <span class="font-semibold">20% - 50%+ ROI</span>
                 </div>
                 <div class="glass rounded-full px-6 py-3 text-white">
                     <i class="fa-solid fa-calendar-check mr-2"></i>
@@ -185,7 +216,6 @@
                 </div>
             </div>
 
-            <!-- Scroll Indicator -->
             <a href="#strategies" class="inline-block animate-bounce">
                 <div class="w-10 h-16 border-2 border-white/30 rounded-full flex items-start justify-center p-2">
                     <div class="w-2 h-3 bg-white rounded-full"></div>
@@ -194,780 +224,737 @@
         </div>
     </header>
 
-    <!-- Strategies Section -->
-    <section id="strategies" class="py-20 bg-gradient-to-b from-slate-50 to-white">
+    <!-- Risk Level Legend -->
+    <section class="py-8 bg-white border-b">
         <div class="container mx-auto px-4">
-            <!-- Section Header -->
-            <div class="text-center mb-16">
-                <span
-                    class="inline-block bg-brand-purple/10 text-brand-purple px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
-                    Investment Strategies
-                </span>
-                <h2 class="text-4xl md:text-5xl font-bold text-brand-dark mb-6">
-                    Choose Your <span class="gradient-text">Strategy</span>
-                </h2>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                    Seven carefully crafted investment approaches with comprehensive analysis and detailed
-                    implementation
-                    guides
-                </p>
-            </div>
-
-            <!-- Strategy Cards Grid -->
-            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-
-                <!-- Strategy 1 Card -->
-                <div class="group">
-                    <div class="card-hover bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
-                        <!-- Card Header -->
-                        <div class="bg-gradient-to-r from-brand-purple to-brand-indigo p-8 relative overflow-hidden">
-                            <div
-                                class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2">
-                            </div>
-                            <div
-                                class="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2">
-                            </div>
-
-                            <div class="relative z-10">
-                                <div
-                                    class="card-icon inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm mb-4">
-                                    <i class="fa-solid fa-rocket text-3xl text-white"></i>
-                                </div>
-                                <span
-                                    class="inline-block bg-brand-gold text-brand-dark px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-                                    Energetic & Playful
-                                </span>
-                                <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Strategy 1</h3>
-                                <p class="text-white/80">4.5 Lakhs to 20% ROI</p>
-                            </div>
-                        </div>
-
-                        <!-- Card Body -->
-                        <div class="p-8">
-                            <ul class="space-y-4 mb-8">
-                                <li class="flex items-start">
-                                    <div
-                                        class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-teal/20 flex items-center justify-center mt-0.5">
-                                        <i class="fa-solid fa-check text-brand-teal text-xs"></i>
-                                    </div>
-                                    <span class="ml-3 text-gray-700">High Contrast Professional Approach</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <div
-                                        class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-teal/20 flex items-center justify-center mt-0.5">
-                                        <i class="fa-solid fa-check text-brand-teal text-xs"></i>
-                                    </div>
-                                    <span class="ml-3 text-gray-700">Complete Portfolio Breakdown</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <div
-                                        class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-teal/20 flex items-center justify-center mt-0.5">
-                                        <i class="fa-solid fa-check text-brand-teal text-xs"></i>
-                                    </div>
-                                    <span class="ml-3 text-gray-700">Interactive Charts & Projections</span>
-                                </li>
-                            </ul>
-
-                            <!-- Action Buttons -->
-                            <div class="space-y-3">
-                                <a href="strategy1.html"
-                                    class="block w-full bg-gradient-to-r from-brand-purple to-brand-indigo text-white text-center py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-brand-purple/30 transition-all duration-300">
-                                    <i class="fa-solid fa-eye mr-2"></i>View Overview
-                                </a>
-                                <a href="strategy1detail.html"
-                                    class="block w-full bg-gray-100 text-gray-700 text-center py-4 rounded-xl font-semibold hover:bg-gray-200 transition-all duration-300">
-                                    <i class="fa-solid fa-file-lines mr-2"></i>View Detailed Guide
-                                </a>
-                                <!-- PDF Actions -->
-                                <div class="flex gap-2 pt-2 border-t border-gray-100">
-                                    <a href="viewer.html?file=Strategy1.pdf"
-                                        class="flex-1 flex items-center justify-center bg-red-50 text-red-600 py-3 rounded-xl font-semibold hover:bg-red-100 transition-all duration-300">
-                                        <i class="fa-solid fa-file-pdf mr-2"></i>View PDF
-                                    </a>
-                                    <a href="docs/Strategy1.pdf" download
-                                        class="flex-1 flex items-center justify-center bg-brand-purple/10 text-brand-purple py-3 rounded-xl font-semibold hover:bg-brand-purple/20 transition-all duration-300">
-                                        <i class="fa-solid fa-download mr-2"></i>Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="flex flex-wrap justify-center gap-4 text-sm font-semibold">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-full bg-emerald-500"></span>
+                    <span class="text-gray-600">Safe (20-25% ROI)</span>
                 </div>
-
-                <!-- Strategy 2 Card -->
-                <div class="group">
-                    <div class="card-hover bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
-                        <!-- Card Header -->
-                        <div class="bg-gradient-to-r from-brand-emerald to-brand-teal p-8 relative overflow-hidden">
-                            <div
-                                class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2">
-                            </div>
-                            <div
-                                class="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2">
-                            </div>
-
-                            <div class="relative z-10">
-                                <div
-                                    class="card-icon inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm mb-4">
-                                    <i class="fa-solid fa-scale-balanced text-3xl text-white"></i>
-                                </div>
-                                <span
-                                    class="inline-block bg-brand-amber text-brand-dark px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-                                    Balanced Aggressive
-                                </span>
-                                <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Strategy 2</h3>
-                                <p class="text-white/80">Hybrid Model - 21% Blended ROI</p>
-                            </div>
-                        </div>
-
-                        <!-- Card Body -->
-                        <div class="p-8">
-                            <ul class="space-y-4 mb-8">
-                                <li class="flex items-start">
-                                    <div
-                                        class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-emerald/20 flex items-center justify-center mt-0.5">
-                                        <i class="fa-solid fa-check text-brand-emerald text-xs"></i>
-                                    </div>
-                                    <span class="ml-3 text-gray-700">Minimal Operational Effort</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <div
-                                        class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-emerald/20 flex items-center justify-center mt-0.5">
-                                        <i class="fa-solid fa-check text-brand-emerald text-xs"></i>
-                                    </div>
-                                    <span class="ml-3 text-gray-700">Capital Allocation Breakdown</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <div
-                                        class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-emerald/20 flex items-center justify-center mt-0.5">
-                                        <i class="fa-solid fa-check text-brand-emerald text-xs"></i>
-                                    </div>
-                                    <span class="ml-3 text-gray-700">EV + Funds + Invoice Discounting</span>
-                                </li>
-                            </ul>
-
-                            <!-- Action Buttons -->
-                            <div class="space-y-3">
-                                <a href="strategy2.html"
-                                    class="block w-full bg-gradient-to-r from-brand-emerald to-brand-teal text-white text-center py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-brand-emerald/30 transition-all duration-300">
-                                    <i class="fa-solid fa-eye mr-2"></i>View Overview
-                                </a>
-                                <a href="strategy2detail.html"
-                                    class="block w-full bg-gray-100 text-gray-700 text-center py-4 rounded-xl font-semibold hover:bg-gray-200 transition-all duration-300">
-                                    <i class="fa-solid fa-file-lines mr-2"></i>View Detailed Guide
-                                </a>
-                                <!-- PDF Actions -->
-                                <div class="flex gap-2 pt-2 border-t border-gray-100">
-                                    <a href="viewer.html?file=Strategy2.pdf"
-                                        class="flex-1 flex items-center justify-center bg-red-50 text-red-600 py-3 rounded-xl font-semibold hover:bg-red-100 transition-all duration-300">
-                                        <i class="fa-solid fa-file-pdf mr-2"></i>View PDF
-                                    </a>
-                                    <a href="docs/Strategy2.pdf" download
-                                        class="flex-1 flex items-center justify-center bg-brand-emerald/10 text-brand-emerald py-3 rounded-xl font-semibold hover:bg-brand-emerald/20 transition-all duration-300">
-                                        <i class="fa-solid fa-download mr-2"></i>Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-full bg-blue-500"></span>
+                    <span class="text-gray-600">Moderate (20-25% ROI)</span>
                 </div>
-
-                <!-- Strategy 3 Card - Yield Shield -->
-                <div class="group">
-                    <div class="card-hover bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
-                        <!-- Card Header -->
-                        <div class="bg-gradient-to-r from-slate-800 to-slate-700 p-8 relative overflow-hidden">
-                            <div
-                                class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2">
-                            </div>
-                            <div
-                                class="absolute bottom-0 left-0 w-24 h-24 bg-blue-500/10 rounded-full translate-y-1/2 -translate-x-1/2">
-                            </div>
-
-                            <div class="relative z-10">
-                                <div
-                                    class="card-icon inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm mb-4">
-                                    <i class="fa-solid fa-shield-halved text-3xl text-white"></i>
-                                </div>
-                                <span
-                                    class="inline-block bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-                                    Yield Shield • ₹15 Lakhs
-                                </span>
-                                <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Strategy 3</h3>
-                                <p class="text-white/80">Passive Income Engine - ₹35k/month</p>
-                            </div>
-                        </div>
-
-                        <!-- Card Body -->
-                        <div class="p-8">
-                            <ul class="space-y-4 mb-8">
-                                <li class="flex items-start">
-                                    <div
-                                        class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mt-0.5">
-                                        <i class="fa-solid fa-check text-blue-500 text-xs"></i>
-                                    </div>
-                                    <span class="ml-3 text-gray-700">EV Fleet + ATM + Corporate Debt</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <div
-                                        class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mt-0.5">
-                                        <i class="fa-solid fa-check text-blue-500 text-xs"></i>
-                                    </div>
-                                    <span class="ml-3 text-gray-700">Maheshtala Location Focused</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <div
-                                        class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center mt-0.5">
-                                        <i class="fa-solid fa-check text-blue-500 text-xs"></i>
-                                    </div>
-                                    <span class="ml-3 text-gray-700">90-Day Execution Roadmap</span>
-                                </li>
-                            </ul>
-
-                            <!-- Action Buttons -->
-                            <div class="space-y-3">
-                                <a href="strategy3.html"
-                                    class="block w-full bg-gradient-to-r from-slate-800 to-slate-700 text-white text-center py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-slate-500/30 transition-all duration-300">
-                                    <i class="fa-solid fa-eye mr-2"></i>View Overview
-                                </a>
-                                <a href="strategy3detail.html"
-                                    class="block w-full bg-gray-100 text-gray-700 text-center py-4 rounded-xl font-semibold hover:bg-gray-200 transition-all duration-300">
-                                    <i class="fa-solid fa-file-lines mr-2"></i>View Detailed Guide
-                                </a>
-                                <!-- PDF Actions -->
-                                <div class="flex gap-2 pt-2 border-t border-gray-100">
-                                    <a href="viewer.html?file=Strategy3.pdf"
-                                        class="flex-1 flex items-center justify-center bg-red-50 text-red-600 py-3 rounded-xl font-semibold hover:bg-red-100 transition-all duration-300">
-                                        <i class="fa-solid fa-file-pdf mr-2"></i>View PDF
-                                    </a>
-                                    <a href="docs/Strategy3.pdf" download
-                                        class="flex-1 flex items-center justify-center bg-slate-100 text-slate-700 py-3 rounded-xl font-semibold hover:bg-slate-200 transition-all duration-300">
-                                        <i class="fa-solid fa-download mr-2"></i>Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-full bg-amber-500"></span>
+                    <span class="text-gray-600">Aggressive (30-35% ROI)</span>
                 </div>
-
-                <!-- Strategy 4 Card - Digital Capitalist / Appreciating Assets -->
-                <div class="group">
-                    <div class="card-hover bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
-                        <!-- Card Header -->
-                        <div class="bg-gradient-to-r from-blue-600 to-blue-500 p-8 relative overflow-hidden">
-                            <div
-                                class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2">
-                            </div>
-                            <div
-                                class="absolute bottom-0 left-0 w-24 h-24 bg-emerald-500/10 rounded-full translate-y-1/2 -translate-x-1/2">
-                            </div>
-
-                            <div class="relative z-10">
-                                <div
-                                    class="card-icon inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm mb-4">
-                                    <i class="fa-solid fa-arrow-trend-up text-3xl text-white"></i>
-                                </div>
-                                <span
-                                    class="inline-block bg-emerald-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-                                    Digital Capitalist • ₹15 Lakhs
-                                </span>
-                                <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Strategy 4</h3>
-                                <p class="text-white/80">Appreciating Assets - ₹25k/month</p>
-                            </div>
-                        </div>
-
-                        <!-- Card Body -->
-                        <div class="p-8">
-                            <ul class="space-y-4 mb-8">
-                                <li class="flex items-start">
-                                    <div
-                                        class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5">
-                                        <i class="fa-solid fa-check text-blue-600 text-xs"></i>
-                                    </div>
-                                    <span class="ml-3 text-gray-700">No Depreciating EV/ATM Assets</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <div
-                                        class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5">
-                                        <i class="fa-solid fa-check text-blue-600 text-xs"></i>
-                                    </div>
-                                    <span class="ml-3 text-gray-700">SWP + Invoice + Dark Store Model</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <div
-                                        class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5">
-                                        <i class="fa-solid fa-check text-blue-600 text-xs"></i>
-                                    </div>
-                                    <span class="ml-3 text-gray-700">Corpus Grows Over Time</span>
-                                </li>
-                            </ul>
-
-                            <!-- Action Buttons -->
-                            <div class="space-y-3">
-                                <a href="strategy4.html"
-                                    class="block w-full bg-gradient-to-r from-blue-600 to-blue-500 text-white text-center py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300">
-                                    <i class="fa-solid fa-eye mr-2"></i>View Overview
-                                </a>
-                                <a href="strategy4detail.html"
-                                    class="block w-full bg-gray-100 text-gray-700 text-center py-4 rounded-xl font-semibold hover:bg-gray-200 transition-all duration-300">
-                                    <i class="fa-solid fa-file-lines mr-2"></i>View Detailed Guide
-                                </a>
-                                <!-- PDF Actions -->
-                                <div class="flex gap-2 pt-2 border-t border-gray-100">
-                                    <a href="viewer.html?file=Strategy4.pdf"
-                                        class="flex-1 flex items-center justify-center bg-red-50 text-red-600 py-3 rounded-xl font-semibold hover:bg-red-100 transition-all duration-300">
-                                        <i class="fa-solid fa-file-pdf mr-2"></i>View PDF
-                                    </a>
-                                    <a href="docs/Strategy4.pdf" download
-                                        class="flex-1 flex items-center justify-center bg-blue-50 text-blue-600 py-3 rounded-xl font-semibold hover:bg-blue-100 transition-all duration-300">
-                                        <i class="fa-solid fa-download mr-2"></i>Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-full bg-red-500"></span>
+                    <span class="text-gray-600">Very Aggressive (35-46% ROI)</span>
                 </div>
-
-                <!-- Strategy 5 Card - Aggressive Tech-Infra / Pre-Public Arbitrage -->
-                <div class="group md:col-span-2">
-                    <div class="card-hover bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
-                        <!-- Card Header -->
-                        <div
-                            class="bg-gradient-to-r from-fuchsia-600 via-purple-600 to-indigo-600 p-8 relative overflow-hidden">
-                            <div
-                                class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2">
-                            </div>
-                            <div
-                                class="absolute bottom-0 left-0 w-24 h-24 bg-yellow-400/10 rounded-full translate-y-1/2 -translate-x-1/2">
-                            </div>
-                            <div class="absolute top-1/2 right-1/4 w-32 h-32 bg-fuchsia-400/10 rounded-full">
-                            </div>
-
-                            <div class="relative z-10">
-                                <div
-                                    class="card-icon inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm mb-4">
-                                    <i class="fa-solid fa-bolt text-3xl text-yellow-400"></i>
-                                </div>
-                                <span
-                                    class="inline-block bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-                                    <i class="fa-solid fa-fire mr-1"></i> Aggressive • ₹15 Lakhs • 30%+ Target
-                                </span>
-                                <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Strategy 5</h3>
-                                <p class="text-white/80">Pre-Public Arbitrage Protocol - High Voltage Returns</p>
-                            </div>
-                        </div>
-
-                        <!-- Card Body -->
-                        <div class="p-8">
-                            <div class="grid md:grid-cols-2 gap-8">
-                                <ul class="space-y-4">
-                                    <li class="flex items-start">
-                                        <div
-                                            class="flex-shrink-0 w-6 h-6 rounded-full bg-fuchsia-500/20 flex items-center justify-center mt-0.5">
-                                            <i class="fa-solid fa-check text-fuchsia-500 text-xs"></i>
-                                        </div>
-                                        <span class="ml-3 text-gray-700">SME IPO HNI Rotation Engine</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div
-                                            class="flex-shrink-0 w-6 h-6 rounded-full bg-fuchsia-500/20 flex items-center justify-center mt-0.5">
-                                            <i class="fa-solid fa-check text-fuchsia-500 text-xs"></i>
-                                        </div>
-                                        <span class="ml-3 text-gray-700">Pre-IPO & Unlisted Equity Plays</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div
-                                            class="flex-shrink-0 w-6 h-6 rounded-full bg-fuchsia-500/20 flex items-center justify-center mt-0.5">
-                                            <i class="fa-solid fa-check text-fuchsia-500 text-xs"></i>
-                                        </div>
-                                        <span class="ml-3 text-gray-700">Invoice Discounting (18% Fixed)</span>
-                                    </li>
-                                </ul>
-                                <ul class="space-y-4">
-                                    <li class="flex items-start">
-                                        <div
-                                            class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center mt-0.5">
-                                            <i class="fa-solid fa-check text-purple-500 text-xs"></i>
-                                        </div>
-                                        <span class="ml-3 text-gray-700">Zero Physical Assets / Zero Effort</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div
-                                            class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center mt-0.5">
-                                            <i class="fa-solid fa-check text-purple-500 text-xs"></i>
-                                        </div>
-                                        <span class="ml-3 text-gray-700">Capital Appreciation Focus</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div
-                                            class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center mt-0.5">
-                                            <i class="fa-solid fa-check text-purple-500 text-xs"></i>
-                                        </div>
-                                        <span class="ml-3 text-gray-700">Quarterly Compounding Model</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <!-- Action Buttons -->
-                            <div class="space-y-3 mt-8">
-                                <div class="grid md:grid-cols-2 gap-3">
-                                    <a href="strategy5.html"
-                                        class="block w-full bg-gradient-to-r from-fuchsia-600 to-purple-600 text-white text-center py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-fuchsia-500/30 transition-all duration-300">
-                                        <i class="fa-solid fa-eye mr-2"></i>View Overview
-                                    </a>
-                                    <a href="strategy5detail.html"
-                                        class="block w-full bg-gray-100 text-gray-700 text-center py-4 rounded-xl font-semibold hover:bg-gray-200 transition-all duration-300">
-                                        <i class="fa-solid fa-file-lines mr-2"></i>View Detailed Guide
-                                    </a>
-                                </div>
-                                <!-- PDF Actions -->
-                                <div class="flex gap-2 pt-2 border-t border-gray-100">
-                                    <a href="viewer.html?file=Strategy5.pdf"
-                                        class="flex-1 flex items-center justify-center bg-red-50 text-red-600 py-3 rounded-xl font-semibold hover:bg-red-100 transition-all duration-300">
-                                        <i class="fa-solid fa-file-pdf mr-2"></i>View PDF
-                                    </a>
-                                    <a href="docs/Strategy5.pdf" download
-                                        class="flex-1 flex items-center justify-center bg-fuchsia-50 text-fuchsia-600 py-3 rounded-xl font-semibold hover:bg-fuchsia-100 transition-all duration-300">
-                                        <i class="fa-solid fa-download mr-2"></i>Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-full bg-pink-500"></span>
+                    <span class="text-gray-600">Hyper-Aggressive (48%+ ROI)</span>
                 </div>
-
-                <!-- Strategy 6 Card - Aggressive Passive Income / Neuro-Logistic Protocol (Full Width) -->
-                <div class="group md:col-span-2">
-                    <div
-                        class="card-hover bg-slate-900 rounded-3xl shadow-xl overflow-hidden border border-cyan-500/30 relative">
-                        <!-- Neon Glow Effect -->
-                        <div
-                            class="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-transparent to-fuchsia-500/10 pointer-events-none">
-                        </div>
-
-                        <!-- Card Header -->
-                        <div
-                            class="bg-gradient-to-r from-slate-900 via-cyan-900/50 to-fuchsia-900/50 p-8 relative overflow-hidden">
-                            <div
-                                class="absolute top-0 right-0 w-40 h-40 bg-cyan-500/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-xl">
-                            </div>
-                            <div
-                                class="absolute bottom-0 left-0 w-24 h-24 bg-fuchsia-500/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-xl">
-                            </div>
-                            <div
-                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl">
-                            </div>
-
-                            <div class="relative z-10">
-                                <div
-                                    class="card-icon inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-cyan-500/20 backdrop-blur-sm mb-4 border border-cyan-500/30">
-                                    <i class="fa-solid fa-bolt text-3xl text-cyan-400"></i>
-                                </div>
-                                <span
-                                    class="inline-block bg-gradient-to-r from-cyan-500 to-fuchsia-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-                                    <i class="fa-solid fa-skull-crossbones mr-1"></i> VERY AGGRESSIVE • ₹15 Lakhs • 35%+
-                                    Target
-                                </span>
-                                <h3 class="text-2xl md:text-3xl font-bold text-white mb-2"
-                                    style="text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);">Strategy 6</h3>
-                                <p class="text-cyan-200/80">The Neuro-Logistic Protocol - Maximum Passive Income Engine
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Card Body -->
-                        <div class="p-8 bg-slate-800/50">
-                            <div class="grid md:grid-cols-2 gap-8">
-                                <ul class="space-y-4">
-                                    <li class="flex items-start">
-                                        <div
-                                            class="flex-shrink-0 w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center mt-0.5">
-                                            <i class="fa-solid fa-check text-cyan-400 text-xs"></i>
-                                        </div>
-                                        <span class="ml-3 text-slate-300">EV Fleet Leasing (18-20% Yield)</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div
-                                            class="flex-shrink-0 w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center mt-0.5">
-                                            <i class="fa-solid fa-check text-cyan-400 text-xs"></i>
-                                        </div>
-                                        <span class="ml-3 text-slate-300">Invoice Discounting (17-18% Fixed)</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div
-                                            class="flex-shrink-0 w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center mt-0.5">
-                                            <i class="fa-solid fa-check text-cyan-400 text-xs"></i>
-                                        </div>
-                                        <span class="ml-3 text-slate-300">SME IPO HNI Rotation (40%+ Target)</span>
-                                    </li>
-                                </ul>
-                                <ul class="space-y-4">
-                                    <li class="flex items-start">
-                                        <div
-                                            class="flex-shrink-0 w-6 h-6 rounded-full bg-fuchsia-500/20 flex items-center justify-center mt-0.5">
-                                            <i class="fa-solid fa-check text-fuchsia-400 text-xs"></i>
-                                        </div>
-                                        <span class="ml-3 text-slate-300">₹35,000+ Monthly Passive Income</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div
-                                            class="flex-shrink-0 w-6 h-6 rounded-full bg-fuchsia-500/20 flex items-center justify-center mt-0.5">
-                                            <i class="fa-solid fa-check text-fuchsia-400 text-xs"></i>
-                                        </div>
-                                        <span class="ml-3 text-slate-300">Pre-IPO & Unlisted Equity Allocation</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div
-                                            class="flex-shrink-0 w-6 h-6 rounded-full bg-fuchsia-500/20 flex items-center justify-center mt-0.5">
-                                            <i class="fa-solid fa-check text-fuchsia-400 text-xs"></i>
-                                        </div>
-                                        <span class="ml-3 text-slate-300">90-Day Execution Roadmap</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <!-- Action Buttons -->
-                            <div class="space-y-3 mt-8">
-                                <div class="grid md:grid-cols-2 gap-3">
-                                    <a href="strategy6.html"
-                                        class="block w-full bg-gradient-to-r from-cyan-600 to-cyan-500 text-white text-center py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300">
-                                        <i class="fa-solid fa-eye mr-2"></i>View Overview
-                                    </a>
-                                    <a href="strategy6detail.html"
-                                        class="block w-full bg-slate-700 text-slate-200 text-center py-4 rounded-xl font-semibold hover:bg-slate-600 transition-all duration-300">
-                                        <i class="fa-solid fa-file-lines mr-2"></i>View Detailed Guide
-                                    </a>
-                                </div>
-                                <!-- PDF Actions -->
-                                <div class="flex gap-2 pt-2 border-t border-slate-700">
-                                    <a href="viewer.html?file=Strategy6.pdf"
-                                        class="flex-1 flex items-center justify-center bg-red-900/30 text-red-400 py-3 rounded-xl font-semibold hover:bg-red-900/50 transition-all duration-300 border border-red-500/20">
-                                        <i class="fa-solid fa-file-pdf mr-2"></i>View PDF
-                                    </a>
-                                    <a href="docs/Strategy6.pdf" download
-                                        class="flex-1 flex items-center justify-center bg-cyan-900/30 text-cyan-400 py-3 rounded-xl font-semibold hover:bg-cyan-900/50 transition-all duration-300 border border-cyan-500/20">
-                                        <i class="fa-solid fa-download mr-2"></i>Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Strategy 7 Card - Sakuntala Sovereign Node / DePIN GPU Compute (Full Width) -->
-                <div class="group md:col-span-2">
-                    <div class="card-hover rounded-3xl shadow-xl overflow-hidden relative"
-                        style="background: linear-gradient(135deg, #0a0a0f 0%, #13131f 100%); border: 2px solid rgba(0, 255, 157, 0.3);">
-                        <!-- Animated Grid Background -->
-                        <div class="absolute inset-0 opacity-10 pointer-events-none"
-                            style="background-image: linear-gradient(rgba(0, 255, 157, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 157, 0.1) 1px, transparent 1px); background-size: 30px 30px;">
-                        </div>
-
-                        <!-- Card Header -->
-                        <div class="p-8 relative overflow-hidden"
-                            style="background: linear-gradient(135deg, rgba(0, 255, 157, 0.1) 0%, rgba(0, 225, 255, 0.1) 50%, rgba(189, 0, 255, 0.1) 100%);">
-                            <div class="absolute top-0 right-0 w-40 h-40 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"
-                                style="background: rgba(0, 255, 157, 0.2);"></div>
-                            <div class="absolute bottom-0 left-0 w-24 h-24 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl"
-                                style="background: rgba(0, 225, 255, 0.2);"></div>
-
-                            <div class="relative z-10">
-                                <div class="card-icon inline-flex items-center justify-center w-16 h-16 rounded-2xl backdrop-blur-sm mb-4"
-                                    style="background: rgba(0, 255, 157, 0.2); border: 1px solid rgba(0, 255, 157, 0.5);">
-                                    <i class="fa-solid fa-microchip text-3xl"
-                                        style="color: #00ff9d; text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);"></i>
-                                </div>
-                                <span
-                                    class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3"
-                                    style="background: linear-gradient(90deg, #00ff9d, #00e1ff); color: #0a0a0f;">
-                                    <i class="fa-solid fa-atom mr-1"></i> HYPER-AGGRESSIVE • ₹15 Lakhs • 50%+ Target
-                                </span>
-                                <h3 class="text-2xl md:text-3xl font-bold text-white mb-2"
-                                    style="text-shadow: 0 0 20px rgba(0, 255, 157, 0.5); font-family: 'Orbitron', sans-serif;">
-                                    Strategy 7</h3>
-                                <p style="color: rgba(0, 255, 157, 0.8);">The Sakuntala Sovereign Node - Decentralized
-                                    AI Infrastructure (DePIN)</p>
-                            </div>
-                        </div>
-
-                        <!-- Card Body -->
-                        <div class="p-8" style="background: rgba(19, 19, 31, 0.9);">
-                            <div class="grid md:grid-cols-2 gap-8">
-                                <ul class="space-y-4">
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5"
-                                            style="background: rgba(0, 255, 157, 0.2);">
-                                            <i class="fa-solid fa-check text-xs" style="color: #00ff9d;"></i>
-                                        </div>
-                                        <span class="ml-3" style="color: #e0e0e0;">4x RTX 4090 GPU Compute
-                                            Cluster</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5"
-                                            style="background: rgba(0, 255, 157, 0.2);">
-                                            <i class="fa-solid fa-check text-xs" style="color: #00ff9d;"></i>
-                                        </div>
-                                        <span class="ml-3" style="color: #e0e0e0;">Render Network & io.net
-                                            Integration</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5"
-                                            style="background: rgba(0, 255, 157, 0.2);">
-                                            <i class="fa-solid fa-check text-xs" style="color: #00ff9d;"></i>
-                                        </div>
-                                        <span class="ml-3" style="color: #e0e0e0;">Behala Location - Low OpEx</span>
-                                    </li>
-                                </ul>
-                                <ul class="space-y-4">
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5"
-                                            style="background: rgba(0, 225, 255, 0.2);">
-                                            <i class="fa-solid fa-check text-xs" style="color: #00e1ff;"></i>
-                                        </div>
-                                        <span class="ml-3" style="color: #e0e0e0;">₹60,000+ Monthly
-                                            Post-Electricity</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5"
-                                            style="background: rgba(0, 225, 255, 0.2);">
-                                            <i class="fa-solid fa-check text-xs" style="color: #00e1ff;"></i>
-                                        </div>
-                                        <span class="ml-3" style="color: #e0e0e0;">Appreciating Hardware Assets</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5"
-                                            style="background: rgba(0, 225, 255, 0.2);">
-                                            <i class="fa-solid fa-check text-xs" style="color: #00e1ff;"></i>
-                                        </div>
-                                        <span class="ml-3" style="color: #e0e0e0;">90-Day Deployment Timeline</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <!-- Action Buttons -->
-                            <div class="space-y-3 mt-8">
-                                <div class="grid md:grid-cols-2 gap-3">
-                                    <a href="strategy7.html"
-                                        class="block w-full text-center py-4 rounded-xl font-semibold transition-all duration-300"
-                                        style="background: linear-gradient(90deg, #00ff9d, #00e1ff); color: #0a0a0f; font-weight: 700;">
-                                        <i class="fa-solid fa-eye mr-2"></i>View Overview
-                                    </a>
-                                    <a href="strategy7detail.html"
-                                        class="block w-full text-center py-4 rounded-xl font-semibold transition-all duration-300"
-                                        style="background: rgba(0, 255, 157, 0.1); color: #00ff9d; border: 1px solid rgba(0, 255, 157, 0.3);">
-                                        <i class="fa-solid fa-file-lines mr-2"></i>View Detailed Guide
-                                    </a>
-                                </div>
-                                <!-- PDF Actions -->
-                                <div class="flex gap-2 pt-2" style="border-top: 1px solid rgba(0, 255, 157, 0.2);">
-                                    <a href="viewer.html?file=Strategy7.pdf"
-                                        class="flex-1 flex items-center justify-center py-3 rounded-xl font-semibold transition-all duration-300"
-                                        style="background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.2);">
-                                        <i class="fa-solid fa-file-pdf mr-2"></i>View PDF
-                                    </a>
-                                    <a href="docs/Strategy7.pdf" download
-                                        class="flex-1 flex items-center justify-center py-3 rounded-xl font-semibold transition-all duration-300"
-                                        style="background: rgba(0, 255, 157, 0.1); color: #00ff9d; border: 1px solid rgba(0, 255, 157, 0.2);">
-                                        <i class="fa-solid fa-download mr-2"></i>Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
+    <!-- Strategies Section -->
+    <section id="strategies" class="py-16 bg-gradient-to-b from-slate-50 to-white">
+        <div class="container mx-auto px-4">
+
+            <!-- ==================== SAFE STRATEGIES ==================== -->
+            <div class="mb-20">
+                <div class="flex items-center gap-4 mb-8 border-l-4 section-safe pl-4">
+                    <div class="w-12 h-12 rounded-full bg-emerald-500 flex items-center justify-center">
+                        <i class="fa-solid fa-shield-halved text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">Safe Strategies</h2>
+                        <p class="text-gray-500">Low risk, steady returns with capital preservation focus</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+
+                    <!-- Strategy 4 - Digital Capitalist -->
+                    <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden border border-emerald-200">
+                        <div class="bg-gradient-to-r from-emerald-600 to-teal-600 p-6">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span
+                                        class="inline-block bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase mb-2">
+                                        <i class="fa-solid fa-shield mr-1"></i> Safe
+                                    </span>
+                                    <h3 class="text-2xl font-bold text-white">Strategy 4</h3>
+                                    <p class="text-emerald-100">The Digital Capitalist Protocol</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-white/80 text-sm">Min. Investment</div>
+                                    <div class="text-2xl font-bold text-white">₹15L</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex gap-4 mb-4 text-sm">
+                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full font-medium">20%
+                                    ROI</span>
+                                <span
+                                    class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-medium">₹25k/month</span>
+                            </div>
+                            <ul class="space-y-2 mb-6 text-gray-600 text-sm">
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-emerald-500"></i>
+                                    No depreciating EV/ATM assets - pure financial instruments
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-emerald-500"></i>
+                                    SWP + Invoice Discounting + Dark Store FOCO Model
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-emerald-500"></i>
+                                    Corpus grows over time with minimal effort
+                                </li>
+                            </ul>
+                            <div class="grid grid-cols-2 gap-2 mb-4">
+                                <a href="strategy4.html"
+                                    class="bg-emerald-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-emerald-700 transition text-sm">
+                                    <i class="fa-solid fa-eye mr-1"></i> Overview
+                                </a>
+                                <a href="strategy4detail.html"
+                                    class="bg-gray-100 text-gray-700 text-center py-3 rounded-lg font-semibold hover:bg-gray-200 transition text-sm">
+                                    <i class="fa-solid fa-file-lines mr-1"></i> Details
+                                </a>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="viewer.html?file=Strategy4.pdf"
+                                    class="flex-1 bg-red-50 text-red-600 text-center py-2 rounded-lg text-sm font-medium hover:bg-red-100 transition">
+                                    <i class="fa-solid fa-file-pdf mr-1"></i> PDF
+                                </a>
+                                <a href="docs/Strategy4.pdf" download
+                                    class="flex-1 bg-emerald-50 text-emerald-600 text-center py-2 rounded-lg text-sm font-medium hover:bg-emerald-100 transition">
+                                    <i class="fa-solid fa-download mr-1"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Strategy 8 - Polymer-Capital Bridge -->
+                    <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden border border-emerald-200">
+                        <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-6">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span
+                                        class="inline-block bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase mb-2">
+                                        <i class="fa-solid fa-shield mr-1"></i> Safe
+                                    </span>
+                                    <h3 class="text-2xl font-bold text-white">Strategy 8</h3>
+                                    <p class="text-blue-100">Polymer-Capital Bridge Model</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-white/80 text-sm">Min. Investment</div>
+                                    <div class="text-2xl font-bold text-white">₹15L</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex gap-4 mb-4 text-sm">
+                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full font-medium">25-35%
+                                    APY</span>
+                                <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full font-medium">Low
+                                    Effort</span>
+                            </div>
+                            <ul class="space-y-2 mb-6 text-gray-600 text-sm">
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-emerald-500"></i>
+                                    Garage Storage + 3D Print Farm micro-manufacturing
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-emerald-500"></i>
+                                    Bridge profits into US Tech Equity (Appreciate App)
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-emerald-500"></i>
+                                    Physical asset engine with automated digital treasury
+                                </li>
+                            </ul>
+                            <div class="grid grid-cols-2 gap-2 mb-4">
+                                <a href="strategy8.html"
+                                    class="bg-blue-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-blue-700 transition text-sm">
+                                    <i class="fa-solid fa-eye mr-1"></i> Overview
+                                </a>
+                                <a href="strategy8detail.html"
+                                    class="bg-gray-100 text-gray-700 text-center py-3 rounded-lg font-semibold hover:bg-gray-200 transition text-sm">
+                                    <i class="fa-solid fa-file-lines mr-1"></i> Details
+                                </a>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="viewer.html?file=Strategy8.pdf"
+                                    class="flex-1 bg-red-50 text-red-600 text-center py-2 rounded-lg text-sm font-medium hover:bg-red-100 transition">
+                                    <i class="fa-solid fa-file-pdf mr-1"></i> PDF
+                                </a>
+                                <a href="docs/Strategy8.pdf" download
+                                    class="flex-1 bg-blue-50 text-blue-600 text-center py-2 rounded-lg text-sm font-medium hover:bg-blue-100 transition">
+                                    <i class="fa-solid fa-download mr-1"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ==================== MODERATE STRATEGIES ==================== -->
+            <div class="mb-20">
+                <div class="flex items-center gap-4 mb-8 border-l-4 section-moderate pl-4">
+                    <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center">
+                        <i class="fa-solid fa-scale-balanced text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">Moderate Strategies</h2>
+                        <p class="text-gray-500">Balanced risk-reward with diversified income streams</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+
+                    <!-- Strategy 1 - 4.5L to 20% ROI -->
+                    <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden border border-blue-200">
+                        <div class="bg-gradient-to-r from-purple-600 to-indigo-600 p-6">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span
+                                        class="inline-block bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase mb-2">
+                                        <i class="fa-solid fa-scale-balanced mr-1"></i> Moderate
+                                    </span>
+                                    <h3 class="text-2xl font-bold text-white">Strategy 1</h3>
+                                    <p class="text-purple-100">4.5 Lakhs to 20% ROI</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-white/80 text-sm">Min. Investment</div>
+                                    <div class="text-2xl font-bold text-white">₹4.5L</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex gap-4 mb-4 text-sm">
+                                <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full font-medium">20%
+                                    ROI</span>
+                                <span
+                                    class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full font-medium">Energetic</span>
+                            </div>
+                            <ul class="space-y-2 mb-6 text-gray-600 text-sm">
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-blue-500"></i>
+                                    High contrast professional portfolio approach
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-blue-500"></i>
+                                    Complete portfolio breakdown with interactive charts
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-blue-500"></i>
+                                    Suitable for entry-level investors with 4.5L corpus
+                                </li>
+                            </ul>
+                            <div class="grid grid-cols-2 gap-2 mb-4">
+                                <a href="strategy1.html"
+                                    class="bg-purple-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-purple-700 transition text-sm">
+                                    <i class="fa-solid fa-eye mr-1"></i> Overview
+                                </a>
+                                <a href="strategy1detail.html"
+                                    class="bg-gray-100 text-gray-700 text-center py-3 rounded-lg font-semibold hover:bg-gray-200 transition text-sm">
+                                    <i class="fa-solid fa-file-lines mr-1"></i> Details
+                                </a>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="viewer.html?file=Strategy1.pdf"
+                                    class="flex-1 bg-red-50 text-red-600 text-center py-2 rounded-lg text-sm font-medium hover:bg-red-100 transition">
+                                    <i class="fa-solid fa-file-pdf mr-1"></i> PDF
+                                </a>
+                                <a href="docs/Strategy1.pdf" download
+                                    class="flex-1 bg-purple-50 text-purple-600 text-center py-2 rounded-lg text-sm font-medium hover:bg-purple-100 transition">
+                                    <i class="fa-solid fa-download mr-1"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Strategy 2 - Hybrid Model -->
+                    <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden border border-blue-200">
+                        <div class="bg-gradient-to-r from-emerald-500 to-teal-500 p-6">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span
+                                        class="inline-block bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase mb-2">
+                                        <i class="fa-solid fa-scale-balanced mr-1"></i> Moderate
+                                    </span>
+                                    <h3 class="text-2xl font-bold text-white">Strategy 2</h3>
+                                    <p class="text-emerald-100">Hybrid Model - 21% Blended ROI</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-white/80 text-sm">Min. Investment</div>
+                                    <div class="text-2xl font-bold text-white">₹4.5L</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex gap-4 mb-4 text-sm">
+                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full font-medium">21%
+                                    ROI</span>
+                                <span
+                                    class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full font-medium">Balanced</span>
+                            </div>
+                            <ul class="space-y-2 mb-6 text-gray-600 text-sm">
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-blue-500"></i>
+                                    EV Financing + Mutual Funds + Invoice Discounting mix
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-blue-500"></i>
+                                    Minimal operational effort with blended returns
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-blue-500"></i>
+                                    Capital allocation breakdown for diversification
+                                </li>
+                            </ul>
+                            <div class="grid grid-cols-2 gap-2 mb-4">
+                                <a href="strategy2.html"
+                                    class="bg-emerald-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-emerald-700 transition text-sm">
+                                    <i class="fa-solid fa-eye mr-1"></i> Overview
+                                </a>
+                                <a href="strategy2detail.html"
+                                    class="bg-gray-100 text-gray-700 text-center py-3 rounded-lg font-semibold hover:bg-gray-200 transition text-sm">
+                                    <i class="fa-solid fa-file-lines mr-1"></i> Details
+                                </a>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="viewer.html?file=Strategy2.pdf"
+                                    class="flex-1 bg-red-50 text-red-600 text-center py-2 rounded-lg text-sm font-medium hover:bg-red-100 transition">
+                                    <i class="fa-solid fa-file-pdf mr-1"></i> PDF
+                                </a>
+                                <a href="docs/Strategy2.pdf" download
+                                    class="flex-1 bg-emerald-50 text-emerald-600 text-center py-2 rounded-lg text-sm font-medium hover:bg-emerald-100 transition">
+                                    <i class="fa-solid fa-download mr-1"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Strategy 3 - Yield Shield -->
+                    <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden border border-blue-200">
+                        <div class="bg-gradient-to-r from-slate-700 to-slate-800 p-6">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span
+                                        class="inline-block bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase mb-2">
+                                        <i class="fa-solid fa-scale-balanced mr-1"></i> Moderate
+                                    </span>
+                                    <h3 class="text-2xl font-bold text-white">Strategy 3</h3>
+                                    <p class="text-slate-300">The Yield Shield - Maheshtala Blueprint</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-white/80 text-sm">Min. Investment</div>
+                                    <div class="text-2xl font-bold text-white">₹15L</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex gap-4 mb-4 text-sm">
+                                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-medium">28%
+                                    ROI</span>
+                                <span
+                                    class="bg-green-100 text-green-700 px-3 py-1 rounded-full font-medium">₹35k/month</span>
+                            </div>
+                            <ul class="space-y-2 mb-6 text-gray-600 text-sm">
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-blue-500"></i>
+                                    EV Fleet + ATM Franchise + Corporate Debt combo
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-blue-500"></i>
+                                    Maheshtala location-focused passive income engine
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-blue-500"></i>
+                                    90-day execution roadmap with clear milestones
+                                </li>
+                            </ul>
+                            <div class="grid grid-cols-2 gap-2 mb-4">
+                                <a href="strategy3.html"
+                                    class="bg-slate-700 text-white text-center py-3 rounded-lg font-semibold hover:bg-slate-800 transition text-sm">
+                                    <i class="fa-solid fa-eye mr-1"></i> Overview
+                                </a>
+                                <a href="strategy3detail.html"
+                                    class="bg-gray-100 text-gray-700 text-center py-3 rounded-lg font-semibold hover:bg-gray-200 transition text-sm">
+                                    <i class="fa-solid fa-file-lines mr-1"></i> Details
+                                </a>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="viewer.html?file=Strategy3.pdf"
+                                    class="flex-1 bg-red-50 text-red-600 text-center py-2 rounded-lg text-sm font-medium hover:bg-red-100 transition">
+                                    <i class="fa-solid fa-file-pdf mr-1"></i> PDF
+                                </a>
+                                <a href="docs/Strategy3.pdf" download
+                                    class="flex-1 bg-slate-100 text-slate-600 text-center py-2 rounded-lg text-sm font-medium hover:bg-slate-200 transition">
+                                    <i class="fa-solid fa-download mr-1"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ==================== AGGRESSIVE STRATEGIES ==================== -->
+            <div class="mb-20">
+                <div class="flex items-center gap-4 mb-8 border-l-4 section-aggressive pl-4">
+                    <div class="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center">
+                        <i class="fa-solid fa-fire text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">Aggressive Strategies</h2>
+                        <p class="text-gray-500">Higher risk tolerance for substantial returns</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+
+                    <!-- Strategy 5 - Pre-Public Arbitrage -->
+                    <div
+                        class="card-hover bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl shadow-lg overflow-hidden border border-amber-500/30">
+                        <div class="bg-gradient-to-r from-fuchsia-600 via-purple-600 to-indigo-600 p-6">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span
+                                        class="inline-block bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold uppercase mb-2">
+                                        <i class="fa-solid fa-fire mr-1"></i> Aggressive
+                                    </span>
+                                    <h3 class="text-2xl font-bold text-white">Strategy 5</h3>
+                                    <p class="text-purple-200">Pre-Public Arbitrage Protocol</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-white/80 text-sm">Min. Investment</div>
+                                    <div class="text-2xl font-bold text-white">₹15L</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 bg-slate-800">
+                            <div class="flex gap-4 mb-4 text-sm">
+                                <span
+                                    class="bg-fuchsia-900/50 text-fuchsia-300 px-3 py-1 rounded-full font-medium border border-fuchsia-500/30">30%+
+                                    ROI</span>
+                                <span
+                                    class="bg-yellow-900/50 text-yellow-300 px-3 py-1 rounded-full font-medium border border-yellow-500/30">Zero
+                                    Effort</span>
+                            </div>
+                            <ul class="space-y-2 mb-6 text-slate-300 text-sm">
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-fuchsia-400"></i>
+                                    SME IPO HNI Rotation Engine for listing gains
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-fuchsia-400"></i>
+                                    Pre-IPO & Unlisted Equity plays before market debut
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-fuchsia-400"></i>
+                                    Invoice Discounting (18% Fixed) as yield floor
+                                </li>
+                            </ul>
+                            <div class="grid grid-cols-2 gap-2 mb-4">
+                                <a href="strategy5.html"
+                                    class="bg-gradient-to-r from-fuchsia-600 to-purple-600 text-white text-center py-3 rounded-lg font-semibold hover:opacity-90 transition text-sm">
+                                    <i class="fa-solid fa-eye mr-1"></i> Overview
+                                </a>
+                                <a href="strategy5detail.html"
+                                    class="bg-slate-700 text-slate-200 text-center py-3 rounded-lg font-semibold hover:bg-slate-600 transition text-sm">
+                                    <i class="fa-solid fa-file-lines mr-1"></i> Details
+                                </a>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="viewer.html?file=Strategy5.pdf"
+                                    class="flex-1 bg-red-900/30 text-red-400 text-center py-2 rounded-lg text-sm font-medium hover:bg-red-900/50 transition border border-red-500/20">
+                                    <i class="fa-solid fa-file-pdf mr-1"></i> PDF
+                                </a>
+                                <a href="docs/Strategy5.pdf" download
+                                    class="flex-1 bg-fuchsia-900/30 text-fuchsia-400 text-center py-2 rounded-lg text-sm font-medium hover:bg-fuchsia-900/50 transition border border-fuchsia-500/20">
+                                    <i class="fa-solid fa-download mr-1"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Strategy 9 - Algo Trading -->
+                    <div
+                        class="card-hover bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl shadow-lg overflow-hidden border border-amber-500/30">
+                        <div class="bg-gradient-to-r from-cyan-500 to-green-500 p-6">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span
+                                        class="inline-block bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold uppercase mb-2">
+                                        <i class="fa-solid fa-fire mr-1"></i> Aggressive
+                                    </span>
+                                    <h3 class="text-2xl font-bold text-white">Strategy 9</h3>
+                                    <p class="text-cyan-100">Sakuntala Silicon Citadel - Algo-Yield</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-white/80 text-sm">Min. Investment</div>
+                                    <div class="text-2xl font-bold text-white">₹15L</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 bg-slate-800">
+                            <div class="flex gap-4 mb-4 text-sm">
+                                <span
+                                    class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full font-medium border border-cyan-500/30">35%+
+                                    ROI</span>
+                                <span
+                                    class="bg-green-900/50 text-green-300 px-3 py-1 rounded-full font-medium border border-green-500/30">Automated</span>
+                            </div>
+                            <ul class="space-y-2 mb-6 text-slate-300 text-sm">
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-cyan-400"></i>
+                                    Zero-Trust Algorithmic Yield Protocol
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-cyan-400"></i>
+                                    Automated quantitative trading engine for Behala
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-cyan-400"></i>
+                                    Tech-driven approach with AWS/Replit automation
+                                </li>
+                            </ul>
+                            <div class="grid grid-cols-2 gap-2 mb-4">
+                                <a href="strategy9.html"
+                                    class="bg-gradient-to-r from-cyan-500 to-green-500 text-white text-center py-3 rounded-lg font-semibold hover:opacity-90 transition text-sm">
+                                    <i class="fa-solid fa-eye mr-1"></i> Overview
+                                </a>
+                                <a href="strategy9detail.html"
+                                    class="bg-slate-700 text-slate-200 text-center py-3 rounded-lg font-semibold hover:bg-slate-600 transition text-sm">
+                                    <i class="fa-solid fa-file-lines mr-1"></i> Details
+                                </a>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="viewer.html?file=Strategy9.pdf"
+                                    class="flex-1 bg-red-900/30 text-red-400 text-center py-2 rounded-lg text-sm font-medium hover:bg-red-900/50 transition border border-red-500/20">
+                                    <i class="fa-solid fa-file-pdf mr-1"></i> PDF
+                                </a>
+                                <a href="docs/Strategy9.pdf" download
+                                    class="flex-1 bg-cyan-900/30 text-cyan-400 text-center py-2 rounded-lg text-sm font-medium hover:bg-cyan-900/50 transition border border-cyan-500/20">
+                                    <i class="fa-solid fa-download mr-1"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ==================== VERY AGGRESSIVE STRATEGIES ==================== -->
+            <div class="mb-20">
+                <div class="flex items-center gap-4 mb-8 border-l-4 section-very-aggressive pl-4">
+                    <div class="w-12 h-12 rounded-full bg-red-500 flex items-center justify-center">
+                        <i class="fa-solid fa-bolt text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">Very Aggressive Strategies</h2>
+                        <p class="text-gray-500">Maximum yield focus with significant risk exposure</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+
+                    <!-- Strategy 6 - Neuro-Logistic Protocol -->
+                    <div class="card-hover rounded-2xl shadow-xl overflow-hidden border-2 border-cyan-500/30"
+                        style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+                        <div class="p-6 relative overflow-hidden"
+                            style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(217, 70, 239, 0.2) 100%);">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl"></div>
+                            <div class="flex justify-between items-start relative z-10">
+                                <div>
+                                    <span
+                                        class="inline-block bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase mb-2">
+                                        <i class="fa-solid fa-skull-crossbones mr-1"></i> Very Aggressive
+                                    </span>
+                                    <h3 class="text-2xl font-bold text-white neon-cyan">Strategy 6</h3>
+                                    <p class="text-cyan-300">Neuro-Logistic Protocol</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-cyan-200/80 text-sm">Min. Investment</div>
+                                    <div class="text-2xl font-bold text-white">₹15L</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 bg-slate-800/80">
+                            <div class="flex gap-4 mb-4 text-sm">
+                                <span
+                                    class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full font-medium border border-cyan-500/30">46.5%
+                                    ROI</span>
+                                <span
+                                    class="bg-purple-900/50 text-purple-300 px-3 py-1 rounded-full font-medium border border-purple-500/30">₹58k/month</span>
+                            </div>
+                            <ul class="space-y-2 mb-6 text-slate-300 text-sm">
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-cyan-400"></i>
+                                    EV Fleet Leasing (18-20% Yield) + SME IPO HNI
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-cyan-400"></i>
+                                    Invoice Discounting (17-18% Fixed) foundation
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-cyan-400"></i>
+                                    Maximum aggression, minimum effort - Behala Arbitrage
+                                </li>
+                            </ul>
+                            <div class="grid grid-cols-2 gap-2 mb-4">
+                                <a href="strategy6.html"
+                                    class="bg-gradient-to-r from-cyan-600 to-cyan-500 text-white text-center py-3 rounded-lg font-semibold hover:opacity-90 transition text-sm">
+                                    <i class="fa-solid fa-eye mr-1"></i> Overview
+                                </a>
+                                <a href="strategy6detail.html"
+                                    class="bg-slate-700 text-slate-200 text-center py-3 rounded-lg font-semibold hover:bg-slate-600 transition text-sm">
+                                    <i class="fa-solid fa-file-lines mr-1"></i> Details
+                                </a>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="viewer.html?file=Strategy6.pdf"
+                                    class="flex-1 bg-red-900/30 text-red-400 text-center py-2 rounded-lg text-sm font-medium hover:bg-red-900/50 transition border border-red-500/20">
+                                    <i class="fa-solid fa-file-pdf mr-1"></i> PDF
+                                </a>
+                                <a href="docs/Strategy6.pdf" download
+                                    class="flex-1 bg-cyan-900/30 text-cyan-400 text-center py-2 rounded-lg text-sm font-medium hover:bg-cyan-900/50 transition border border-cyan-500/20">
+                                    <i class="fa-solid fa-download mr-1"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ==================== HYPER-AGGRESSIVE STRATEGIES ==================== -->
+            <div class="mb-12">
+                <div class="flex items-center gap-4 mb-8 border-l-4 section-hyper pl-4">
+                    <div class="w-12 h-12 rounded-full bg-pink-500 flex items-center justify-center">
+                        <i class="fa-solid fa-atom text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">Hyper-Aggressive Strategies</h2>
+                        <p class="text-gray-500">Maximum risk for maximum potential returns - Expert level only</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+
+                    <!-- Strategy 7 - Sakuntala Sovereign Node (DePIN) -->
+                    <div class="card-hover rounded-2xl shadow-xl overflow-hidden relative"
+                        style="background: linear-gradient(135deg, #0a0a0f 0%, #13131f 100%); border: 2px solid rgba(0, 255, 157, 0.4);">
+                        <div class="absolute inset-0 opacity-10 pointer-events-none"
+                            style="background-image: linear-gradient(rgba(0, 255, 157, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 157, 0.1) 1px, transparent 1px); background-size: 25px 25px;">
+                        </div>
+                        <div class="p-6 relative"
+                            style="background: linear-gradient(135deg, rgba(0, 255, 157, 0.15) 0%, rgba(0, 225, 255, 0.1) 100%);">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase mb-2"
+                                        style="background: linear-gradient(90deg, #00ff9d, #00e1ff); color: #0a0a0f;">
+                                        <i class="fa-solid fa-atom mr-1"></i> Hyper-Aggressive
+                                    </span>
+                                    <h3 class="text-2xl font-bold text-white neon-green font-display">Strategy 7</h3>
+                                    <p style="color: #00ff9d;">Behala Neural Nexus - DePIN GPU</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-green-200/80 text-sm">Min. Investment</div>
+                                    <div class="text-2xl font-bold text-white">₹15L</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 relative" style="background: rgba(19, 19, 31, 0.95);">
+                            <div class="flex gap-4 mb-4 text-sm">
+                                <span class="px-3 py-1 rounded-full font-medium"
+                                    style="background: rgba(0, 255, 157, 0.2); color: #00ff9d; border: 1px solid rgba(0, 255, 157, 0.3);">48.5%
+                                    ROI</span>
+                                <span class="px-3 py-1 rounded-full font-medium"
+                                    style="background: rgba(0, 225, 255, 0.2); color: #00e1ff; border: 1px solid rgba(0, 225, 255, 0.3);">₹60k+/month</span>
+                            </div>
+                            <ul class="space-y-2 mb-6 text-sm" style="color: #e0e0e0;">
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check" style="color: #00ff9d;"></i>
+                                    4x RTX 4090 GPU Compute Cluster for DePIN
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check" style="color: #00ff9d;"></i>
+                                    Render Network & io.net decentralized AI infrastructure
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check" style="color: #00ff9d;"></i>
+                                    Behala location for low OpEx with appreciating hardware
+                                </li>
+                            </ul>
+                            <div class="grid grid-cols-2 gap-2 mb-4">
+                                <a href="strategy7.html"
+                                    class="text-center py-3 rounded-lg font-semibold transition text-sm"
+                                    style="background: linear-gradient(90deg, #00ff9d, #00e1ff); color: #0a0a0f;">
+                                    <i class="fa-solid fa-eye mr-1"></i> Overview
+                                </a>
+                                <a href="strategy7detail.html"
+                                    class="text-center py-3 rounded-lg font-semibold transition text-sm"
+                                    style="background: rgba(0, 255, 157, 0.1); color: #00ff9d; border: 1px solid rgba(0, 255, 157, 0.3);">
+                                    <i class="fa-solid fa-file-lines mr-1"></i> Details
+                                </a>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="viewer.html?file=Strategy7.pdf"
+                                    class="flex-1 text-center py-2 rounded-lg text-sm font-medium transition"
+                                    style="background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3);">
+                                    <i class="fa-solid fa-file-pdf mr-1"></i> PDF
+                                </a>
+                                <a href="docs/Strategy7.pdf" download
+                                    class="flex-1 text-center py-2 rounded-lg text-sm font-medium transition"
+                                    style="background: rgba(0, 255, 157, 0.15); color: #00ff9d; border: 1px solid rgba(0, 255, 157, 0.3);">
+                                    <i class="fa-solid fa-download mr-1"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <!-- Quick Stats Section -->
-    <section class="py-20 bg-brand-dark">
+    <section class="py-16 bg-brand-dark">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                 <div class="group">
                     <div
                         class="text-4xl md:text-5xl font-black text-brand-gold mb-2 group-hover:scale-110 transition-transform">
-                        ₹4.5L
-                    </div>
-                    <div class="text-gray-400 text-sm uppercase tracking-wider">Initial Capital</div>
-                </div>
-                <div class="group">
-                    <div
-                        class="text-4xl md:text-5xl font-black text-brand-teal mb-2 group-hover:scale-110 transition-transform">
-                        20%+
-                    </div>
-                    <div class="text-gray-400 text-sm uppercase tracking-wider">Target ROI</div>
-                </div>
-                <div class="group">
-                    <div
-                        class="text-4xl md:text-5xl font-black text-brand-purple mb-2 group-hover:scale-110 transition-transform">
-                        7
-                    </div>
+                        9</div>
                     <div class="text-gray-400 text-sm uppercase tracking-wider">Strategies</div>
                 </div>
                 <div class="group">
                     <div
+                        class="text-4xl md:text-5xl font-black text-brand-teal mb-2 group-hover:scale-110 transition-transform">
+                        ₹4.5L-15L</div>
+                    <div class="text-gray-400 text-sm uppercase tracking-wider">Investment Range</div>
+                </div>
+                <div class="group">
+                    <div
+                        class="text-4xl md:text-5xl font-black text-brand-purple mb-2 group-hover:scale-110 transition-transform">
+                        20-50%</div>
+                    <div class="text-gray-400 text-sm uppercase tracking-wider">ROI Range</div>
+                </div>
+                <div class="group">
+                    <div
                         class="text-4xl md:text-5xl font-black text-brand-amber mb-2 group-hover:scale-110 transition-transform">
-                        FY26
-                    </div>
+                        FY26</div>
                     <div class="text-gray-400 text-sm uppercase tracking-wider">Fiscal Year</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Investment Categories Overview -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <span
-                    class="inline-block bg-brand-emerald/10 text-brand-emerald px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
-                    Diversified Portfolio
-                </span>
-                <h2 class="text-4xl md:text-5xl font-bold text-brand-dark mb-6">
-                    Investment <span class="gradient-text">Categories</span>
-                </h2>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <!-- Category 1 -->
-                <div
-                    class="text-center p-8 rounded-2xl bg-gradient-to-b from-emerald-50 to-white border border-emerald-100 hover:shadow-xl transition-shadow">
-                    <div
-                        class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-emerald/10 mb-6">
-                        <i class="fa-solid fa-car-side text-3xl text-brand-emerald"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-brand-dark mb-3">EV Financing</h3>
-                    <p class="text-gray-600">High-yield electric vehicle investment opportunities in the growing green
-                        energy sector</p>
-                </div>
-
-                <!-- Category 2 -->
-                <div
-                    class="text-center p-8 rounded-2xl bg-gradient-to-b from-blue-50 to-white border border-blue-100 hover:shadow-xl transition-shadow">
-                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-500/10 mb-6">
-                        <i class="fa-solid fa-chart-pie text-3xl text-blue-500"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-brand-dark mb-3">Mutual Funds</h3>
-                    <p class="text-gray-600">Diversified fund investments for steady growth and professional management
-                    </p>
-                </div>
-
-                <!-- Category 3 -->
-                <div
-                    class="text-center p-8 rounded-2xl bg-gradient-to-b from-amber-50 to-white border border-amber-100 hover:shadow-xl transition-shadow">
-                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-amber/10 mb-6">
-                        <i class="fa-solid fa-file-invoice-dollar text-3xl text-brand-amber"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-brand-dark mb-3">Invoice Discounting</h3>
-                    <p class="text-gray-600">Short-term debt instruments providing stable, predictable returns</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer class="bg-brand-dark py-12">
+    <footer class="bg-brand-dark py-12 border-t border-gray-800">
         <div class="container mx-auto px-4">
             <div class="text-center">
                 <div class="inline-flex items-center justify-center mb-6">
@@ -978,35 +965,18 @@
                 <p class="text-gray-400 mb-6 max-w-xl mx-auto">
                     Strategic investment portfolio analysis for achieving financial goals with calculated risk
                     management.
+                    Choose your risk appetite and build wealth systematically.
                 </p>
-                <div class="flex flex-wrap justify-center gap-4 mb-8">
-                    <a href="strategy1.html" class="text-gray-400 hover:text-brand-gold transition">Strategy 1</a>
-                    <span class="text-gray-600">|</span>
-                    <a href="strategy2.html" class="text-gray-400 hover:text-brand-gold transition">Strategy 2</a>
-                    <span class="text-gray-600">|</span>
-                    <a href="strategy3.html" class="text-gray-400 hover:text-brand-gold transition">Strategy 3</a>
-                    <span class="text-gray-600">|</span>
-                    <a href="strategy4.html" class="text-gray-400 hover:text-brand-gold transition">Strategy 4</a>
-                    <span class="text-gray-600">|</span>
-                    <a href="strategy5.html" class="text-gray-400 hover:text-fuchsia-400 transition">Strategy 5</a>
-                    <span class="text-gray-600">|</span>
-                    <a href="strategy6.html" class="text-gray-400 hover:text-cyan-400 transition">Strategy 6</a>
-                    <span class="text-gray-600">|</span>
-                    <a href="strategy7.html" class="text-gray-400 hover:text-green-400 transition">Strategy 7</a>
-                    <span class="text-gray-600">|</span>
-                    <a href="strategy1detail.html" class="text-gray-400 hover:text-brand-gold transition">Details 1</a>
-                    <span class="text-gray-600">|</span>
-                    <a href="strategy2detail.html" class="text-gray-400 hover:text-brand-gold transition">Details 2</a>
-                    <span class="text-gray-600">|</span>
-                    <a href="strategy3detail.html" class="text-gray-400 hover:text-brand-gold transition">Details 3</a>
-                    <span class="text-gray-600">|</span>
-                    <a href="strategy4detail.html" class="text-gray-400 hover:text-brand-gold transition">Details 4</a>
-                    <span class="text-gray-600">|</span>
-                    <a href="strategy5detail.html" class="text-gray-400 hover:text-fuchsia-400 transition">Details 5</a>
-                    <span class="text-gray-600">|</span>
-                    <a href="strategy6detail.html" class="text-gray-400 hover:text-cyan-400 transition">Details 6</a>
-                    <span class="text-gray-600">|</span>
-                    <a href="strategy7detail.html" class="text-gray-400 hover:text-green-400 transition">Details 7</a>
+                <div class="flex flex-wrap justify-center gap-3 mb-8 text-sm">
+                    <a href="strategy1.html" class="text-gray-400 hover:text-purple-400 transition">S1</a>
+                    <a href="strategy2.html" class="text-gray-400 hover:text-emerald-400 transition">S2</a>
+                    <a href="strategy3.html" class="text-gray-400 hover:text-blue-400 transition">S3</a>
+                    <a href="strategy4.html" class="text-gray-400 hover:text-emerald-400 transition">S4</a>
+                    <a href="strategy5.html" class="text-gray-400 hover:text-fuchsia-400 transition">S5</a>
+                    <a href="strategy6.html" class="text-gray-400 hover:text-cyan-400 transition">S6</a>
+                    <a href="strategy7.html" class="text-gray-400 hover:text-green-400 transition">S7</a>
+                    <a href="strategy8.html" class="text-gray-400 hover:text-blue-400 transition">S8</a>
+                    <a href="strategy9.html" class="text-gray-400 hover:text-cyan-400 transition">S9</a>
                 </div>
                 <div class="border-t border-gray-800 pt-8">
                     <p class="text-gray-500 text-sm">

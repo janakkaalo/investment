@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sakuntala Silicon Citadel: Algo-Yield Protocol</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <!-- Font Awesome (using CDN for icons via class, but NO SVG TAGS directly) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Custom Chart Container Styles as per requirements */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            /* Constraint for large screens */
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            /* Base height */
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+
+        /* Material Design Card Hover Effects */
+        .hover-lift {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(to right, #00C9FF, #92FE9D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+
+    <!-- Palette Definition: "Electric Intelligence" (Vibrant Blues & Greens)
+         Background: #0F172A (Slate 900)
+         Card BG: #1E293B (Slate 800)
+         Primary Accent: #00C9FF (Cyan)
+         Secondary Accent: #92FE9D (Neon Green)
+         Text Main: #F8FAFC (Slate 50)
+         Text Muted: #94A3B8 (Slate 400)
+    -->
+</head>
+
+<body class="bg-slate-900 text-slate-50 font-sans leading-relaxed selection:bg-cyan-500 selection:text-white">
+
+    <!-- Navigation / Header -->
+    <nav class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-700 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold tracking-tight text-white">
+                        <span class="text-cyan-400">ALGO</span><span class="text-green-400">NEXUS</span>
+                    </span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#thesis"
+                            class="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Thesis</a>
+                        <a href="#allocation"
+                            class="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Allocation</a>
+                        <a href="#architecture"
+                            class="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Architecture</a>
+                        <a href="#projections"
+                            class="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Yields</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative overflow-hidden bg-slate-800 py-16 sm:py-24">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4">
+                The <span class="text-gradient">Sakuntala Silicon Citadel</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-400">
+                A "Zero-Trust" Algorithmic Yield Protocol designed for the Behala Corridor.
+                Transforming 15 Lakhs into an Automated Quantitative Engine.
+            </p>
+            <div class="mt-8 flex justify-center gap-4">
+                <div class="flex items-center gap-2 px-4 py-2 bg-slate-700 rounded-full border border-slate-600">
+                    <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                    <span class="text-sm font-semibold">Active Strategy</span>
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2 bg-slate-700 rounded-full border border-slate-600">
+                    <span class="text-cyan-400 font-bold">Target Yield: 35%+</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+
+        <!-- SECTION 1: Strategic Thesis (Introduction) -->
+        <section id="thesis" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="space-y-6">
+                <div class="border-l-4 border-cyan-500 pl-4">
+                    <h2 class="text-3xl font-bold text-white mb-2">Executive Mandate</h2>
+                    <p class="text-slate-400">
+                        The traditional "Rentier" model is dead. Inflation in Kolkata (approx. 6-7%) erodes passive
+                        savings.
+                        With a tech-forward profile (Github Pro, AWS, GPU) and a strategic location in Sakuntala Park
+                        (Transit Hub),
+                        we reject standard FDs or manual trading.
+                    </p>
+                </div>
+                <p class="text-lg text-slate-300">
+                    This protocol introduces <strong>"Algorithmic Asset Optimization."</strong> We leverage your idle
+                    GPU for
+                    AI inference (DePIN), your AWS account for running non-custodial Grid Trading Bots, and your garage
+                    as a tech-enabled "Dark Node." This minimizes human effort while maximizing "Return on Code" (RoC).
+                </p>
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                    <h3 class="font-bold text-green-400 mb-2">Why This Works in Behala:</h3>
+                    <ul class="list-disc list-inside text-slate-400 space-y-1">
+                        <li><strong>Power Stability:</strong> CESC grids in Behala are stable enough for 24/7 Algo
+                            uptime.</li>
+                        <li><strong>Transit Node:</strong> The garage near the bus stand is prime for automated
+                            logistics (not just storage).</li>
+                        <li><strong>Tech Arbitrage:</strong> You earn in USD (Crypto/US Stocks) but spend in INR.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Visualization: Why Algo? -->
+            <div class="bg-slate-800 rounded-xl shadow-xl p-6 border border-slate-700 hover-lift">
+                <h3 class="text-xl font-bold text-white mb-4 text-center">Efficiency vs. Effort Matrix</h3>
+                <div class="chart-container">
+                    <canvas id="efficiencyChart"></canvas>
+                </div>
+                <p class="text-xs text-center text-slate-500 mt-2">
+                    Comparing the proposed Algo Model against traditional Real Estate and Mutual Funds.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Capital Allocation (The Blueprint) -->
+        <section id="allocation">
+            <div class="mb-8 text-center">
+                <h2 class="text-3xl font-bold text-white">Capital Injection: ₹15,00,000</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    We do not "spend" the 15 Lakhs; we deploy it into three active engines.
+                    This is a <span class="text-cyan-400 font-bold">Barbell Strategy</span>: Extremely safe US Indexes
+                    on one side,
+                    and high-yield Algo Bots on the other.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Allocation Chart -->
+                <div
+                    class="lg:col-span-1 bg-slate-800 rounded-xl shadow-xl p-6 border border-slate-700 flex flex-col items-center">
+                    <h3 class="text-lg font-bold text-white mb-2">The 15L Split</h3>
+                    <div class="chart-container" style="height: 300px;">
+                        <canvas id="allocationChart"></canvas>
+                    </div>
+                    <div class="mt-4 w-full">
+                        <div class="flex justify-between text-sm text-slate-400 border-b border-slate-700 py-1">
+                            <span>Algo Liquidity (USDT/USDC)</span>
+                            <span class="text-cyan-400 font-bold">₹6.0L</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-slate-400 border-b border-slate-700 py-1">
+                            <span>US Stock Automation (Appreciate)</span>
+                            <span class="text-purple-400 font-bold">₹5.0L</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-slate-400 border-b border-slate-700 py-1">
+                            <span>Hardware Retrofit (GPU/UPS)</span>
+                            <span class="text-green-400 font-bold">₹2.5L</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-slate-400 py-1">
+                            <span>Garage Automation</span>
+                            <span class="text-yellow-400 font-bold">₹1.5L</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Breakdown -->
+                <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Card 1 -->
+                    <div class="bg-slate-800 p-6 rounded-xl border-l-4 border-cyan-500 shadow-md">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-xl font-bold text-white">1. The Algo Grid (₹6L)</h4>
+                            <span class="text-xs bg-cyan-900 text-cyan-300 px-2 py-1 rounded">High Yield</span>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-3">
+                            <strong>Goal:</strong> Delta-Neutral Market Making.
+                            <br><strong>Method:</strong> Use your AWS account to host a "Hummingbot" instance or use
+                            Binance Grid features. You provide liquidity in stable pairs (e.g., ETH/USDT) within a
+                            range.
+                            <br><strong>Logic:</strong> You earn trading fees every time the price wobbles. Since you
+                            aren't manually trading, emotion is removed.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-slate-800 p-6 rounded-xl border-l-4 border-green-500 shadow-md">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-xl font-bold text-white">2. The Silicon Mine (₹2.5L)</h4>
+                            <span class="text-xs bg-green-900 text-green-300 px-2 py-1 rounded">Passive Tech</span>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-3">
+                            <strong>Goal:</strong> AI Compute Leasing (DePIN).
+                            <br><strong>Method:</strong> Upgrade your 9060 XT setup (add cooling/RAM). Connect to
+                            **IO.net** or **Render Network**.
+                            <br><strong>Logic:</strong> You rent out your GPU power to AI startups for training models.
+                            This pays in Crypto/USD. It monetizes the empty 3rd floor & existing PC.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-slate-800 p-6 rounded-xl border-l-4 border-purple-500 shadow-md">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-xl font-bold text-white">3. US Auto-Pilot (₹5L)</h4>
+                            <span class="text-xs bg-purple-900 text-purple-300 px-2 py-1 rounded">Stability</span>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-3">
+                            <strong>Goal:</strong> Dollar Appreciation + Growth.
+                            <br><strong>Method:</strong> Use the "Appreciate" or "Vested" app. Deploy into a "Dividend
+                            Aristocrats" ETF or NASDAQ-100.
+                            <br><strong>Logic:</strong> Set a recurring auto-invest. This acts as your hedge against INR
+                            inflation and funds the Algo risks.
+                        </p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bg-slate-800 p-6 rounded-xl border-l-4 border-yellow-500 shadow-md">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-xl font-bold text-white">4. Garage "Smart Node" (₹1.5L)</h4>
+                            <span class="text-xs bg-yellow-900 text-yellow-300 px-2 py-1 rounded">Real Estate</span>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-3">
+                            <strong>Goal:</strong> Hyper-local Logistics Rent.
+                            <br><strong>Method:</strong> Install smart locks and shelves. Lease to Amazon/Flipkart as a
+                            "Micro-Hub" or "IHS" point near the bus stand.
+                            <br><strong>Logic:</strong> High demand in Behala for last-mile sorting. Secure shutter +
+                            ground floor = Premium.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: The Architecture Diagram (No Mermaid/SVG) -->
+        <section id="architecture" class="bg-slate-800 rounded-2xl p-8 border border-slate-700 shadow-2xl">
+            <h2 class="text-3xl font-bold text-white mb-6 text-center">The "Zero-Touch" Workflow</h2>
+
+            <!-- CSS Grid Flowchart -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center relative">
+
+                <!-- Step 1 -->
+                <div class="p-6 bg-slate-900 rounded-lg border border-slate-600 relative">
+                    <div class="text-4xl mb-3">☁️</div>
+                    <h4 class="text-cyan-400 font-bold text-lg">1. The Cloud Brain</h4>
+                    <p class="text-xs text-slate-400 mt-2">AWS EC2 / Replit Agent</p>
+                    <p class="text-sm text-slate-300 mt-2">Runs Python scripts (Hummingbot). Monitors Binance/US Markets
+                        24/7. Executes trades via API.</p>
+                </div>
+
+                <!-- Arrow for Desktop -->
+                <div class="hidden md:flex items-center justify-center">
+                    <div class="text-4xl text-slate-600">➔</div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="p-6 bg-slate-900 rounded-lg border border-slate-600 relative">
+                    <div class="text-4xl mb-3">💻</div>
+                    <h4 class="text-green-400 font-bold text-lg">2. The Behala Node</h4>
+                    <p class="text-xs text-slate-400 mt-2">Local PC + 9060 XT GPU</p>
+                    <p class="text-sm text-slate-300 mt-2">Receives tasks from IO.net. Renders 3D/AI models. Generates
+                        passive crypto tokens.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div
+                    class="p-6 bg-slate-900 rounded-lg border border-slate-600 relative md:col-start-3 md:row-start-2 mt-4 md:mt-0">
+                    <div class="text-4xl mb-3">💰</div>
+                    <h4 class="text-yellow-400 font-bold text-lg">3. The Yield Harvest</h4>
+                    <p class="text-xs text-slate-400 mt-2">Consolidated Wallet</p>
+                    <p class="text-sm text-slate-300 mt-2">Algo Profits + GPU Earnings + Garage Rent = Auto-transferred
+                        to Bank/Stablecoin Vault.</p>
+                </div>
+
+                <!-- Connector for Visual Flow -->
+                <div
+                    class="hidden md:block absolute top-1/2 left-1/2 w-0.5 h-16 bg-slate-600 -translate-x-1/2 translate-y-8">
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Returns Projection -->
+        <section id="projections" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-slate-800 rounded-xl shadow-xl p-6 border border-slate-700">
+                <h3 class="text-xl font-bold text-white mb-4">Projected Monthly Cash Flow (Conservative)</h3>
+                <div class="chart-container">
+                    <canvas id="yieldBarChart"></canvas>
+                </div>
+                <div class="mt-4 p-4 bg-slate-900 rounded text-sm text-slate-400">
+                    <p><strong>Note:</strong> Algo trading returns vary. We project a conservative 3% monthly on the 6L
+                        trading capital, plus fixed rental yields.</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-800 rounded-xl shadow-xl p-6 border border-slate-700">
+                <h3 class="text-xl font-bold text-white mb-4">Risk Profile Analysis</h3>
+                <div class="chart-container">
+                    <canvas id="riskRadarChart"></canvas>
+                </div>
+                <div class="mt-4 text-sm text-slate-400">
+                    <p>While "Hardware Risk" (GPU burning out) exists, it is mitigated by your technical skills. "Market
+                        Risk" is hedged by the US Stock allocation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: Implementation Checklist -->
+        <section class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-xl p-8 border border-slate-700">
+            <h2 class="text-2xl font-bold text-white mb-6">Execution Roadmap: 4 Weeks to Launch</h2>
+            <div class="space-y-4">
+                <div class="flex items-start">
+                    <div
+                        class="flex-shrink-0 h-8 w-8 rounded-full bg-cyan-900 flex items-center justify-center text-cyan-400 font-bold border border-cyan-500">
+                        1</div>
+                    <div class="ml-4">
+                        <h4 class="text-lg font-bold text-white">Week 1: The Digital Perimeter</h4>
+                        <p class="text-slate-400 text-sm">Create a dedicated AWS sub-account. Set up 2FA everywhere.
+                            Install Ubuntu on a partition of your PC for better IO.net stability. Order an APC UPS for
+                            the router (Behala power fluctuates).</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div
+                        class="flex-shrink-0 h-8 w-8 rounded-full bg-green-900 flex items-center justify-center text-green-400 font-bold border border-green-500">
+                        2</div>
+                    <div class="ml-4">
+                        <h4 class="text-lg font-bold text-white">Week 2: The Garage Logic</h4>
+                        <p class="text-slate-400 text-sm">Clear the garage. Install a generic smart lock. List the space
+                            on logistic apps (Amazon I Have Space) or local dealer networks as a "Stock Point."</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div
+                        class="flex-shrink-0 h-8 w-8 rounded-full bg-purple-900 flex items-center justify-center text-purple-400 font-bold border border-purple-500">
+                        3</div>
+                    <div class="ml-4">
+                        <h4 class="text-lg font-bold text-white">Week 3: Algorithm Deployment</h4>
+                        <p class="text-slate-400 text-sm">Fund the "Appreciate" account with ₹5L. Fund Binance/Bybit
+                            with ₹6L. Configure a "Neutral Grid Bot" on BTC/USDT or ETH/USDT with a wide range (e.g.,
+                            +/- 15%).</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div
+                        class="flex-shrink-0 h-8 w-8 rounded-full bg-yellow-900 flex items-center justify-center text-yellow-400 font-bold border border-yellow-500">
+                        4</div>
+                    <div class="ml-4">
+                        <h4 class="text-lg font-bold text-white">Week 4: The GPU Stress Test</h4>
+                        <p class="text-slate-400 text-sm">Start the IO.net / Render node worker. Let it run for 48 hours
+                            to check thermals. If stable, you are now a "Digital Utility Provider."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
+            <p>&copy; 2025 Sakuntala Silicon Protocol. Generated for Educational Purposes.</p>
+            <p class="mt-2">Warning: Algo trading involves market risk. DePIN earnings fluctuate with network demand.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- UTILITY: Label Wrapper for Chart.js (Strict 16-char limit) ---
+        function wrapLabel(label) {
+            if (typeof label !== 'string' || label.length <= 16) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if ((currentLine + " " + words[i]).length <= 16) {
+                    currentLine += " " + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // --- GLOBAL CHART DEFAULTS ---
+        Chart.defaults.color = '#94A3B8';
+        Chart.defaults.borderColor = '#334155';
+        Chart.defaults.font.family = 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
+
+        // Tooltip Configuration (Mandatory)
+        const tooltipConfig = {
+            callbacks: {
+                title: function (tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        // --- CHART 1: Efficiency Matrix (Scatter/Bubble style simplified to Bar for comparison) ---
+        // Using a horizontal bar chart to show "Yield per Hour of Effort"
+        const ctxEfficiency = document.getElementById('efficiencyChart').getContext('2d');
+        const efficiencyLabels = ['Standard FD', 'Rental Property', 'Manual Trading', 'Sakuntala Algo'];
+        new Chart(ctxEfficiency, {
+            type: 'bar',
+            data: {
+                labels: efficiencyLabels.map(wrapLabel),
+                datasets: [{
+                    label: 'Projected Annual Yield (%)',
+                    data: [7, 4, 18, 32], // Data points
+                    backgroundColor: [
+                        'rgba(148, 163, 184, 0.5)', // Slate
+                        'rgba(148, 163, 184, 0.5)',
+                        'rgba(250, 204, 21, 0.5)', // Yellow warning
+                        'rgba(0, 201, 255, 0.8)'  // Cyan Hero
+                    ],
+                    borderColor: [
+                        '#94A3B8', '#94A3B8', '#FACC15', '#00C9FF'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y', // Horizontal bar
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: tooltipConfig
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Annual Return (%)' }
+                    }
+                }
+            }
+        });
+
+        // --- CHART 2: Allocation Doughnut ---
+        const ctxAllocation = document.getElementById('allocationChart').getContext('2d');
+        const allocLabels = [
+            'Algo Grid Trading (Stable/Bluechip)',
+            'US Stocks (Appreciate App)',
+            'GPU/Hardware (DePIN)',
+            'Garage Retrofit (Logistics)'
+        ];
+        new Chart(ctxAllocation, {
+            type: 'doughnut',
+            data: {
+                labels: allocLabels.map(wrapLabel),
+                datasets: [{
+                    data: [600000, 500000, 250000, 150000],
+                    backgroundColor: [
+                        '#00C9FF', // Cyan
+                        '#A855F7', // Purple
+                        '#22C55E', // Green
+                        '#EAB308'  // Yellow
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }, // Hiding default legend to use custom one
+                    tooltip: {
+                        ...tooltipConfig,
+                        callbacks: {
+                            ...tooltipConfig.callbacks,
+                            label: function (context) {
+                                let label = context.label || '';
+                                if (Array.isArray(label)) label = label.join(' ');
+                                if (label) label += ': ';
+                                label += '₹' + context.raw.toLocaleString();
+                                return label;
+                            }
+                        }
+                    }
+                },
+                cutout: '70%'
+            }
+        });
+
+        // --- CHART 3: Yield Projection (Mixed Bar/Line) ---
+        const ctxYield = document.getElementById('yieldBarChart').getContext('2d');
+        const months = ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6'];
+        new Chart(ctxYield, {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: [
+                    {
+                        label: 'Algo Trading Profit (Est)',
+                        data: [18000, 19500, 18200, 21000, 20500, 22000], // ~3% on 6L
+                        backgroundColor: '#00C9FF',
+                        order: 2
+                    },
+                    {
+                        label: 'GPU DePIN Mining',
+                        data: [5000, 8000, 9500, 9500, 9000, 10000], // Ramping up
+                        backgroundColor: '#22C55E',
+                        order: 3
+                    },
+                    {
+                        label: 'Garage Rent',
+                        data: [0, 5000, 8000, 8000, 8000, 8000], // Start small, then steady
+                        backgroundColor: '#EAB308',
+                        order: 4
+                    },
+                    {
+                        label: 'Total Passive Income',
+                        data: [23000, 32500, 35700, 38500, 37500, 40000],
+                        type: 'line',
+                        borderColor: '#F8FAFC',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        order: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: tooltipConfig
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#334155' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // --- CHART 4: Risk Radar ---
+        const ctxRisk = document.getElementById('riskRadarChart').getContext('2d');
+        const riskLabels = [
+            'Market Volatility',
+            'Hardware Failure',
+            'Regulatory Ban',
+            'Power Outage',
+            'Cyber Security'
+        ];
+        new Chart(ctxRisk, {
+            type: 'radar',
+            data: {
+                labels: riskLabels.map(wrapLabel),
+                datasets: [{
+                    label: 'Sakuntala Citadel Risk',
+                    data: [7, 4, 6, 5, 8], // High Cyber risk (requires good security), Medium Market
+                    fill: true,
+                    backgroundColor: 'rgba(0, 201, 255, 0.2)',
+                    borderColor: '#00C9FF',
+                    pointBackgroundColor: '#00C9FF'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: tooltipConfig
+                },
+                scales: {
+                    r: {
+                        angleLines: { color: '#334155' },
+                        grid: { color: '#334155' },
+                        pointLabels: {
+                            color: '#94A3B8',
+                            font: { size: 11 }
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 10
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
