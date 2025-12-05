@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Behala Neural Nexus | Aggressive Capital Deployment</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- 
+        Palette: "Digital Horizon"
+        Background: #1a1a2e (Dark Blue/Black)
+        Card BG: #16213e (Deep Navy)
+        Text: #e94560 (Hot Pink/Red - Accent), #fcdab7 (Cream - Text), #0f3460 (Blue)
+        Accents: #4cc9f0 (Cyan), #f72585 (Pink), #ffd60a (Yellow)
+    -->
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --card-dark: #1e293b;
+            --accent-cyan: #06b6d4;
+            --accent-pink: #f472b6;
+            --accent-yellow: #facc15;
+            --text-light: #f1f5f9;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            /* Max width constraint */
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .neon-text {
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.7);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, var(--accent-cyan), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--card-dark);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-cyan);
+        }
+    </style>
+    <!-- NO SVG used. NO Mermaid JS used. All diagrams are HTML/CSS. -->
+    <!-- Narrative Plan:
+         1. Intro: The Pivot from Saver to Venture-Operator.
+         2. Thesis: Why Compute? (The Shortage).
+         3. Budget: 15L Breakdown (Rig vs Infra).
+         4. Architecture: The Behala Setup (HTML Diagram).
+         5. Economics: ROI vs Traditional (Chart).
+         6. Timeline: 12-Week Deployment.
+         7. Risks: Heat & Obsolescence.
+    -->
+</head>
+
+<body class="antialiased">
+
+    <!-- Header / Hero -->
+    <header class="w-full py-12 px-4 md:px-8 border-b border-gray-800 bg-opacity-50 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500"></div>
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4 gradient-text">
+                The Behala Neural Nexus
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-400 font-light max-w-3xl mx-auto">
+                Decentralized AI Infrastructure Strategy | Capital Deployment: ₹15,00,000
+            </p>
+            <div class="mt-8 flex justify-center gap-4 flex-wrap">
+                <span
+                    class="px-4 py-2 bg-cyan-900/30 border border-cyan-500 text-cyan-400 rounded-full font-semibold">Aggressive
+                    Tier</span>
+                <span
+                    class="px-4 py-2 bg-purple-900/30 border border-purple-500 text-purple-400 rounded-full font-semibold">Target
+                    ROI: 45-50%</span>
+                <span
+                    class="px-4 py-2 bg-pink-900/30 border border-pink-500 text-pink-400 rounded-full font-semibold">Loc:
+                    Behala, Kolkata</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-16">
+
+        <!-- SECTION 1: The Executive Mandate -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="space-y-6">
+                <h2 class="text-3xl font-bold text-cyan-400">1. The Venture-Operator Mandate</h2>
+                <div class="glass-panel p-6 rounded-xl shadow-lg border-l-4 border-pink-500">
+                    <p class="text-lg leading-relaxed text-gray-300">
+                        We are abandoning the "Rentier" model. With a <strong>₹15 Lakh corpus</strong> and a demand for
+                        maximum returns, safety is the opportunity cost. The strategy leverages your <strong>empty 3rd
+                            floor in Behala</strong> and your <strong>technical expertise</strong> (Full Stack, 9060XT
+                        experience) to solve a global crisis: the shortage of AI Compute.
+                    </p>
+                    <p class="mt-4 text-lg leading-relaxed text-gray-300">
+                        You will not be a passive investor. You will be a <strong>Micro-Utility Provider</strong>,
+                        selling high-performance GPU compute to global AI networks like io.net and Render Network.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Key Stats Grid -->
+            <div class="grid grid-cols-2 gap-4">
+                <div
+                    class="bg-gray-800 p-6 rounded-xl text-center border border-gray-700 hover:border-cyan-500 transition duration-300">
+                    <div class="text-sm text-gray-400 uppercase tracking-wider">Target Net Yield</div>
+                    <div class="text-4xl font-bold text-cyan-400 mt-2">48.5%</div>
+                    <div class="text-xs text-gray-500 mt-1">Annualized</div>
+                </div>
+                <div
+                    class="bg-gray-800 p-6 rounded-xl text-center border border-gray-700 hover:border-pink-500 transition duration-300">
+                    <div class="text-sm text-gray-400 uppercase tracking-wider">Monthly Cashflow</div>
+                    <div class="text-4xl font-bold text-pink-400 mt-2">₹60k+</div>
+                    <div class="text-xs text-gray-500 mt-1">Post-Electricity</div>
+                </div>
+                <div
+                    class="bg-gray-800 p-6 rounded-xl text-center border border-gray-700 hover:border-yellow-500 transition duration-300">
+                    <div class="text-sm text-gray-400 uppercase tracking-wider">Asset Class</div>
+                    <div class="text-3xl font-bold text-yellow-400 mt-2">DePIN</div>
+                    <div class="text-xs text-gray-500 mt-1">Decentralized Infra</div>
+                </div>
+                <div
+                    class="bg-gray-800 p-6 rounded-xl text-center border border-gray-700 hover:border-purple-500 transition duration-300">
+                    <div class="text-sm text-gray-400 uppercase tracking-wider">Effort Level</div>
+                    <div class="text-3xl font-bold text-purple-400 mt-2">Med</div>
+                    <div class="text-xs text-gray-500 mt-1">Setup Heavy, Run Light</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Capital Allocation (The Rig) -->
+        <section>
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-cyan-400 mb-2">2. Capital Allocation: The "Behala Rig"</h2>
+                <p class="text-gray-400">Precision deployment of ₹15,00,000 into appreciable hardware and robust
+                    infrastructure.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- CHART: Budget Breakdown -->
+                <div class="glass-panel p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-4 text-center">Budget Distribution (₹15 Lakhs)</h3>
+                    <div class="chart-container">
+                        <canvas id="budgetChart"></canvas>
+                    </div>
+                    <p class="text-sm text-center text-gray-500 mt-4">
+                        *Hardware prices are estimates based on current Indian market rates for RTX 4090/A-series
+                        imports.
+                    </p>
+                </div>
+
+                <!-- Text Description of Allocation -->
+                <div class="space-y-4">
+                    <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-cyan-500">
+                        <h4 class="font-bold text-lg text-white">Compute Core (65%)</h4>
+                        <p class="text-gray-400 text-sm">
+                            Purchase of 3x to 4x NVIDIA RTX 4090 (24GB VRAM) cards. These are the engines of your
+                            business. Unlike EVs, these hold resale value well in the gamer market if the strategy
+                            pivots.
+                        </p>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-purple-500">
+                        <h4 class="font-bold text-lg text-white">Thermal & Power (20%)</h4>
+                        <p class="text-gray-400 text-sm">
+                            <strong>Critical for Behala Heat.</strong> Industrial heavy-duty AC (2 Ton), dedicated 15A
+                            lines, and a massive 5KVA+ Online UPS. The 3rd floor must become a "thermal envelope."
+                        </p>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-pink-500">
+                        <h4 class="font-bold text-lg text-white">Supporting Silicon (10%)</h4>
+                        <p class="text-gray-400 text-sm">
+                            Threadripper or high-lane CPU, 128GB DDR5 RAM, 2TB NVMe Gen5 SSDs. The GPU needs a fast
+                            highway to data.
+                        </p>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-yellow-500">
+                        <h4 class="font-bold text-lg text-white">OpEx Reserve (5%)</h4>
+                        <p class="text-gray-400 text-sm">
+                            Cash buffer for the first 2 months of electricity bills before payout cycles stabilize.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Architecture Diagram (HTML/CSS) -->
+        <section class="bg-gray-800/50 p-8 rounded-2xl border border-gray-700">
+            <h2 class="text-3xl font-bold text-center text-cyan-400 mb-8">3. The Infrastructure Data Flow</h2>
+
+            <!-- Custom HTML Diagram -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 relative">
+
+                <!-- Step 1: Input -->
+                <div class="flex flex-col items-center w-full md:w-1/4">
+                    <div
+                        class="w-20 h-20 bg-gray-700 rounded-full flex items-center justify-center text-3xl mb-2 shadow-lg border-2 border-gray-500">
+                        🧠
+                    </div>
+                    <h4 class="font-bold text-white">Global AI Models</h4>
+                    <p class="text-xs text-center text-gray-400">Clients on io.net/Render require training/inference</p>
+                </div>
+
+                <!-- Connector -->
+                <div class="hidden md:block h-1 w-16 bg-gradient-to-r from-gray-500 to-cyan-500"></div>
+                <div class="md:hidden w-1 h-12 bg-gradient-to-b from-gray-500 to-cyan-500"></div>
+
+                <!-- Step 2: The Nexus (Your Home) -->
+                <div class="flex flex-col items-center w-full md:w-1/4">
+                    <div
+                        class="relative w-24 h-24 bg-gray-800 rounded-xl flex items-center justify-center text-4xl mb-2 shadow-[0_0_20px_rgba(6,182,212,0.5)] border-2 border-cyan-400 z-10">
+                        ⚡
+                        <div
+                            class="absolute -top-2 -right-2 w-6 h-6 bg-green-500 rounded-full text-xs flex items-center justify-center text-black font-bold">
+                            ON</div>
+                    </div>
+                    <h4 class="font-bold text-cyan-400">Behala 3rd Floor</h4>
+                    <p class="text-xs text-center text-gray-400">4x 4090 Cluster<br>Cooling + UPS</p>
+                </div>
+
+                <!-- Connector -->
+                <div class="hidden md:block h-1 w-16 bg-gradient-to-r from-cyan-500 to-pink-500"></div>
+                <div class="md:hidden w-1 h-12 bg-gradient-to-b from-cyan-500 to-pink-500"></div>
+
+                <!-- Step 3: Output -->
+                <div class="flex flex-col items-center w-full md:w-1/4">
+                    <div
+                        class="w-20 h-20 bg-gray-700 rounded-full flex items-center justify-center text-3xl mb-2 shadow-lg border-2 border-gray-500">
+                        💎
+                    </div>
+                    <h4 class="font-bold text-white">Crypto Earnings</h4>
+                    <p class="text-xs text-center text-gray-400">Rent paid in SOL/RNDR/USDC</p>
+                </div>
+
+                <!-- Connector -->
+                <div class="hidden md:block h-1 w-16 bg-gradient-to-r from-pink-500 to-yellow-500"></div>
+                <div class="md:hidden w-1 h-12 bg-gradient-to-b from-pink-500 to-yellow-500"></div>
+
+                <!-- Step 4: Liquidity -->
+                <div class="flex flex-col items-center w-full md:w-1/4">
+                    <div
+                        class="w-20 h-20 bg-gray-700 rounded-full flex items-center justify-center text-3xl mb-2 shadow-lg border-2 border-gray-500">
+                        🏦
+                    </div>
+                    <h4 class="font-bold text-white">Fiat Off-Ramp</h4>
+                    <p class="text-xs text-center text-gray-400">Convert to INR -> Bank</p>
+                </div>
+
+            </div>
+            <p class="text-center text-gray-500 mt-8 text-sm italic">
+                *The system leverages your existing 9060XT PC as a test-bench/control node while the main cluster does
+                the heavy lifting.
+            </p>
+        </section>
+
+        <!-- SECTION 4: Comparative Economics -->
+        <section>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Text Context -->
+                <div class="flex flex-col justify-center space-y-6">
+                    <h2 class="text-3xl font-bold text-pink-500">4. Why This Beats "Safe" Investing</h2>
+                    <p class="text-gray-300 text-lg">
+                        Traditional investments (FDs, Real Estate) in India barely beat real inflation. Even aggressive
+                        Mutual Funds cap at ~18-20%.
+                    </p>
+                    <p class="text-gray-300 text-lg">
+                        The <strong>Behala Neural Nexus</strong> is an active business. You are capitalizing on the "AI
+                        Gold Rush" by selling shovels (Compute). The chart highlights the massive variance in potential
+                        Year 1 Net Income compared to standard options for a ₹15L corpus.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+                            FD (7%): ~₹1.05L / yr
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <span class="w-2 h-2 bg-yellow-500 rounded-full mr-2"></span>
+                            Small Cap MF (20%): ~₹3.0L / yr
+                        </li>
+                        <li class="flex items-center text-cyan-400 font-bold">
+                            <span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
+                            AI Node (50%): ~₹7.5L / yr
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CHART: Comparative Returns -->
+                <div class="glass-panel p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-4 text-center">Projected Annual Net Income (₹15L Base)</h3>
+                    <div class="chart-container">
+                        <canvas id="comparisonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: Implementation Timeline -->
+        <section class="py-8">
+            <h2 class="text-3xl font-bold text-yellow-400 mb-8">5. Execution Timeline (90 Days)</h2>
+            <div class="relative border-l-2 border-gray-700 ml-4 md:ml-8 space-y-8">
+
+                <!-- Item 1 -->
+                <div class="relative pl-8">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-500 border-2 border-gray-900">
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Month 1: Procurement & Prep</h3>
+                    <div class="bg-gray-800 mt-2 p-4 rounded-lg">
+                        <ul class="list-disc list-inside text-gray-400 space-y-1">
+                            <li>Upgrade electrical wiring in 3rd floor (dedicated breaker).</li>
+                            <li>Order GPU hardware (source from reputable Nehru Place/Chandni Chowk vendors or import).
+                            </li>
+                            <li>Install 2 Ton AC with timer/IoT control.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="relative pl-8">
+                    <div
+                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-cyan-500 border-2 border-gray-900 shadow-[0_0_10px_rgba(6,182,212,0.8)]">
+                    </div>
+                    <h3 class="text-xl font-bold text-cyan-400">Month 2: The "Burn-In"</h3>
+                    <div class="bg-gray-800 mt-2 p-4 rounded-lg border border-cyan-900">
+                        <ul class="list-disc list-inside text-gray-400 space-y-1">
+                            <li>Assembly of the Rig (The "Beast").</li>
+                            <li>OS Installation (Ubuntu Server usually preferred for io.net).</li>
+                            <li><strong>Stress Testing:</strong> Run Furmark for 48hrs to test cooling in Behala heat.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="relative pl-8">
+                    <div
+                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-pink-500 border-2 border-gray-900 shadow-[0_0_10px_rgba(236,72,153,0.8)]">
+                    </div>
+                    <h3 class="text-xl font-bold text-pink-400">Month 3: Live Deployment</h3>
+                    <div class="bg-gray-800 mt-2 p-4 rounded-lg border border-pink-900">
+                        <ul class="list-disc list-inside text-gray-400 space-y-1">
+                            <li>Connect Worker Node to io.net / Render Network.</li>
+                            <li>Configure crypto wallet (Solana/Ethereum) for payouts.</li>
+                            <li>First Payout Cycle & ROI Calculation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 6: Risk Analysis (Radar Chart) -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-gray-800/30 p-8 rounded-2xl">
+            <div class="glass-panel p-6 rounded-xl">
+                <h3 class="text-xl font-semibold mb-4 text-center">Risk Profile Assessment</h3>
+                <div class="chart-container">
+                    <canvas id="riskChart"></canvas>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <h2 class="text-3xl font-bold text-gray-200">6. Known Vectors of Failure</h2>
+                <p class="text-gray-400">Aggressive returns come with aggressive risks. We must mitigate them.</p>
+
+                <div class="space-y-3">
+                    <div class="flex items-start">
+                        <span class="text-2xl mr-3">🔥</span>
+                        <div>
+                            <h5 class="font-bold text-white">Heat Management</h5>
+                            <p class="text-sm text-gray-400">Behala summers are brutal. If cooling fails, thermal
+                                throttling kills profits. <strong>Mitigation:</strong> Redundant AC and auto-shutdown
+                                scripts.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="text-2xl mr-3">📉</span>
+                        <div>
+                            <h5 class="font-bold text-white">Token Volatility</h5>
+                            <p class="text-sm text-gray-400">Earnings are often in crypto. A crash reduces real-world
+                                yield. <strong>Mitigation:</strong> Auto-convert to USDC/INR weekly.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="text-2xl mr-3">🔌</span>
+                        <div>
+                            <h5 class="font-bold text-white">Power Outages</h5>
+                            <p class="text-sm text-gray-400">Frequent cuts disrupt uptime scores.
+                                <strong>Mitigation:</strong> High-capacity Inverter/UPS is non-negotiable.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 border-t border-gray-800 mt-12 py-8 text-center">
+        <p class="text-gray-500 text-sm">
+            Generated for Behala Strategic Mandate (FY 2025-26) | Strategy 6 Implementation
+        </p>
+        <p class="text-gray-600 text-xs mt-2">
+            Disclaimer: This is a high-risk technical strategy. Past performance of DePIN networks does not guarantee
+            future yields.
+        </p>
+    </footer>
+
+    <!-- SCRIPT SECTION -->
+    <script>
+        // --- UTILITY: Label Wrapping Helper ---
+        function wrapLabel(label, maxLen = 16) {
+            if (label.length <= maxLen) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if ((currentLine + " " + words[i]).length <= maxLen) {
+                    currentLine += " " + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // --- CHART 1: Budget Allocation (Donut) ---
+        const ctxBudget = document.getElementById('budgetChart').getContext('2d');
+        const budgetLabels = ["GPUs (4x 4090s)", "Cooling & Electricals", "Motherboard/CPU/RAM", "OpEx Reserve"];
+        const wrappedBudgetLabels = budgetLabels.map(l => wrapLabel(l));
+
+        new Chart(ctxBudget, {
+            type: 'doughnut',
+            data: {
+                labels: wrappedBudgetLabels,
+                datasets: [{
+                    data: [1000000, 300000, 125000, 75000], // Approx breakdown of 15L
+                    backgroundColor: ['#06b6d4', '#f472b6', '#8b5cf6', '#facc15'],
+                    borderColor: '#1e293b',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#cbd5e1', padding: 20 }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function (tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) return label.join(' ');
+                                return label;
+                            },
+                            label: function (context) {
+                                let value = context.raw;
+                                return ' ₹' + value.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // --- CHART 2: Comparative Returns (Bar) ---
+        const ctxComp = document.getElementById('comparisonChart').getContext('2d');
+        const compLabels = ["Fixed Deposits", "Index Funds", "Real Estate Rental", "Small Cap Funds", "Behala Neural Nexus"];
+        const wrappedCompLabels = compLabels.map(l => wrapLabel(l));
+
+        new Chart(ctxComp, {
+            type: 'bar',
+            data: {
+                labels: wrappedCompLabels,
+                datasets: [{
+                    label: 'Projected Annual Net Profit (₹)',
+                    data: [105000, 180000, 60000, 300000, 750000],
+                    backgroundColor: ['#64748b', '#64748b', '#64748b', '#94a3b8', '#ec4899'],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#334155' },
+                        ticks: { color: '#94a3b8' }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#94a3b8', autoSkip: false }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            title: function (tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) return label.join(' ');
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // --- CHART 3: Risk Radar (Radar) ---
+        const ctxRisk = document.getElementById('riskChart').getContext('2d');
+        // Data points: 0 (Low Risk) to 5 (High Risk)
+        // Comparison: Neural Nexus vs FD
+
+        new Chart(ctxRisk, {
+            type: 'radar',
+            data: {
+                labels: ['Market Volatility', 'Setup Complexity', 'Maintenance Effort', 'Regulatory Risk', 'Liquidity'],
+                datasets: [{
+                    label: 'Behala Neural Nexus',
+                    data: [5, 4, 3, 3, 4], // High volatility, high setup
+                    fill: true,
+                    backgroundColor: 'rgba(6, 182, 212, 0.2)',
+                    borderColor: '#06b6d4',
+                    pointBackgroundColor: '#06b6d4',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#06b6d4'
+                }, {
+                    label: 'Traditional FD',
+                    data: [1, 1, 1, 1, 5], // Low risk, high liquidity
+                    fill: true,
+                    backgroundColor: 'rgba(148, 163, 184, 0.2)',
+                    borderColor: '#94a3b8',
+                    pointBackgroundColor: '#94a3b8',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#94a3b8'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: '#334155' },
+                        grid: { color: '#334155' },
+                        pointLabels: { color: '#cbd5e1', font: { size: 12 } },
+                        ticks: { backdropColor: 'transparent', color: '#94a3b8' }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function (tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) return label.join(' ');
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
