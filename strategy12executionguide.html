@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sakuntala Sovereign Protocol: Execution Guide</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Chosen Palette: "Cyberpunk FinTech" (Vibrant Blue, Neon Green, Deep Purple on Dark) -->
+    <!-- 
+        Palette Reference: "Energetic & Playful" / High Contrast Tech
+        Background: #0B1120 (Deep Navy/Black)
+        Card BG: #1E293B (Slate 800)
+        Primary Accent: #06B6D4 (Cyan)
+        Secondary Accent: #D946EF (Fuchsia)
+        Success/Green: #22C55E (Green)
+        Text Main: #F8FAFC (Slate 50)
+        Text Muted: #94A3B8 (Slate 400)
+    -->
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B1120;
+            color: #F8FAFC;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .mono-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            height: 400px;
+            max-height: 500px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0B1120;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        /* Neon Glow Effects */
+        .neon-border {
+            box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .neon-border:hover {
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+            border-color: #06B6D4;
+        }
+
+        /* Flowchart Connector Lines */
+        .connector-line {
+            width: 2px;
+            background-color: #475569;
+            margin: 0 auto;
+        }
+    </style>
+
+    <!-- NO SVG used. NO Mermaid JS used. All diagrams are HTML/CSS or Canvas. -->
+    <!-- Plan Summary:
+         1. Introduction: Layman's logic of the strategy.
+         2. Hardware Setup: Optimizing the ASUS TUF GTX 1650.
+         3. Financial Setup: Allocating the ₹4.5L corpus.
+         4. The Engine: Python + Dhan API logic explanation (Visual).
+         5. The Strategy: Technical Indicator Logic (Chart).
+         6. Execution: Backtesting vs Real Results (Chart).
+         7. Taxation: Section 44AD + 87A visual breakdown.
+         8. Roadmap: 8-Week Launch Plan.
+    -->
+</head>
+
+<body class="antialiased selection:bg-cyan-500 selection:text-white">
+
+    <!-- Header / Hero Section -->
+    <header class="w-full bg-slate-900 border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl font-bold text-cyan-400">Sakuntala<span
+                        class="text-fuchsia-500">Protocol</span></span>
+                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded border border-slate-700">v1.0
+                    EXECUTION MODE</span>
+            </div>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                <a href="#setup" class="hover:text-cyan-400 transition">1. Setup</a>
+                <a href="#strategy" class="hover:text-cyan-400 transition">2. Strategy</a>
+                <a href="#code" class="hover:text-cyan-400 transition">3. Code</a>
+                <a href="#taxes" class="hover:text-cyan-400 transition">4. Taxes</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24">
+
+        <!-- Section 1: Introduction & The Mandate -->
+        <section class="text-center space-y-6">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
+                Turn Your Laptop Into A <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500">Capital
+                    Deployment Engine</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+                You have the hardware (ASUS TUF). You have the capital (₹4.5L). You have the blueprint.
+                This is the operational manual to transition from a passive investor to an <strong>Algorithmic Hedge
+                    Fund Operator</strong>.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 neon-border">
+                    <div class="text-3xl font-bold text-cyan-400 mb-2">₹4,50,000</div>
+                    <div class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Deployable Corpus</div>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 neon-border">
+                    <div class="text-3xl font-bold text-fuchsia-500 mb-2">30-45%</div>
+                    <div class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Target Annual ROI</div>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 neon-border">
+                    <div class="text-3xl font-bold text-green-500 mb-2">0%</div>
+                    <div class="text-sm text-slate-400 uppercase tracking-wider font-semibold">Target Tax (Net)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Asset Allocation (Donut Chart) -->
+        <section id="setup">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div
+                        class="inline-block px-3 py-1 rounded-full bg-cyan-900/30 text-cyan-400 text-sm font-bold border border-cyan-800">
+                        PHASE 1: FINANCIAL ARCHITECTURE</div>
+                    <h2 class="text-3xl font-bold text-white">Structuring the ₹4.5 Lakh Corpus</h2>
+                    <p class="text-slate-400">
+                        Before writing a single line of code, we must structure the capital. In algorithmic trading, you
+                        never deploy 100% of your capital into a single trade. We split the ₹4,50,000 into distinct
+                        "buckets" to manage risk while maximizing yield.
+                    </p>
+                    <ul class="space-y-4 text-slate-300">
+                        <li class="flex items-start">
+                            <span
+                                class="flex-shrink-0 h-6 w-6 rounded-full bg-cyan-500 flex items-center justify-center text-slate-900 font-bold text-xs mt-0.5">1</span>
+                            <span class="ml-3"><strong>Alpha Engine (60%):</strong> Pure trading capital for the algo.
+                                Used for F&O margins and intraday equity.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span
+                                class="flex-shrink-0 h-6 w-6 rounded-full bg-fuchsia-500 flex items-center justify-center text-slate-900 font-bold text-xs mt-0.5">2</span>
+                            <span class="ml-3"><strong>Drawdown Buffer (30%):</strong> Cash reserve. Algorithms have
+                                losing streaks; this buffer prevents you from blowing up the account during a bad
+                                week.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span
+                                class="flex-shrink-0 h-6 w-6 rounded-full bg-yellow-500 flex items-center justify-center text-slate-900 font-bold text-xs mt-0.5">3</span>
+                            <span class="ml-3"><strong>Infrastructure & R&D (10%):</strong> API costs, data
+                                subscriptions (TradingView Pro), and hardware maintenance.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-xl">
+                    <h3 class="text-lg font-semibold text-white mb-4 text-center">Strategic Capital Allocation</h3>
+                    <div class="chart-container" style="height: 350px;">
+                        <canvas id="allocationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Hardware & Stack (The ASUS TUF Setup) -->
+        <section>
+            <div class="bg-slate-800/50 rounded-2xl border border-slate-700 p-8 md:p-12">
+                <div
+                    class="inline-block px-3 py-1 rounded-full bg-fuchsia-900/30 text-fuchsia-400 text-sm font-bold border border-fuchsia-800 mb-6">
+                    PHASE 2: HARDWARE OPTIMIZATION</div>
+                <h2 class="text-3xl font-bold text-white mb-6">Optimizing Your ASUS TUF (GTX 1650)</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Column 1 -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-semibold text-cyan-400">The GPU Role</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            The <strong>NVIDIA GTX 1650</strong> is a workhorse. While the original paper mentioned an
+                            RX 9060, your 1650 has 896 CUDA cores. We will use these for "Vectorized Backtesting."
+                        </p>
+                        <div class="bg-slate-900 p-4 rounded-lg border border-slate-700">
+                            <div class="text-xs font-mono text-green-400">
+                                > enabling CUDA acceleration...<br>
+                                > import torch<br>
+                                > device = "cuda" if torch.cuda.is_available() else "cpu"<br>
+                                > print(device)<br>
+                                <span class="text-white">Output: cuda:0 (GTX 1650)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2 -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-semibold text-fuchsia-400">The Software Stack</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            We aren't just installing "apps"; we are building a <strong>Trading Environment</strong>.
+                            This separates your trading logic from your personal files.
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li class="flex items-center gap-2">
+                                <div class="w-2 h-2 bg-green-500 rounded-full"></div> <strong>Python 3.10+:</strong> The
+                                language of finance.
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <div class="w-2 h-2 bg-green-500 rounded-full"></div> <strong>VS Code:</strong> Your
+                                command center.
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <div class="w-2 h-2 bg-green-500 rounded-full"></div> <strong>Dhan HQ API:</strong> The
+                                bridge to the market.
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <div class="w-2 h-2 bg-green-500 rounded-full"></div> <strong>Git:</strong> Version
+                                control (safety net).
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3 -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-semibold text-yellow-400">Connectivity</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Algorithmic trading requires stability over speed (unless HFT).
+                        </p>
+                        <div class="flex flex-col gap-3">
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+                                <span class="text-slate-400 text-sm">Ethernet</span>
+                                <span class="text-green-400 text-xs font-bold uppercase">Mandatory</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+                                <span class="text-slate-400 text-sm">Power Backup</span>
+                                <span class="text-green-400 text-xs font-bold uppercase">Critical (UPS)</span>
+                            </div>
+                            <div class="flex justify-between items-center pb-2">
+                                <span class="text-slate-400 text-sm">Screen Real Estate</span>
+                                <span class="text-slate-400 text-xs">ASUS Screen + External Monitor</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: The Strategy Logic (Visual Diagram) -->
+        <section id="strategy">
+            <div class="text-center mb-12">
+                <div
+                    class="inline-block px-3 py-1 rounded-full bg-green-900/30 text-green-400 text-sm font-bold border border-green-800 mb-4">
+                    PHASE 3: THE STRATEGY</div>
+                <h2 class="text-3xl font-bold text-white">The "Mean Reversion" Logic</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto mt-4">
+                    We don't guess. We follow math. The strategy looks for prices that have moved too far from the
+                    average (Overbought/Oversold) and bets on them returning to the mean.
+                </p>
+            </div>
+
+            <!-- CSS Flowchart for Trade Logic -->
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-col items-center">
+
+                    <!-- Start -->
+                    <div
+                        class="bg-white text-slate-900 font-bold px-8 py-4 rounded-lg shadow-lg z-10 border-2 border-slate-200">
+                        Market Data Feed (Tick by Tick)
+                    </div>
+
+                    <div class="h-8 connector-line"></div>
+
+                    <!-- Decision Diamond 1 -->
+                    <div
+                        class="bg-slate-800 border-2 border-cyan-500 text-cyan-400 p-6 rounded-lg text-center shadow-[0_0_15px_rgba(6,182,212,0.3)] z-10 max-w-md">
+                        <div class="font-bold text-sm uppercase mb-2">Condition Check</div>
+                        Is RSI (14) < 30 <br> <span class="text-white font-normal text-xs">AND</span> <br> Price > 200
+                            EMA?
+                    </div>
+
+                    <div class="h-8 connector-line"></div>
+
+                    <!-- Branching -->
+                    <div class="grid grid-cols-2 gap-16 w-full relative">
+                        <!-- Left Branch (YES) -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-full h-0.5 bg-slate-600 absolute top-0 left-1/4 right-1/2"></div>
+                            <!-- Horizontal connector -->
+                            <div
+                                class="bg-green-600 text-white font-bold px-6 py-3 rounded shadow-lg mt-4 w-48 text-center">
+                                YES: BUY SIGNAL
+                            </div>
+                            <div class="h-6 connector-line"></div>
+                            <div
+                                class="bg-slate-700 text-slate-300 px-4 py-2 rounded text-xs border border-slate-600 w-48 text-center">
+                                Place Limit Order<br>Stop Loss: -1%<br>Target: +2%
+                            </div>
+                        </div>
+
+                        <!-- Right Branch (NO) -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-full h-0.5 bg-slate-600 absolute top-0 left-1/2 right-1/4"></div>
+                            <!-- Horizontal connector -->
+                            <div
+                                class="bg-red-500/20 text-red-400 font-bold px-6 py-3 rounded border border-red-500/50 mt-4 w-48 text-center">
+                                NO: WAIT
+                            </div>
+                            <div class="h-6 connector-line"></div>
+                            <div
+                                class="bg-slate-700 text-slate-300 px-4 py-2 rounded text-xs border border-slate-600 w-48 text-center">
+                                Loop to next tick
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Comparative Performance (Chart) -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" id="performance">
+            <div class="order-2 lg:order-1 chart-container">
+                <canvas id="performanceChart"></canvas>
+            </div>
+            <div class="order-1 lg:order-2 space-y-6">
+                <h2 class="text-3xl font-bold text-white">Why Use a Bot? (Speed & Emotion)</h2>
+                <p class="text-slate-400">
+                    A human trader hesitates. A bot executes. The chart simulates the growth of your ₹2.7L (Active
+                    Capital) over 12 months comparing three scenarios.
+                </p>
+
+                <div class="space-y-4">
+                    <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-slate-500">
+                        <h4 class="text-white font-bold">Traditional FD (6%)</h4>
+                        <p class="text-xs text-slate-400">Safe, but loses value against real inflation. Net growth is
+                            negligible.</p>
+                    </div>
+                    <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-fuchsia-500">
+                        <h4 class="text-white font-bold">Manual Trading (Volatile)</h4>
+                        <p class="text-xs text-slate-400">High highs, deep lows. Emotional decisions often lead to panic
+                            selling or revenge trading.</p>
+                    </div>
+                    <div
+                        class="bg-slate-800 p-4 rounded-lg border-l-4 border-cyan-500 shadow-[0_0_15px_rgba(6,182,212,0.15)]">
+                        <h4 class="text-white font-bold">Sakuntala Algo (Target 35%)</h4>
+                        <p class="text-xs text-slate-400">Consistent, small wins. Strict risk management (Stop Losses
+                            are automated). Compounding works its magic.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: The Code (Implementation) -->
+        <section id="code">
+            <div
+                class="inline-block px-3 py-1 rounded-full bg-cyan-900/30 text-cyan-400 text-sm font-bold border border-cyan-800 mb-6">
+                PHASE 4: THE CODE</div>
+            <h2 class="text-3xl font-bold text-white mb-8">The Engine Room: Python Implementation</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Code Block 1: Connection -->
+                <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-700 shadow-2xl">
+                    <div class="bg-slate-800 px-4 py-2 flex items-center justify-between border-b border-slate-700">
+                        <span class="text-xs font-mono text-slate-400">connect_dhan.py</span>
+                        <div class="flex space-x-1.5">
+                            <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                        </div>
+                    </div>
+                    <div class="p-4 overflow-x-auto">
+                        <pre class="text-xs font-mono leading-relaxed text-slate-300">
+<span class="text-fuchsia-400">from</span> dhanhq <span class="text-fuchsia-400">import</span> DhanHQ
+
+<span class="text-slate-500"># 1. Initialize Connection</span>
+dhan = DhanHQ(
+    client_id=<span class="text-green-400">"YOUR_CLIENT_ID"</span>,
+    access_token=<span class="text-green-400">"YOUR_ACCESS_TOKEN"</span>
+)
+
+<span class="text-slate-500"># 2. Fetch Holdings</span>
+holdings = dhan.get_holdings()
+<span class="text-cyan-400">print</span>(<span class="text-green-400">f"Current Portfolio Value: {holdings['total_value']}"</span>)
+
+<span class="text-slate-500"># 3. Place Order Function</span>
+<span class="text-fuchsia-400">def</span> <span class="text-yellow-400">buy_stock</span>(symbol, qty):
+    dhan.place_order(
+        security_id=symbol,
+        exchange_segment=dhan.NSE,
+        transaction_type=dhan.BUY,
+        quantity=qty,
+        order_type=dhan.MARKET,
+        product_type=dhan.INTRADAY,
+        validity=dhan.DAY
+    )
+</pre>
+                    </div>
+                </div>
+
+                <!-- Code Block 2: Logic -->
+                <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-700 shadow-2xl">
+                    <div class="bg-slate-800 px-4 py-2 flex items-center justify-between border-b border-slate-700">
+                        <span class="text-xs font-mono text-slate-400">strategy_logic.py</span>
+                        <div class="flex space-x-1.5">
+                            <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                        </div>
+                    </div>
+                    <div class="p-4 overflow-x-auto">
+                        <pre class="text-xs font-mono leading-relaxed text-slate-300">
+<span class="text-fuchsia-400">import</span> talib
+<span class="text-fuchsia-400">import</span> numpy <span class="text-fuchsia-400">as</span> np
+
+<span class="text-slate-500"># Simulated Data Stream</span>
+closes = np.array([...]) 
+
+<span class="text-slate-500"># Calculate Indicators</span>
+rsi = talib.RSI(closes, timeperiod=<span class="text-fuchsia-400">14</span>)
+ema_200 = talib.EMA(closes, timeperiod=<span class="text-fuchsia-400">200</span>)
+
+<span class="text-slate-500"># The "Brain" of the operation</span>
+current_price = closes[-1]
+current_rsi = rsi[-1]
+
+<span class="text-fuchsia-400">if</span> current_rsi < <span class="text-fuchsia-400">30</span> <span class="text-fuchsia-400">and</span> current_price > ema_200[-1]:
+    <span class="text-cyan-400">print</span>(<span class="text-green-400">"OVERSOLD IN UPTREND: TRIGGER BUY"</span>)
+    buy_stock(<span class="text-green-400">'RELIANCE'</span>, <span class="text-fuchsia-400">10</span>)
+<span class="text-fuchsia-400">elif</span> current_rsi > <span class="text-fuchsia-400">70</span>:
+    <span class="text-cyan-400">print</span>(<span class="text-red-400">"OVERBOUGHT: TRIGGER SELL"</span>)
+    sell_stock(<span class="text-green-400">'RELIANCE'</span>, <span class="text-fuchsia-400">10</span>)
+</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: The Tax Hack (Section 44AD + 87A) -->
+        <section id="taxes"
+            class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 border border-slate-700">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div
+                        class="inline-block px-3 py-1 rounded-full bg-yellow-900/30 text-yellow-400 text-sm font-bold border border-yellow-800 mb-6">
+                        PHASE 5: TAX EFFICIENCY</div>
+                    <h2 class="text-3xl font-bold text-white mb-4">Keeping What You Earn</h2>
+                    <p class="text-slate-400 mb-6">
+                        Making money is half the battle. Keeping it is the other half. The Sakuntala Protocol uses a
+                        specific combination of Indian Tax Laws to legally minimize tax liability on business income
+                        (Trading is considered Speculative/Non-Speculative Business Income).
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-slate-700 p-3 rounded-lg text-white font-bold">1</div>
+                            <div>
+                                <h4 class="text-white font-bold">Section 44AD (Presumptive Taxation)</h4>
+                                <p class="text-sm text-slate-400">Instead of meticulous bookkeeping, you declare 6% of
+                                    your turnover as profit. For digital transactions, this is the standard.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="bg-slate-700 p-3 rounded-lg text-white font-bold">2</div>
+                            <div>
+                                <h4 class="text-white font-bold">Section 87A Rebate</h4>
+                                <p class="text-sm text-slate-400">If your total taxable income is below the threshold
+                                    (₹7 Lakhs under New Regime, effectively), the government gives a rebate of up to
+                                    ₹25,000, making tax ZERO.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 text-slate-900 shadow-2xl">
+                    <h3 class="text-xl font-bold mb-4 border-b pb-2">Tax Calculation Simulator</h3>
+                    <div class="space-y-3 font-mono text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-slate-600">Total Turnover (Traded Value)</span>
+                            <span class="font-bold">₹80,00,000</span>
+                        </div>
+                        <div class="flex justify-between text-fuchsia-600">
+                            <span>Deemed Profit (6% of Turnover)</span>
+                            <span class="font-bold">₹4,80,000</span>
+                        </div>
+                        <div class="flex justify-between text-slate-500 italic text-xs">
+                            <span>(Assuming this is your only income)</span>
+                        </div>
+                        <div class="h-px bg-slate-200 my-2"></div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-600">Gross Taxable Income</span>
+                            <span class="font-bold">₹4,80,000</span>
+                        </div>
+                        <div class="flex justify-between text-green-600">
+                            <span>Tax Bracket (0-3L: Nil, 3-6L: 5%)</span>
+                            <span class="font-bold">₹9,000</span>
+                        </div>
+                        <div class="flex justify-between text-cyan-600">
+                            <span>Less: Rebate u/s 87A</span>
+                            <span class="font-bold">-₹9,000</span>
+                        </div>
+                        <div class="h-px bg-black my-2"></div>
+                        <div class="flex justify-between text-lg font-bold bg-slate-100 p-2 rounded">
+                            <span>NET TAX PAYABLE</span>
+                            <span class="text-green-600">₹0</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-xs text-slate-400 text-center">
+                        *Disclaimer: Consult a CA. This is a strategic projection based on FY 2024-25 norms.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: Timeline / Roadmap -->
+        <section>
+            <h2 class="text-3xl font-bold text-white text-center mb-12">8-Week Launch Roadmap</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="bg-slate-800 p-6 rounded-lg border-t-4 border-cyan-500">
+                    <div class="text-cyan-400 font-bold text-lg mb-2">Weeks 1-2</div>
+                    <h4 class="text-white font-bold mb-2">Setup & Infrastructure</h4>
+                    <p class="text-xs text-slate-400">Open Dhan Account. Setup ASUS TUF environment. Install Python,
+                        Git, VS Code. Secure API keys.</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-lg border-t-4 border-fuchsia-500">
+                    <div class="text-fuchsia-400 font-bold text-lg mb-2">Weeks 3-4</div>
+                    <h4 class="text-white font-bold mb-2">Coding & Backtesting</h4>
+                    <p class="text-xs text-slate-400">Write the 'Mean Reversion' script. Use historical data
+                        (Zipline/Backtrader) to test on GPU. Optimize parameters.</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-lg border-t-4 border-yellow-500">
+                    <div class="text-yellow-400 font-bold text-lg mb-2">Weeks 5-6</div>
+                    <h4 class="text-white font-bold mb-2">Paper Trading</h4>
+                    <p class="text-xs text-slate-400">Run the bot connected to live market but with 0 quantity (or paper
+                        trade mode). Verify execution speed and logic.</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-lg border-t-4 border-green-500">
+                    <div class="text-green-400 font-bold text-lg mb-2">Weeks 7-8</div>
+                    <h4 class="text-white font-bold mb-2">Live Deployment</h4>
+                    <p class="text-xs text-slate-400">Deploy 25% capital first. Monitor logs. Scale to 60% capital
+                        allocation (Alpha Engine) once stable.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t border-slate-800 pt-12 text-center">
+            <p class="text-slate-500 mb-4">Sakuntala Sovereign Protocol</p>
+            <p class="text-xs text-slate-600 max-w-2xl mx-auto">
+                Disclaimer: Algorithmic trading involves market risk. This guide serves as a technical and educational
+                blueprint based on the user's provided assets. Past performance in backtests does not guarantee future
+                results. Tax laws are subject to change; always consult a tax professional.
+            </p>
+        </footer>
+
+    </main>
+
+    <!-- Scripts for Charts -->
+    <script>
+        // 1. Capital Allocation Donut Chart
+        const ctxAllocation = document.getElementById('allocationChart').getContext('2d');
+        new Chart(ctxAllocation, {
+            type: 'doughnut',
+            data: {
+                labels: ['Alpha Engine (Trading)', 'Drawdown Buffer (Safety)', 'Infrastructure & R&D'],
+                datasets: [{
+                    data: [270000, 135000, 45000], // 60%, 30%, 10% of 4.5L
+                    backgroundColor: ['#06B6D4', '#D946EF', '#EAB308'],
+                    borderWidth: 0,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#94A3B8', font: { family: 'Inter' } }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                let label = context.label || '';
+                                if (label) { label += ': '; }
+                                label += new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(context.raw);
+                                return label;
+                            }
+                        }
+                    }
+                },
+                cutout: '70%'
+            }
+        });
+
+        // 2. Performance Comparison Line Chart
+        const ctxPerformance = document.getElementById('performanceChart').getContext('2d');
+
+        // Generating dummy data for curve
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        // FD: Linear slight growth
+        const fdData = Array.from({ length: 12 }, (_, i) => 270000 * (1 + (0.06 / 12 * (i + 1))));
+
+        // Manual: Volatile (Up and Down)
+        const manualData = [270000, 285000, 260000, 290000, 310000, 295000, 280000, 305000, 320000, 300000, 310000, 325000];
+
+        // Algo: Smoother compounding
+        const algoData = Array.from({ length: 12 }, (_, i) => 270000 * Math.pow(1.025, i + 1)); // ~2.5% per month compounding
+
+        new Chart(ctxPerformance, {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [
+                    {
+                        label: 'Sakuntala Algo (Target)',
+                        data: algoData,
+                        borderColor: '#06B6D4',
+                        backgroundColor: 'rgba(6, 182, 212, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: true
+                    },
+                    {
+                        label: 'Manual Trading',
+                        data: manualData,
+                        borderColor: '#D946EF',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        tension: 0.2,
+                        fill: false
+                    },
+                    {
+                        label: 'Fixed Deposit (6%)',
+                        data: fdData,
+                        borderColor: '#94A3B8',
+                        borderWidth: 2,
+                        tension: 0,
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        grid: { color: '#1E293B' },
+                        ticks: { color: '#64748B' }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#64748B' }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: { color: '#94A3B8' }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function (tooltipItems) {
+                                return tooltipItems[0].label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
