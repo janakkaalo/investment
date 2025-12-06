@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakuntala Sovereign Protocol | Algo-Appreciate Model</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-purple: #bc13fe;
+            --neon-green: #0aff0a;
+            --dark-bg: #050b14;
+            --panel-bg: #0f172a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        /* Animations */
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+            }
+
+            50% {
+                box-shadow: 0 0 25px rgba(0, 243, 255, 0.5);
+            }
+        }
+
+        .animate-glow {
+            animation: pulse-glow 3s infinite;
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .step-connector {
+            position: absolute;
+            left: 24px;
+            top: 40px;
+            bottom: -20px;
+            width: 2px;
+            background: linear-gradient(to bottom, #3b82f6, #0f172a);
+            z-index: 0;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-cyan-500 selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-panel border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <i class="fa-solid fa-microchip text-cyan-400 text-2xl mr-3"></i>
+                    <span class="text-xl font-bold tracking-tight text-white">SAKUNTALA <span
+                            class="text-cyan-400">SOVEREIGN</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#mandate"
+                            class="hover:text-cyan-400 transition px-3 py-2 rounded-md text-sm font-medium">Mandate</a>
+                        <a href="#security"
+                            class="hover:text-cyan-400 transition px-3 py-2 rounded-md text-sm font-medium">Security</a>
+                        <a href="#hardware"
+                            class="hover:text-cyan-400 transition px-3 py-2 rounded-md text-sm font-medium">Hardware</a>
+                        <a href="#strategy"
+                            class="hover:text-cyan-400 transition px-3 py-2 rounded-md text-sm font-medium">Strategy</a>
+                        <a href="#financials"
+                            class="hover:text-cyan-400 transition px-3 py-2 rounded-md text-sm font-medium">Financials</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative pt-32 pb-12 sm:pt-40 sm:pb-16 overflow-hidden">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+            <div
+                class="inline-flex items-center px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-xs font-medium mb-6 animate-glow">
+                <span class="flex h-2 w-2 rounded-full bg-cyan-400 mr-2"></span>
+                PROTOCOL STATUS: INITIALIZATION REQUIRED
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6">
+                The Algo-Appreciate <br class="hidden sm:block" />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Hyper-Converged
+                    Model</span>
+            </h1>
+            <p class="mt-4 max-w-2xl text-xl text-slate-400">
+                Transforming a Behala residence into a Sovereign Financial Node.
+                <span class="text-white font-semibold">Target: 30-45% Yield</span> using Algorithmic Leverage, existing
+                GPU Compute, and the "Unfair Advantage" of code.
+            </p>
+            <div class="mt-8 flex gap-4">
+                <a href="#strategy"
+                    class="px-8 py-3 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-bold transition shadow-[0_0_20px_rgba(8,145,178,0.4)]">
+                    Deploy Capital (₹15L)
+                </a>
+                <a href="#security"
+                    class="px-8 py-3 rounded-lg border border-slate-600 hover:border-slate-400 text-slate-300 font-bold transition">
+                    Security Protocol
+                </a>
+            </div>
+        </div>
+
+        <!-- Background Elements -->
+        <div
+            class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full z-[-1] opacity-20 pointer-events-none">
+            <div
+                class="absolute top-20 left-10 w-72 h-72 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl animate-blob">
+            </div>
+            <div
+                class="absolute top-20 right-10 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000">
+            </div>
+            <div
+                class="absolute bottom-20 left-1/3 w-72 h-72 bg-cyan-600 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. The Mandate & Assets -->
+    <section id="mandate" class="py-16 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-6"><i
+                            class="fa-solid fa-crosshairs text-cyan-400 mr-2"></i> The Executive Mandate</h2>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div
+                                class="flex-shrink-0 h-6 w-6 rounded-full bg-green-500/20 flex items-center justify-center border border-green-500 text-green-400 text-xs mt-0.5">
+                                ✓</div>
+                            <div class="ml-4">
+                                <p class="text-white font-medium">Capital Deployment</p>
+                                <p class="text-slate-400 text-sm">₹1,500,000 (Fifteen Lakhs) Corpus.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div
+                                class="flex-shrink-0 h-6 w-6 rounded-full bg-green-500/20 flex items-center justify-center border border-green-500 text-green-400 text-xs mt-0.5">
+                                ✓</div>
+                            <div class="ml-4">
+                                <p class="text-white font-medium">Constraint: Minimum Effort</p>
+                                <p class="text-slate-400 text-sm">Must accommodate full-time job. No manual day-trading.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div
+                                class="flex-shrink-0 h-6 w-6 rounded-full bg-green-500/20 flex items-center justify-center border border-green-500 text-green-400 text-xs mt-0.5">
+                                ✓</div>
+                            <div class="ml-4">
+                                <p class="text-white font-medium">Constraint: High Yield</p>
+                                <p class="text-slate-400 text-sm">Targeting 30-45% ROI (vs 7% FD) via Algorithmic Alpha.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Asset Card -->
+                <div class="glass-panel rounded-xl p-6 relative">
+                    <div
+                        class="absolute -top-3 left-6 px-3 py-1 bg-blue-600 text-xs font-bold rounded uppercase tracking-wide">
+                        Inventory</div>
+                    <h3 class="text-xl font-bold text-white mb-4 mt-2">The Behala Arsenal</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                            <i class="fa-solid fa-microchip text-3xl text-purple-400 mb-2"></i>
+                            <h4 class="font-bold text-slate-200">9060 XT GPU</h4>
+                            <p class="text-xs text-slate-400">Compute Node</p>
+                        </div>
+                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                            <i class="fa-solid fa-building text-3xl text-cyan-400 mb-2"></i>
+                            <h4 class="font-bold text-slate-200">3rd Floor</h4>
+                            <p class="text-xs text-slate-400">The "Clean Room"</p>
+                        </div>
+                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                            <i class="fa-solid fa-warehouse text-3xl text-amber-400 mb-2"></i>
+                            <h4 class="font-bold text-slate-200">Garage</h4>
+                            <p class="text-xs text-slate-400">OpEx Offset (Dark Store)</p>
+                        </div>
+                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                            <i class="fa-brands fa-aws text-3xl text-orange-400 mb-2"></i>
+                            <h4 class="font-bold text-slate-200">Cloud Stack</h4>
+                            <p class="text-xs text-slate-400">AWS + Replit + Copilot</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Security (Glass Door) -->
+    <section id="security" class="py-16 bg-slate-900 border-y border-slate-800 relative">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-red-500 mb-2"><i class="fa-solid fa-shield-halved"></i> PHASE 0: The
+                    "Glass Door" Remediation</h2>
+                <p class="text-slate-400">You cannot build a skyscraper on a cracked foundation. Before moving money,
+                    you must sterilize the digital environment.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Step 1 -->
+                <div
+                    class="bg-red-900/10 border border-red-500/30 p-6 rounded-xl hover:bg-red-900/20 transition cursor-pointer group">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-red-400 font-bold mono">PROTOCOL_A</span>
+                        <i class="fa-solid fa-fingerprint text-2xl text-red-500 group-hover:scale-110 transition"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Identity Segregation</h3>
+                    <p class="text-sm text-slate-400">Abandon `modi123ster` identity. Create a new
+                        <strong>ProtonMail</strong> account dedicated solely to finance. This is your Root of Trust.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div
+                    class="bg-red-900/10 border border-red-500/30 p-6 rounded-xl hover:bg-red-900/20 transition cursor-pointer group">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-red-400 font-bold mono">PROTOCOL_B</span>
+                        <i class="fa-solid fa-key text-2xl text-red-500 group-hover:scale-110 transition"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Hardware Keys (YubiKey)</h3>
+                    <p class="text-sm text-slate-400">Buy 2 YubiKeys. Lock AWS, Binance, and Email with hardware 2FA.
+                        SMS OTP is vulnerable to SIM swapping.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div
+                    class="bg-red-900/10 border border-red-500/30 p-6 rounded-xl hover:bg-red-900/20 transition cursor-pointer group">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-red-400 font-bold mono">PROTOCOL_C</span>
+                        <i class="fa-solid fa-network-wired text-2xl text-red-500 group-hover:scale-110 transition"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Network VLANs</h3>
+                    <p class="text-sm text-slate-400">Isolate the Trading Node (PC) on <strong>VLAN 20</strong>. IoT
+                        devices (TV, Phone) stay on VLAN 1. Prevent lateral movement attacks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. The Neural Nexus (Hardware) -->
+    <section id="hardware" class="py-16 bg-slate-800/50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">The "Neural Nexus" Architecture</h2>
+
+            <div class="relative bg-slate-900 rounded-2xl p-8 border border-slate-700 shadow-2xl">
+                <!-- Diagram Layout -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+
+                    <!-- Node 1: Local -->
+                    <div class="bg-slate-800 p-6 rounded-xl border-l-4 border-purple-500">
+                        <h3 class="text-xl font-bold text-white mb-2">The Lab (Behala)</h3>
+                        <p class="text-xs text-purple-400 mb-4 mono">LOCATION: 3RD FLOOR CLEAN ROOM</p>
+                        <ul class="text-sm text-slate-300 space-y-2">
+                            <li><i class="fa-solid fa-server mr-2 text-purple-500"></i> <strong>9060 XT Node:</strong>
+                                AI Inference, Backtesting (VectorBT), Llama-3 Sentiment Analysis.</li>
+                            <li><i class="fa-solid fa-plug mr-2 text-yellow-500"></i> <strong>2kVA Online UPS:</strong>
+                                Pure sine wave protection against CESC fluctuations.</li>
+                            <li><i class="fa-solid fa-wifi mr-2 text-cyan-500"></i> <strong>Dual WAN:</strong> Fiber +
+                                5G Failover Router.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Connection Arrow -->
+                    <div class="hidden md:flex flex-col items-center justify-center text-slate-600">
+                        <div class="text-xs font-bold mb-1">DOCKER SYNC</div>
+                        <i class="fa-solid fa-arrow-right-arrow-left text-2xl animate-pulse"></i>
+                        <div class="text-xs font-bold mt-1">REPLIT C2</div>
+                    </div>
+
+                    <!-- Node 2: Cloud -->
+                    <div class="bg-slate-800 p-6 rounded-xl border-l-4 border-orange-500">
+                        <h3 class="text-xl font-bold text-white mb-2">The Factory (AWS)</h3>
+                        <p class="text-xs text-orange-400 mb-4 mono">REGION: AP-NORTHEAST-1 (TOKYO)</p>
+                        <ul class="text-sm text-slate-300 space-y-2">
+                            <li><i class="fa-brands fa-aws mr-2 text-orange-500"></i> <strong>EC2 t3.medium:</strong>
+                                24/7 Execution Environment.</li>
+                            <li><i class="fa-brands fa-docker mr-2 text-blue-400"></i> <strong>Containers:</strong>
+                                Separate Bots for Crypto, Equity, Watchdogs.</li>
+                            <li><i class="fa-solid fa-bolt mr-2 text-yellow-400"></i> <strong>Latency:</strong>
+                                < 50ms to Binance Servers.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. The Strategy (Allocations) -->
+    <section id="strategy" class="py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center">The Barbell Portfolio Matrix (₹15L)</h2>
+
+            <!-- Strategy Cards -->
+            <div class="space-y-8">
+
+                <!-- ALPHA: Crypto -->
+                <div
+                    class="glass-panel p-1 rounded-xl flex flex-col md:flex-row overflow-hidden border-l-4 border-blue-500">
+                    <div
+                        class="p-6 md:w-1/3 bg-blue-500/10 flex flex-col justify-center border-b md:border-b-0 md:border-r border-slate-700">
+                        <h3 class="text-2xl font-bold text-white">Strategy Alpha</h3>
+                        <p class="text-blue-400 font-bold text-lg mt-1">Crypto Arbitrage</p>
+                        <div class="mt-4">
+                            <span class="block text-3xl font-bold text-white">₹4.0 Lakhs</span>
+                            <span class="text-xs text-slate-400">CAPITAL ALLOCATION</span>
+                        </div>
+                        <div
+                            class="mt-4 inline-flex items-center px-3 py-1 bg-green-900/30 text-green-400 rounded-full text-xs font-bold">
+                            TARGET: 50% ROI
+                        </div>
+                    </div>
+                    <div class="p-6 md:w-2/3">
+                        <h4 class="font-bold text-white mb-2">The Logic: Mean Reversion + AI Filter</h4>
+                        <p class="text-slate-400 text-sm mb-4">
+                            Using the 9060 XT to run a "Regime Detection" AI model. The bot only trades when the market
+                            is "Ranging" (Buying dips, Selling rips). It shuts down during strong Trends to avoid
+                            "catching a falling knife."
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 text-xs font-mono text-slate-300">
+                            <div class="bg-slate-800 p-2 rounded">PLATFORM: BINANCE</div>
+                            <div class="bg-slate-800 p-2 rounded">TOOL: PYTHON (CCXT)</div>
+                            <div class="bg-slate-800 p-2 rounded">RISK: HIGH VOLATILITY</div>
+                            <div class="bg-slate-800 p-2 rounded">TAX: 30% FLAT (NO OFFSET)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BETA: US Stocks -->
+                <div
+                    class="glass-panel p-1 rounded-xl flex flex-col md:flex-row overflow-hidden border-l-4 border-cyan-500">
+                    <div
+                        class="p-6 md:w-1/3 bg-cyan-500/10 flex flex-col justify-center border-b md:border-b-0 md:border-r border-slate-700">
+                        <h3 class="text-2xl font-bold text-white">Strategy Beta</h3>
+                        <p class="text-cyan-400 font-bold text-lg mt-1">US Tech Momentum</p>
+                        <div class="mt-4">
+                            <span class="block text-3xl font-bold text-white">₹5.0 Lakhs</span>
+                            <span class="text-xs text-slate-400">CAPITAL ALLOCATION</span>
+                        </div>
+                        <div
+                            class="mt-4 inline-flex items-center px-3 py-1 bg-cyan-900/30 text-cyan-400 rounded-full text-xs font-bold">
+                            TARGET: 20% ROI
+                        </div>
+                    </div>
+                    <div class="p-6 md:w-2/3">
+                        <h4 class="font-bold text-white mb-2">The Logic: Factor Investing (Dual-Momentum)</h4>
+                        <p class="text-slate-400 text-sm mb-4">
+                            Monthly rebalancing using the "Appreciate" App. We rank Nasdaq 100 stocks by 6-month
+                            momentum. We buy the winners (e.g., NVIDIA, Microsoft) and cut the losers.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 text-xs font-mono text-slate-300">
+                            <div class="bg-slate-800 p-2 rounded">PLATFORM: APPRECIATE APP</div>
+                            <div class="bg-slate-800 p-2 rounded">FREQ: MONTHLY (15 MINS)</div>
+                            <div class="bg-slate-800 p-2 rounded">HEDGE: USD APPRECIATION</div>
+                            <div class="bg-slate-800 p-2 rounded">TAX: SLAB RATE (STCG)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAMMA: Debt -->
+                <div
+                    class="glass-panel p-1 rounded-xl flex flex-col md:flex-row overflow-hidden border-l-4 border-amber-500">
+                    <div
+                        class="p-6 md:w-1/3 bg-amber-500/10 flex flex-col justify-center border-b md:border-b-0 md:border-r border-slate-700">
+                        <h3 class="text-2xl font-bold text-white">Strategy Gamma</h3>
+                        <p class="text-amber-400 font-bold text-lg mt-1">Yield Anchor</p>
+                        <div class="mt-4">
+                            <span class="block text-3xl font-bold text-white">₹5.0 Lakhs</span>
+                            <span class="text-xs text-slate-400">CAPITAL ALLOCATION</span>
+                        </div>
+                        <div
+                            class="mt-4 inline-flex items-center px-3 py-1 bg-amber-900/30 text-amber-400 rounded-full text-xs font-bold">
+                            TARGET: 11% ROI
+                        </div>
+                    </div>
+                    <div class="p-6 md:w-2/3">
+                        <h4 class="font-bold text-white mb-2">The Logic: Corporate Bond Ladder</h4>
+                        <p class="text-slate-400 text-sm mb-4">
+                            Investing in Senior Secured Bonds via Wint Wealth/Incred. We use AI to summarize credit
+                            reports (CRISIL/ICRA). This provides the "Sleep Well" money and liquidity during crashes.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 text-xs font-mono text-slate-300">
+                            <div class="bg-slate-800 p-2 rounded">PLATFORM: WINT / INCRED</div>
+                            <div class="bg-slate-800 p-2 rounded">RISK: CREDIT RISK (LOW)</div>
+                            <div class="bg-slate-800 p-2 rounded">ROLE: PORTFOLIO STABILIZER</div>
+                            <div class="bg-slate-800 p-2 rounded">TAX: SLAB RATE</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OpEx Offset: Garage -->
+                <div class="glass-panel p-4 rounded-xl border border-slate-700 bg-slate-800/80">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 bg-green-500/20 p-3 rounded-lg mr-4">
+                            <i class="fa-solid fa-recycle text-green-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">The "Free Lunch" Mechanic: OpEx Offset</h4>
+                            <p class="text-sm text-slate-400 mt-1">
+                                <strong>Problem:</strong> Running High-End Algo PCs costs ~₹7,500/mo (AWS + Fiber +
+                                Electricity).<br>
+                                <strong>Solution:</strong> Convert Ground Floor Garage to "Dark Store" (Amazon
+                                I-Have-Space).<br>
+                                <strong>Result:</strong> Generates ~₹8,000/mo. <span
+                                    class="text-green-400 font-bold">Net OpEx = ₹0.</span> All Algo gains are pure
+                                profit.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Financials & Tax (Charts) -->
+    <section id="financials" class="py-16 bg-slate-900 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Financial Projection & Tax Reality</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Wealth Chart -->
+                <div class="glass-panel p-6 rounded-xl">
+                    <h3 class="text-lg font-bold text-white mb-4">5-Year Net Wealth Projection (Post-Tax)</h3>
+                    <div class="h-64 md:h-80 w-full relative">
+                        <canvas id="wealthChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-xs text-slate-500 text-center">
+                        *Assumes 26% Blended Gross Yield & 25% Weighted Tax Drag.
+                    </div>
+                </div>
+
+                <!-- Tax Compliance Breakdown -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold text-white">The Indian Tax Drag (FY 2025-26)</h3>
+
+                    <!-- Tax Card 1 -->
+                    <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-red-500">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-bold text-white">Section 115BBH (Crypto)</h4>
+                                <p class="text-xs text-slate-400 mt-1">Flat 30% Tax + 4% Cess on all Profits.</p>
+                                <p class="text-xs text-red-400 mt-1 font-mono">CRITICAL: LOSSES CANNOT BE SET OFF.</p>
+                            </div>
+                            <div class="text-2xl font-bold text-red-500">31.2%</div>
+                        </div>
+                    </div>
+
+                    <!-- Tax Card 2 -->
+                    <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-yellow-500">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-bold text-white">Foreign Equity (Appreciate)</h4>
+                                <p class="text-xs text-slate-400 mt-1">Short Term (< 24mo): Added to Income Slab.</p>
+                                        <p class="text-xs text-slate-400 mt-1">Long Term (> 24mo): 20% (w/o indexation
+                                            usually).</p>
+                            </div>
+                            <div class="text-2xl font-bold text-yellow-500">~30%</div>
+                        </div>
+                    </div>
+
+                    <!-- Tax Card 3 -->
+                    <div class="bg-slate-800 p-4 rounded-lg border-l-4 border-green-500">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-bold text-white">Section 44AD (Presumptive)</h4>
+                                <p class="text-xs text-slate-400 mt-1">For Garage & Business Income.</p>
+                                <p class="text-xs text-green-400 mt-1">Declare only 6% of Turnover as Profit.</p>
+                            </div>
+                            <div class="text-2xl font-bold text-green-500">Efficient</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Roadmap -->
+    <section class="py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center">90-Day Execution Cycle</h2>
+
+            <div class="relative pl-8 border-l-2 border-slate-700 space-y-12">
+                <!-- Day 1-15 -->
+                <div class="relative">
+                    <div class="absolute -left-[41px] bg-slate-900 border-2 border-cyan-500 rounded-full w-6 h-6"></div>
+                    <h3 class="text-xl font-bold text-cyan-400">Phase 1: The Foundation (Days 1-15)</h3>
+                    <ul class="mt-2 space-y-2 text-slate-300 text-sm list-disc pl-5">
+                        <li>Buy YubiKeys & Setup ProtonMail (Digital Airlock).</li>
+                        <li>Install VLANs on Router.</li>
+                        <li>Clean 3rd Floor & Install UPS.</li>
+                    </ul>
+                </div>
+
+                <!-- Day 16-45 -->
+                <div class="relative">
+                    <div class="absolute -left-[41px] bg-slate-900 border-2 border-blue-500 rounded-full w-6 h-6"></div>
+                    <h3 class="text-xl font-bold text-blue-400">Phase 2: The Laboratory (Days 16-45)</h3>
+                    <ul class="mt-2 space-y-2 text-slate-300 text-sm list-disc pl-5">
+                        <li>Code `ccxt` connectors using Copilot.</li>
+                        <li>Backtest on 9060 XT (3 years data).</li>
+                        <li>Sign "Amazon I Have Space" for Garage.</li>
+                    </ul>
+                </div>
+
+                <!-- Day 46-60 -->
+                <div class="relative">
+                    <div class="absolute -left-[41px] bg-slate-900 border-2 border-purple-500 rounded-full w-6 h-6">
+                    </div>
+                    <h3 class="text-xl font-bold text-purple-400">Phase 3: Paper Trading (Days 46-60)</h3>
+                    <ul class="mt-2 space-y-2 text-slate-300 text-sm list-disc pl-5">
+                        <li>Deploy Docker to AWS (Free Tier).</li>
+                        <li>Trade on Binance Testnet.</li>
+                        <li>Verify "Circuit Breaker" logic (Auto-Liquidate on crash).</li>
+                    </ul>
+                </div>
+
+                <!-- Day 61+ -->
+                <div class="relative">
+                    <div class="absolute -left-[41px] bg-slate-900 border-2 border-green-500 rounded-full w-6 h-6">
+                    </div>
+                    <h3 class="text-xl font-bold text-green-400">Phase 4: Live Operations (Day 61+)</h3>
+                    <ul class="mt-2 space-y-2 text-slate-300 text-sm list-disc pl-5">
+                        <li>Fund Accounts (15L Allocation).</li>
+                        <li>Activate AWS Production Instance.</li>
+                        <li>Check Replit Dashboard Daily (5 mins).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 py-8 text-center border-t border-slate-900">
+        <p class="text-slate-600 text-sm">
+            SAKUNTALA SOVEREIGN PROTOCOL | BEHALA NODE<br>
+            <span class="text-xs opacity-50">Disclaimer: High-Yield Algorithmic Trading involves significant risk. This
+                is an engineering blueprint, not financial advice.</span>
+        </p>
+    </footer>
+
+    <!-- Chart Script -->
+    <script>
+        const ctx = document.getElementById('wealthChart').getContext('2d');
+
+        // Gradient for chart
+        const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient.addColorStop(0, 'rgba(6, 182, 212, 0.5)'); // Cyan
+        gradient.addColorStop(1, 'rgba(6, 182, 212, 0)');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Start', 'Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                datasets: [{
+                    label: 'Net Wealth (Post-Tax)',
+                    data: [15.00, 17.92, 21.42, 25.59, 30.58, 36.55], // From Report Table 11.2
+                    borderColor: '#22d3ee',
+                    backgroundColor: gradient,
+                    borderWidth: 3,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#22d3ee',
+                    pointRadius: 6,
+                    fill: true,
+                    tension: 0.4
+                },
+                {
+                    label: 'FD Benchmark (Post-Tax)',
+                    data: [15.00, 15.75, 16.53, 17.36, 18.23, 19.14], // ~5% Post Tax
+                    borderColor: '#64748b',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    pointRadius: 0,
+                    fill: false,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: { color: '#94a3b8' }
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        callbacks: {
+                            label: function (context) {
+                                return context.dataset.label + ': ₹' + context.parsed.y + ' Lakhs';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        grid: { color: '#1e293b' },
+                        ticks: { color: '#64748b', callback: function (value) { return '₹' + value + 'L'; } }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#64748b' }
+                    }
+                },
+                interaction: {
+                    mode: 'nearest',
+                    axis: 'x',
+                    intersect: false
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
