@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakuntala Sovereign Protocol | Command Node</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Rajdhani:wght@500;600;700&display=swap');
+
+        :root {
+            --bg-deep: #050b14;
+            --bg-card: #0f172a;
+            --neon-cyan: #06b6d4;
+            --neon-pink: #f472b6;
+            --neon-green: #10b981;
+            --neon-purple: #8b5cf6;
+            --text-main: #e2e8f0;
+            --text-mute: #64748b;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-deep);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--neon-cyan);
+        }
+
+        /* Card Styles */
+        .cyber-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(6, 182, 212, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .cyber-card:hover {
+            border-color: rgba(6, 182, 212, 0.3);
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Neon Text Utilities */
+        .text-glow-cyan {
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+        }
+
+        .text-glow-pink {
+            text-shadow: 0 0 10px rgba(244, 114, 182, 0.5);
+        }
+
+        .text-glow-green {
+            text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+
+        /* Animation Keyframes */
+        @keyframes pulse-border {
+            0% {
+                border-color: rgba(6, 182, 212, 0.1);
+            }
+
+            50% {
+                border-color: rgba(6, 182, 212, 0.5);
+            }
+
+            100% {
+                border-color: rgba(6, 182, 212, 0.1);
+            }
+        }
+
+        .animate-pulse-border {
+            animation: pulse-border 2s infinite;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+
+        /* Steps */
+        .step-connector {
+            position: absolute;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--neon-cyan), transparent);
+            z-index: -1;
+        }
+
+        /* No SVG replacements */
+        .icon-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- NAVIGATION / STATUS BAR -->
+    <nav class="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-cyan-900/30">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                <span class="font-mono font-bold text-xl text-cyan-400 tracking-wider">SAKUNTALA_PROTOCOL <span
+                        class="text-xs text-slate-500">v2.1</span></span>
+            </div>
+            <div class="hidden md:flex space-x-6 text-sm font-mono text-slate-400">
+                <span>CORPUS: <span class="text-white">₹4,50,000</span></span>
+                <span>STATUS: <span class="text-green-400">ONLINE</span></span>
+                <span>NODE: <span class="text-pink-400">BEHALA_01</span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="pt-24 pb-12 px-4 max-w-7xl mx-auto space-y-16">
+
+        <!-- 1. EXECUTIVE DASHBOARD (HERO) -->
+        <section class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="md:col-span-3 cyber-card rounded-2xl p-8 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-10 font-mono text-9xl font-bold select-none">ROI</div>
+                <h1
+                    class="text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                    Hyper-Converged Capital Nexus</h1>
+                <p class="text-lg text-slate-400 max-w-2xl mb-8 leading-relaxed">
+                    A technocratic framework deploying <span class="text-white font-bold">₹4.5L</span> into algorithmic
+                    volatility harvesting, decentralized infrastructure (DePIN), and zero-beta logistics.
+                    Targeting <span class="text-green-400 font-bold">42.5% CAGR</span> via tax-efficient business
+                    structures.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <div
+                        class="px-4 py-2 bg-cyan-900/30 border border-cyan-500/30 rounded text-cyan-400 font-mono text-sm">
+                        ⚡ Algo: Iron Condor
+                    </div>
+                    <div
+                        class="px-4 py-2 bg-pink-900/30 border border-pink-500/30 rounded text-pink-400 font-mono text-sm">
+                        🧬 Asset: 9060 XT GPU
+                    </div>
+                    <div
+                        class="px-4 py-2 bg-emerald-900/30 border border-emerald-500/30 rounded text-emerald-400 font-mono text-sm">
+                        🛡️ Tax: Section 44AD
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="cyber-card rounded-2xl p-6 flex flex-col justify-center items-center text-center animate-pulse-border border-t-4 border-t-cyan-500">
+                <h3 class="text-slate-400 font-mono text-sm uppercase tracking-widest mb-2">Projected Yield</h3>
+                <div class="text-6xl font-bold text-white mb-2 text-glow-green">42.5%</div>
+                <div class="text-xs text-slate-500 font-mono">ANNUALIZED (BLENDED)</div>
+            </div>
+        </section>
+
+        <!-- 2. ASSET AUDIT VISUALIZER -->
+        <section>
+            <div class="flex items-center mb-8 space-x-4">
+                <div class="h-px bg-slate-700 flex-1"></div>
+                <h2 class="text-2xl font-bold text-slate-200 uppercase tracking-widest">Infrastructure Audit</h2>
+                <div class="h-px bg-slate-700 flex-1"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Asset 1 -->
+                <div class="cyber-card rounded-xl p-6 hover:bg-slate-800/50 transition duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="icon-box bg-purple-900/30 text-purple-400">GPU</div>
+                        <span class="text-xs font-mono text-slate-500">COMPUTE NODE</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">AMD Radeon 9060 XT</h3>
+                    <ul class="text-sm text-slate-400 space-y-2 font-mono">
+                        <li class="flex items-center"><span class="text-purple-500 mr-2">::</span> 16GB VRAM (RDNA 4)
+                        </li>
+                        <li class="flex items-center"><span class="text-purple-500 mr-2">::</span> AI Inference (io.net)
+                        </li>
+                        <li class="flex items-center"><span class="text-purple-500 mr-2">::</span> Strategy Backtesting
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Asset 2 -->
+                <div class="cyber-card rounded-xl p-6 hover:bg-slate-800/50 transition duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="icon-box bg-orange-900/30 text-orange-400">GAR</div>
+                        <span class="text-xs font-mono text-slate-500">LOGISTICS HUB</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Ground Floor Garage</h3>
+                    <ul class="text-sm text-slate-400 space-y-2 font-mono">
+                        <li class="flex items-center"><span class="text-orange-500 mr-2">::</span> Amazon "I Have Space"
+                        </li>
+                        <li class="flex items-center"><span class="text-orange-500 mr-2">::</span> Zero-Beta Income</li>
+                        <li class="flex items-center"><span class="text-orange-500 mr-2">::</span> Subsidizes OpEx</li>
+                    </ul>
+                </div>
+
+                <!-- Asset 3 -->
+                <div class="cyber-card rounded-xl p-6 hover:bg-slate-800/50 transition duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="icon-box bg-blue-900/30 text-blue-400">API</div>
+                        <span class="text-xs font-mono text-slate-500">EXECUTION RAIL</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Dhan HQ + Python</h3>
+                    <ul class="text-sm text-slate-400 space-y-2 font-mono">
+                        <li class="flex items-center"><span class="text-blue-500 mr-2">::</span> Order Slicing</li>
+                        <li class="flex items-center"><span class="text-blue-500 mr-2">::</span> Basket Execution</li>
+                        <li class="flex items-center"><span class="text-blue-500 mr-2">::</span> Millisecond Latency
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. STRATEGY PILLAR I: ALGO FLOW (DETAILED) -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div>
+                <h2 class="text-3xl font-bold text-white mb-2">The Algo-Dhan Iron Condor</h2>
+                <p class="text-slate-400 mb-8 font-mono text-sm">
+                    PILLAR I: HARVESTING THETA DECAY (NON-DIRECTIONAL) <br>
+                    TARGET: 3% MONTHLY | CAPITAL: ₹3.0L
+                </p>
+
+                <!-- Step-by-Step Flow -->
+                <div class="space-y-6 relative">
+                    <div class="absolute left-6 top-4 bottom-4 w-0.5 bg-slate-800"></div>
+
+                    <!-- Step 1 -->
+                    <div class="relative pl-16">
+                        <div
+                            class="absolute left-0 w-12 h-12 bg-slate-800 border border-slate-700 rounded-full flex items-center justify-center font-bold text-cyan-400 z-10">
+                            01</div>
+                        <div class="bg-slate-800/40 p-4 rounded-lg border-l-2 border-cyan-500">
+                            <h4 class="text-lg font-bold text-white">Signal Generation</h4>
+                            <p class="text-sm text-slate-400 mt-1">Python script fetches Spot Price via Websocket.
+                                Calculates strikes based on 20 Delta (Short) and 5 Delta (Long).</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative pl-16">
+                        <div
+                            class="absolute left-0 w-12 h-12 bg-slate-800 border border-slate-700 rounded-full flex items-center justify-center font-bold text-green-400 z-10">
+                            02</div>
+                        <div class="bg-slate-800/40 p-4 rounded-lg border-l-2 border-green-500">
+                            <h4 class="text-lg font-bold text-white">Margin Hack (Critical)</h4>
+                            <p class="text-sm text-slate-400 mt-1">
+                                Execution Order is vital for margin benefit:<br>
+                                <span class="text-green-400 font-mono">1. BUY Far OTM Wings (Hedges)</span><br>
+                                <span class="text-red-400 font-mono">2. SELL ATM/Near OTM Legs</span><br>
+                                Reduces margin from ₹1.5L to ~₹50k per lot.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="relative pl-16">
+                        <div
+                            class="absolute left-0 w-12 h-12 bg-slate-800 border border-slate-700 rounded-full flex items-center justify-center font-bold text-pink-400 z-10">
+                            03</div>
+                        <div class="bg-slate-800/40 p-4 rounded-lg border-l-2 border-pink-500">
+                            <h4 class="text-lg font-bold text-white">Risk Management</h4>
+                            <p class="text-sm text-slate-400 mt-1">
+                                <strong>Stop Loss:</strong> 200% of Combined Premium.<br>
+                                <strong>Kill Switch:</strong> 5% Monthly Drawdown disables bot via API.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual Representation -->
+            <div class="cyber-card p-6 rounded-2xl flex flex-col">
+                <h3 class="text-lg font-mono font-bold text-slate-300 mb-4 border-b border-slate-700 pb-2">STRATEGY
+                    PAYOFF DIAGRAM</h3>
+                <div class="flex-grow flex items-center justify-center">
+                    <div class="chart-container">
+                        <canvas id="payoffChart"></canvas>
+                    </div>
+                </div>
+                <div class="mt-4 p-4 bg-slate-900/50 rounded text-xs font-mono text-slate-400">
+                    <p>The "Table Top" represents the profit zone. As long as the market stays between the short
+                        strikes, we collect full premium.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. TAX COMPLIANCE VISUALIZER (THE ALPHA LAYER) -->
+        <section
+            class="cyber-card p-8 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-4">Tax Alpha Architecture</h2>
+                    <p class="text-slate-400 mb-6">
+                        Leveraging <strong>Section 44AD</strong> and the <strong>FY25-26 Section 87A Rebate</strong> to
+                        zero-rate tax liability up to ₹12 Lakhs total income.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-3 bg-slate-800 rounded border border-slate-700">
+                            <span class="text-sm text-slate-400">Salary Income (Base)</span>
+                            <span class="font-mono text-white">₹3,50,000</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-slate-800 rounded border border-slate-700">
+                            <span class="text-sm text-slate-400">Algo Trading Profit (Est.)</span>
+                            <span class="font-mono text-green-400">+ ₹3,24,000</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-slate-800 rounded border border-slate-700">
+                            <span class="text-sm text-slate-400">DePIN + Garage Income</span>
+                            <span class="font-mono text-green-400">+ ₹1,80,000</span>
+                        </div>
+                        <div
+                            class="flex justify-between items-center p-3 bg-red-900/20 rounded border border-red-900/30">
+                            <span class="text-sm text-red-300">Biz Deductions (Depreciation, Internet)</span>
+                            <span class="font-mono text-red-400">- ₹1,00,000</span>
+                        </div>
+                        <div
+                            class="flex justify-between items-center p-4 bg-emerald-900/20 rounded border border-emerald-500/50">
+                            <span class="font-bold text-emerald-400">NET TAXABLE INCOME</span>
+                            <span class="font-mono font-bold text-white">₹7,54,000</span>
+                        </div>
+                        <div class="text-center pt-2">
+                            <span class="text-xs text-slate-500">Since ₹7.54L < ₹12L (Proposed 87A Limit) -></span>
+                            <span class="text-xl font-bold text-white ml-2">TAX PAYABLE: ₹0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="taxChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. FINANCIAL PROJECTIONS (ANIMATED) -->
+        <section>
+            <h2 class="text-2xl font-bold text-white mb-6">Wealth Projection Protocol</h2>
+            <div class="cyber-card p-6 rounded-2xl">
+                <div class="chart-container" style="height: 400px;">
+                    <canvas id="wealthChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. IMPLEMENTATION ROADMAP (TIMELINE) -->
+        <section>
+            <h2 class="text-2xl font-bold text-white mb-8">90-Day Execution Sprint</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                <!-- Phase 1 -->
+                <div class="bg-slate-800/50 p-6 rounded-xl border-t-4 border-cyan-500">
+                    <h3 class="text-cyan-400 font-bold mb-2">DAYS 0-30: INFRASTRUCTURE</h3>
+                    <ul class="text-sm text-slate-400 space-y-3 list-disc pl-4">
+                        <li>Reformat PC: Ubuntu 22.04 LTS (Clean Room).</li>
+                        <li>Install Docker & io.net Worker (DePIN).</li>
+                        <li>Setup Dhan API Keys (Environment Variables).</li>
+                        <li>Register for Amazon "I Have Space".</li>
+                    </ul>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="bg-slate-800/50 p-6 rounded-xl border-t-4 border-purple-500">
+                    <h3 class="text-purple-400 font-bold mb-2">DAYS 31-60: DEVELOPMENT</h3>
+                    <ul class="text-sm text-slate-400 space-y-3 list-disc pl-4">
+                        <li>Code Python Strategy (dhanhq library).</li>
+                        <li>Backtest on local 9060 XT (vectorbt).</li>
+                        <li><strong>Dry Run:</strong> Log trades to CSV without execution.</li>
+                        <li>Amazon Garage Verification Visit.</li>
+                    </ul>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="bg-slate-800/50 p-6 rounded-xl border-t-4 border-green-500">
+                    <h3 class="text-green-400 font-bold mb-2">DAYS 61-90: LIVE DEPLOYMENT</h3>
+                    <ul class="text-sm text-slate-400 space-y-3 list-disc pl-4">
+                        <li>Start Trading: 1 Lot (Risk ~₹50k).</li>
+                        <li>Monitor Slippage & Latency.</li>
+                        <li>Scale to 3 Lots after 2 weeks of profitability.</li>
+                        <li>First Monthly Garage Payout.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 7. CODE SNIPPET (DETAILS VIEW) -->
+        <section class="cyber-card p-6 rounded-2xl">
+            <details class="group">
+                <summary
+                    class="flex justify-between items-center font-mono font-bold text-cyan-400 cursor-pointer list-none">
+                    <span>> VIEW_SOURCE: strategy_core.py</span>
+                    <span class="transition group-open:rotate-180">▼</span>
+                </summary>
+                <div class="mt-4 bg-slate-950 p-4 rounded-lg overflow-x-auto border border-slate-800">
+                    <pre class="text-xs font-mono text-slate-300">
+<span class="text-pink-400">from</span> dhanhq <span class="text-pink-400">import</span> dhanhq
+<span class="text-pink-400">import</span> time
+
+<span class="text-gray-500"># --- CONFIGURATION ---</span>
+CLIENT_ID = <span class="text-green-400">"YOUR_ID"</span>
+ACCESS_TOKEN = <span class="text-green-400">"YOUR_TOKEN"</span>
+QTY = <span class="text-purple-400">75</span> <span class="text-gray-500"># 3 Lots Nifty</span>
+
+dhan = dhanhq(CLIENT_ID, ACCESS_TOKEN)
+
+<span class="text-pink-400">def</span> <span class="text-cyan-400">place_iron_condor</span>(expiry_code):
+    <span class="text-gray-500">"""
+    Executes Iron Condor with Margin Benefit Sequence.
+    1. BUY WINGS (Hedges) -> 2. SELL BODY (Income)
+    """</span>
+    
+    <span class="text-gray-500"># 1. DEFINE LEGS (Simplified Logic)</span>
+    atm = get_atm_strike()
+    wing_width = <span class="text-purple-400">200</span>
+    
+    long_ce = atm + wing_width + <span class="text-purple-400">100</span>
+    long_pe = atm - wing_width - <span class="text-purple-400">100</span>
+    short_ce = atm + wing_width
+    short_pe = atm - wing_width
+
+    print(<span class="text-green-400">"--- EXECUTING HEDGES FIRST ---"</span>)
+    <span class="text-gray-500"># Place BUY orders here...</span>
+    
+    time.sleep(<span class="text-purple-400">0.5</span>) <span class="text-gray-500"># Small buffer for exchange ack</span>
+    
+    print(<span class="text-green-400">"--- EXECUTING SHORTS SECOND ---"</span>)
+    <span class="text-gray-500"># Place SELL orders here...</span>
+
+    print(<span class="text-green-400">"--- IRON CONDOR DEPLOYED ---"</span>)
+
+</pre>
+                </div>
+            </details>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-800 py-8 text-center bg-slate-900">
+        <p class="text-slate-500 text-sm font-mono">SAKUNTALA SOVEREIGN PROTOCOL | BEHALA NODE | ENCRYPTED</p>
+    </footer>
+
+    <!-- CHART LOGIC -->
+    <script>
+        // --- 1. Payoff Chart ---
+        const ctxPayoff = document.getElementById('payoffChart').getContext('2d');
+        new Chart(ctxPayoff, {
+            type: 'line',
+            data: {
+                labels: ['-5%', '-3%', '-1%', 'ATM', '+1%', '+3%', '+5%'],
+                datasets: [{
+                    label: 'P&L Profile',
+                    data: [-2000, -500, 2000, 2500, 2000, -500, -2000],
+                    borderColor: '#06b6d4',
+                    backgroundColor: 'rgba(6, 182, 212, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#06b6d4'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8' } },
+                    x: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8' } }
+                }
+            }
+        });
+
+        // --- 2. Tax Chart ---
+        const ctxTax = document.getElementById('taxChart').getContext('2d');
+        new Chart(ctxTax, {
+            type: 'bar',
+            data: {
+                labels: ['Gross Income', 'Deductions', 'Taxable Income', 'Rebate Limit'],
+                datasets: [{
+                    label: 'Amount (₹)',
+                    data: [854000, 100000, 754000, 1200000],
+                    backgroundColor: ['#3b82f6', '#ef4444', '#10b981', '#64748b'],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: {
+                        grid: { color: '#1e293b' },
+                        ticks: { color: '#94a3b8', callback: (val) => '₹' + (val / 1000) + 'k' }
+                    },
+                    x: { grid: { display: false }, ticks: { color: '#e2e8f0' } }
+                }
+            }
+        });
+
+        // --- 3. Wealth Projection Chart ---
+        const ctxWealth = document.getElementById('wealthChart').getContext('2d');
+        new Chart(ctxWealth, {
+            type: 'line',
+            data: {
+                labels: ['Start', 'Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                datasets: [
+                    {
+                        label: 'Sakuntala Protocol (Compounded)',
+                        data: [4.5, 7.38, 11.2, 16.5, 23.4, 32.1], // In Lakhs
+                        borderColor: '#10b981',
+                        backgroundColor: '#10b981',
+                        borderWidth: 3,
+                        tension: 0.3
+                    },
+                    {
+                        label: 'Traditional FD (7%)',
+                        data: [4.5, 4.81, 5.15, 5.51, 5.90, 6.31],
+                        borderColor: '#64748b',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { labels: { color: '#e2e8f0' } },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                return context.dataset.label + ': ₹' + context.parsed.y + ' Lakhs';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        grid: { color: '#1e293b' },
+                        ticks: { color: '#94a3b8', callback: (val) => '₹' + val + 'L' }
+                    },
+                    x: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8' } }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
